@@ -1,0 +1,14 @@
+[package]
+name = "sentrylinux"
+version = "2.4.1"
+edition = "2021"
+description = "SentryLinux Native Desktop Shell (Tauri v2 / WebKit2GTK + Rust Telemetry Daemon) for Ubuntu 24.04 LTS"
+authors = ["SentryLinux Team"]
+license = "MIT"
+
+[dependencies]
+sentrylinux-daemon = { path = "../daemon" }
+
+[[bin]]
+name = "sentrylinux"
+path = "src/main.rs"

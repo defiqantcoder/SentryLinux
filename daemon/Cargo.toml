@@ -1,0 +1,15 @@
+[package]
+name = "sentrylinux-daemon"
+version = "2.4.1"
+edition = "2021"
+description = "SentryLinux low-overhead Linux telemetry daemon, eBPF/procfs inspector, canonical path guard, and IPC server for Ubuntu 24.04 LTS"
+authors = ["SentryLinux Team"]
+license = "MIT"
+
+[lib]
+name = "sentrylinux_daemon"
+path = "src/lib.rs"
+
+[[bin]]
+name = "sentrylinux-daemon"
+path = "src/main.rs"

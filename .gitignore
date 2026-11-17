@@ -1,5 +1,8 @@
 node_modules/
 dist/
+build/
+daemon/target/
+src-tauri/target/
 .env
 .env.local
 *.log
