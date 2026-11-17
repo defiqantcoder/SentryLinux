@@ -130,14 +130,15 @@ Section: admin
 Priority: optional
 Architecture: ${ARCH}
 Installed-Size: ${INSTALLED_KB}
-Depends: libc6 (>= 2.38), libgtk-3-0t64 | libgtk-3-0, libwebkit2gtk-4.1-0, libglib2.0-0t64 | libglib2.0-0
-Recommends: polkitd, libsecret-tools, ufw, apparmor-utils, debsums
+Depends: libc6 (>= 2.34)
+Recommends: libwebkit2gtk-4.1-0 | libwebkit2gtk-4.0-37, libgtk-3-0t64 | libgtk-3-0, polkitd, libsecret-tools, ufw, apparmor-utils, debsums
 Maintainer: SentryLinux Security Team <security@sentrylinux.org>
 Homepage: https://github.com/defiqantcoder/SentryLinux
-Description: AI-augmented endpoint security hub and hardening console for Ubuntu 24.04 LTS
+Description: AI-augmented endpoint security hub and hardening console for Ubuntu Linux
  SentryLinux unifies Ubuntu's CLI security ecosystem (auditd, AppArmor, Lynis,
  UFW, OpenSnitch, Fail2ban, ClamAV, RKhunter, Debsums, WireGuard, and NextDNS)
- into a native Libadwaita desktop workstation with Dual-Model Gemini 4 triage.
+ into a native Libadwaita desktop workstation & interactive terminal console
+ with Dual-Model Gemini 4 triage and zero-localhost standalone architecture.
 EOF
 
 cat > "${STAGE_DIR}/DEBIAN/postinst" << 'EOF'

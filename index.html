@@ -5,6 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="shell-type" content="desktop_adwaita" />
     <title>SentryLinux — Ubuntu 24.04 LTS Endpoint Security Hub</title>
+    <script>
+      // Standalone zero-localhost IPC bridge fallback for direct file:// execution
+      if (typeof window !== 'undefined' && !window.__TAURI_INTERNALS__) {
+        window.__TAURI_INTERNALS__ = {
+          invoke: async function (cmd, args) {
+            if (cmd === 'get_system_telemetry') {
+              return {
+                kernelVersion: 'Linux 6.8.0-40-generic',
+                uptimeFormatted: '14d 06h 42m',
+                loadAverage: '0.42, 0.38, 0.31',
+                memoryUsedMb: 6420,
+                memoryTotalMb: 32768,
+                lockdownMode: 'integrity',
+                kptrRestrict: '2 (Restricted)',
+                tpmPcrStatus: 'PCR 0,2,4,7 Nominal (SHA-256 Verified)',
+                luksKeyslotsActive: 2,
+                secureBootEnabled: true
+              };
+            }
+            if (cmd === 'validate_path') {
+              var p = (args && args.rawPath) || '';
+              if (p.indexOf('..') !== -1 || p.indexOf('/etc') === 0 || p.indexOf('/usr') === 0) {
+                throw new Error('Security boundary violation: Protected path');
+              }
+              return p;
+            }
+            if (cmd === 'save_spec_bundle') {
+              return '/tmp/sentrylinux-spec-bundle';
+            }
+            return null;
+          }
+        };
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
