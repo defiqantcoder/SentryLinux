@@ -48,3 +48,30 @@ test('Source tree contains zero hardcoded API keys or plaintext secrets', () => 
     assert.ok(!/AIza[0-9A-Za-z-_]{35}/.test(content), `Found hardcoded API key in ${rel}`);
   }
 });
+
+test('Plain-language AI threat explainers are present and complete for all 9 sections', () => {
+  const serviceCode = fs.readFileSync(path.resolve('src/services/geminiService.ts'), 'utf8');
+  const requiredSections = [
+    'overview',
+    'dns-sentry',
+    'outbound-intercepts',
+    'usg-and-lynis-cis-audit',
+    'malware-and-sweep',
+    'daemon-restarts-and-needrestart',
+    'network-profiles-and-wireguard',
+    'rules-and-quarantine',
+    'settings-and-polkit-auth',
+  ];
+  for (const sec of requiredSections) {
+    assert.ok(
+      serviceCode.includes(`'${sec}': {`) || serviceCode.includes(`${sec}: {`),
+      `Missing plain-language explainer for section: ${sec}`,
+    );
+  }
+  assert.ok(serviceCode.includes('simpleExplanation:'));
+  assert.ok(serviceCode.includes('threatOrigin:'));
+  assert.ok(serviceCode.includes('threatImpact:'));
+  assert.ok(serviceCode.includes('recommendedAction:'));
+  assert.ok(serviceCode.includes('actionButtonLabel:'));
+});
+

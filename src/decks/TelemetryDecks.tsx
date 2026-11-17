@@ -9,6 +9,7 @@ import type {
   TabId,
 } from '../types/project';
 import { MaterialIcon, Tooltip } from '../components/Primitives';
+import { AiSectionExplainer } from '../components/AiSectionExplainer';
 import { analyzeBlastRadius, queryAskSentry } from '../services/geminiService';
 
 interface OverviewDeckProps {
@@ -46,6 +47,7 @@ export const OverviewDeck: React.FC<OverviewDeckProps> = ({
   const [selectedDropIn, setSelectedDropIn] = useState<SystemdExposureUnit | null>(null);
   const [severityFilter, setSeverityFilter] = useState<'ALL' | 'CRITICAL' | 'WARN'>('ALL');
   const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [expandedAiIncidentId, setExpandedAiIncidentId] = useState<string | null>(null);
 
   const triggerToast = (msg: string) => {
     setToastMsg(msg);
@@ -195,6 +197,14 @@ export const OverviewDeck: React.FC<OverviewDeckProps> = ({
           </Tooltip>
         </div>
       </section>
+
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="overview"
+        onExecuteRecommendedAction={onTakeSnapshot}
+        customActionLabel="Capture Safety Snapshot & Verify Health"
+        defaultExpanded={false}
+      />
 
       {/* Metric Quick Stats (Telemetry Grid) */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
@@ -477,6 +487,19 @@ export const OverviewDeck: React.FC<OverviewDeckProps> = ({
                       Parent: {inc.parentProcess} → Target: {inc.targetSocket}
                     </span>
                     <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedAiIncidentId(
+                            expandedAiIncidentId === inc.id ? null : inc.id,
+                          )
+                        }
+                        className="text-primary font-semibold hover:underline flex items-center gap-1"
+                      >
+                        <MaterialIcon name="auto_awesome" className="text-[14px]" />
+                        <span>AI: Explain Threat & Recommend Action</span>
+                      </button>
+                      <span>•</span>
                       <Tooltip explainerKey="blast-radius">
                         <button
                           type="button"
@@ -509,6 +532,48 @@ export const OverviewDeck: React.FC<OverviewDeckProps> = ({
                       </button>
                     </div>
                   </div>
+
+                  {expandedAiIncidentId === inc.id && (
+                    <div className="mt-2.5 p-3 rounded-xl bg-surface-container-highest/60 border border-primary/30 flex flex-col gap-2 animate-in fade-in">
+                      <div className="flex items-center gap-1.5 text-primary font-semibold text-[12px] uppercase font-code-sm">
+                        <MaterialIcon name="psychology" className="text-[16px]" />
+                        <span>AI Plain-Language Threat Breakdown & Recommended Action</span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-[12px] font-body-md mt-1">
+                        <div className="p-2.5 rounded-lg bg-surface-container border border-white/5">
+                          <span className="font-bold text-on-surface block mb-1">1. What is this?</span>
+                          <span className="text-on-surface-variant">
+                            The program <code className="text-primary">{inc.binary}</code> (PID {inc.pid}) triggered a high-risk security alert ({inc.severity}).
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-surface-container border border-error/20">
+                          <span className="font-bold text-error block mb-1">2. Where threat comes from:</span>
+                          <span className="text-on-surface-variant">
+                            Spawned by parent process <code className="text-on-surface">{inc.parentProcess}</code> attempting an outbound socket connection to <code className="text-on-surface">{inc.targetSocket}</code>.
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-surface-container border border-tertiary/20 flex flex-col justify-between">
+                          <div>
+                            <span className="font-bold text-tertiary block mb-1">3. How to handle it:</span>
+                            <span className="text-on-surface-variant">
+                              Isolate this process in a frozen cgroup slice so it cannot transmit data, then verify the crontab or launcher.
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              onIsolateIncident(inc.id);
+                              triggerToast(`Frozen PID ${inc.pid} in cgroup v2.`);
+                            }}
+                            className="mt-2 py-1 px-2.5 rounded bg-primary text-white font-semibold text-[11px] hover:brightness-110 flex items-center justify-center gap-1"
+                          >
+                            <MaterialIcon name="lock" className="text-[13px]" />
+                            <span>{inc.isolated ? 'Already Isolated' : 'Freeze & Isolate Now'}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -1115,6 +1180,18 @@ export const DnsSentryDeck: React.FC<DnsSentryDeckProps> = ({
         </div>
       )}
 
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="dns-sentry"
+        onExecuteRecommendedAction={() =>
+          setRescueStatus(
+            'Rescue DNS verified: 45.90.28.0 (DoH link 4) active with 0.0ms leak.',
+          )
+        }
+        customActionLabel="Test Encrypted DNS & Block Trackers"
+        defaultExpanded={false}
+      />
+
       {/* Action Toolbar */}
       <div className="p-space-sm rounded-xl bg-surface-container-low border border-[#363243] shadow-md flex flex-col gap-space-sm">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
@@ -1519,6 +1596,16 @@ export const OutboundInterceptsDeck: React.FC<OutboundInterceptsDeckProps> = ({
           </button>
         </div>
       </div>
+
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="outbound-intercepts"
+        onExecuteRecommendedAction={() =>
+          setSelectedModalId(intercepts[0]?.id ?? null)
+        }
+        customActionLabel="Review Pending Intercepts & Deny Unknown"
+        defaultExpanded={false}
+      />
 
       {/* Quick Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">

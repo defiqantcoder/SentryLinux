@@ -12,6 +12,7 @@ import type {
   WireGuardTunnel,
 } from '../types/project';
 import { CodeViewer, GnomeSwitch, MaterialIcon, ModeSwitcher, Tooltip } from '../components/Primitives';
+import { AiSectionExplainer } from '../components/AiSectionExplainer';
 import { runSafetyCriticAudit } from '../services/geminiService';
 import {
   generateEmergencyRescueScript,
@@ -208,6 +209,14 @@ export const UsgCisAuditDeck: React.FC<UsgCisAuditDeckProps> = ({
           </button>
         </div>
       </div>
+
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="usg-and-lynis-cis-audit"
+        onExecuteRecommendedAction={handleDryRun}
+        customActionLabel="Run Safety Critic & Apply Staged Fixes"
+        defaultExpanded={false}
+      />
 
       {/* 3-Column Cockpit Grid: Categories Rail, Rules Checklist, Atomic Diff Drawer */}
       <div className="grid grid-cols-12 gap-space-lg items-start">
@@ -453,8 +462,8 @@ export const UsgCisAuditDeck: React.FC<UsgCisAuditDeckProps> = ({
                       className="flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-secondary-container/30 hover:bg-secondary-container/50 text-secondary transition-colors"
                     >
                       <MaterialIcon name="auto_awesome" className="text-[14px]" />
-                      <span className="font-label-sm text-label-sm font-medium">
-                        {isExpanded ? 'Hide AI Assessment' : 'AI Explain Vulnerability'}
+                      <span className="font-label-sm text-label-sm font-semibold">
+                        {isExpanded ? 'Hide AI Explanation' : 'AI: Explain Threat & Recommend Action'}
                       </span>
                     </button>
                     <span className="font-code-sm text-code-sm text-on-surface-variant">
@@ -463,14 +472,44 @@ export const UsgCisAuditDeck: React.FC<UsgCisAuditDeckProps> = ({
                   </div>
 
                   {isExpanded && (
-                    <div className="mt-1 p-space-sm rounded-lg bg-surface-container border border-secondary/30 flex flex-col gap-1">
-                      <div className="flex items-center gap-1 text-secondary font-label-md text-label-md">
-                        <MaterialIcon name="smart_toy" className="text-[16px]" />
-                        <span>Gemini Threat Assessment (Tier 2 Deep Dive)</span>
+                    <div className="mt-2 p-3 rounded-xl bg-surface-container border border-secondary/40 flex flex-col gap-2.5 animate-in fade-in">
+                      <div className="flex items-center gap-1.5 text-secondary font-title-sm text-[12px] font-bold uppercase font-code-sm">
+                        <MaterialIcon name="psychology" className="text-[16px]" />
+                        <span>AI Plain-English Threat & Remediation Guide</span>
                       </div>
-                      <p className="text-on-surface text-code-sm font-code-sm leading-relaxed">
-                        {rule.aiVulnerabilityExplanation}
-                      </p>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-[12px]">
+                        <div className="p-2.5 rounded-lg bg-surface-container-low border border-white/5">
+                          <span className="font-bold text-on-surface block mb-1">1. What this checks:</span>
+                          <span className="text-on-surface-variant leading-relaxed">
+                            {rule.title}. Currently set to <code className="text-error">{rule.currentValue}</code>.
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-surface-container-low border border-error/20">
+                          <span className="font-bold text-error block mb-1">2. Where threat comes from:</span>
+                          <span className="text-on-surface-variant leading-relaxed">
+                            Hackers scan for default unhardened settings in <code className="text-on-surface">{rule.targetFile}</code> to bypass authentication or gain root privileges.
+                          </span>
+                        </div>
+                        <div className="p-2.5 rounded-lg bg-surface-container-low border border-tertiary/20 flex flex-col justify-between">
+                          <div>
+                            <span className="font-bold text-tertiary block mb-1">3. How to handle it:</span>
+                            <span className="text-on-surface-variant leading-relaxed">
+                              {rule.aiVulnerabilityExplanation}
+                            </span>
+                          </div>
+                          {rule.status !== 'Passed' && (
+                            <button
+                              type="button"
+                              onClick={() => onToggleRuleStage(rule.id)}
+                              className="mt-2 py-1 px-2 rounded bg-primary text-white text-[11px] font-semibold hover:brightness-110 flex items-center justify-center gap-1"
+                            >
+                              <MaterialIcon name="tune" className="text-[13px]" />
+                              <span>{rule.stagedForFix ? 'Unstage Fix' : 'Stage AI Fix Now'}</span>
+                            </button>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -710,6 +749,14 @@ export const MalwareSweepDeck: React.FC<MalwareSweepDeckProps> = ({
           </button>
         </div>
       </div>
+
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="malware-and-sweep"
+        onExecuteRecommendedAction={handleRunSweep}
+        customActionLabel="Start Two-Stage Deep Scan & Heal"
+        defaultExpanded={false}
+      />
 
       {/* Sweep Telemetry & Heuristics Hero Card */}
       <div className="rounded-xl bg-surface-container border border-[#363243] p-space-lg shadow-md">
@@ -1202,6 +1249,14 @@ export const DaemonRestartsDeck: React.FC<DaemonRestartsDeckProps> = ({
         </div>
       </div>
 
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="daemon-restarts-and-needrestart"
+        onExecuteRecommendedAction={onRestartAllStale}
+        customActionLabel="Restart Outdated Services (Zero Downtime)"
+        defaultExpanded={false}
+      />
+
       {/* Summary Telemetry Header Card */}
       <div className="w-full bg-surface-container/80 backdrop-blur-xl rounded-xl p-space-lg border border-[#363243] shadow-sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
@@ -1509,6 +1564,17 @@ export const NetworkProfilesDeck: React.FC<NetworkProfilesDeckProps> = ({
         </div>
       </section>
 
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="network-profiles-and-wireguard"
+        onExecuteRecommendedAction={() => {
+          onChangeNetworkMode('coexist');
+          runSyntheticLeakTest();
+        }}
+        customActionLabel="Enforce Co-Existence Mode & Test Leak Shield"
+        defaultExpanded={false}
+      />
+
       {leakTestResult && (
         <div className="p-3 rounded-xl bg-tertiary-container/20 border border-tertiary text-tertiary font-code-sm text-code-sm flex items-center justify-between">
           <span>{leakTestResult}</span>
@@ -1799,6 +1865,16 @@ export const RulesAndQuarantineDeck: React.FC<RulesAndQuarantineDeckProps> = ({
         </div>
       </header>
 
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="rules-and-quarantine"
+        onExecuteRecommendedAction={() => {
+          if (quarantineItems[0]) onShredArtifact(quarantineItems[0].id);
+        }}
+        customActionLabel="Securely Shred Quarantined Files"
+        defaultExpanded={false}
+      />
+
       {/* Quarantine Vault Section */}
       <section className="flex flex-col gap-space-md">
         <div className="flex items-center gap-space-xs bg-surface-container-low p-space-sm rounded-xl border border-[#363243]">
@@ -2062,6 +2138,14 @@ export const SettingsAndPolkitDeck: React.FC<SettingsAndPolkitDeckProps> = ({
           </button>
         </div>
       </div>
+
+      {/* AI Plain-English Threat Explainer & Action Recommender */}
+      <AiSectionExplainer
+        sectionKey="settings-and-polkit-auth"
+        onExecuteRecommendedAction={handleDownloadRescueScript}
+        customActionLabel="Generate /boot/sentry-rescue.sh Rescue Script"
+        defaultExpanded={false}
+      />
 
       {rescuePreviewOpen && (
         <div className="p-space-md rounded-xl bg-surface-container border border-tertiary/40 space-y-2">
