@@ -1,0 +1,109 @@
+name: SentryLinux Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag (e.g. v2.4.1)'
+        required: true
+        default: 'v2.4.1'
+
+permissions:
+  contents: write
+
+jobs:
+  publish-release:
+    name: Build & Publish Release Assets
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            pkg-config \
+            libgtk-3-dev \
+            libwebkit2gtk-4.1-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            dpkg-dev \
+            libpolkit-gobject-1-dev \
+            libsecret-1-dev
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            daemon -> daemon/target
+            src-tauri -> src-tauri/target
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Build Debian package (.deb) & Generate Checksums
+        run: bash scripts/build-deb.sh
+
+      - name: Determine Release Tag
+        id: release_tag
+        run: |
+          if [ -n "${{ github.event.inputs.tag_name }}" ]; then
+            echo "TAG=${{ github.event.inputs.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "TAG=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish or Update GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.release_tag.outputs.TAG }}
+          name: SentryLinux ${{ steps.release_tag.outputs.TAG }}
+          body: |
+            ### SentryLinux Release ${{ steps.release_tag.outputs.TAG }}
+            AI-augmented endpoint security hub, automated hardening console, and network sentry for Ubuntu 24.04 LTS.
+
+            #### What's Included:
+            - **Native Rust Telemetry Daemon** (`/usr/bin/sentrylinux-daemon`)
+            - **Native GTK/WebKit2GTK Desktop App** (`/usr/bin/sentrylinux`)
+            - **Dual-Model Gemini AI Triage**: Gemini 4 fast triage & reasoning engine with "AI: Explain This & Recommend Action" plain-English guides in every section
+            - **NextDNS Live SSE Telemetry & CNAME Dependency Untangler**
+            - **Simplewall-style Outbound Intercepts & eBPF Socket Filter**
+            - **USG & Lynis CIS Benchmark Audit & Hardening Matrix** (with Adversarial Safety Critic Gate)
+            - **Malware & Two-Stage Rootkit Sweep** (Canonical GPG debsums + package healing)
+            - **Daemon Restarts & needrestart Stale Memory Inspector**
+            - **Proton VPN & NextDNS Co-Existence Manager**
+            - **Rules & Quarantine Vault** (0000 +i permissions & DoD `shred -u -z`)
+            - **Hardened Systemd Service** (`sentrylinux-daemon.service`) & Polkit Least-Privilege Action Profile
+
+            #### Installation:
+            ```bash
+            sudo dpkg -i sentrylinux_2.4.1_amd64.deb
+            sentrylinux
+            ```
+
+            #### SHA-256 Checksums:
+            Verify with `sha256sum -c SHA256SUMS.txt`.
+          files: |
+            sentrylinux_*.deb
+            SHA256SUMS.txt
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

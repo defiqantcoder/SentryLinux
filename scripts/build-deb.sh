@@ -158,7 +158,13 @@ mkdir -p "${TAURI_BUNDLE_DIR}"
 dpkg-deb --build --root-owner-group "${STAGE_DIR}" "${DEB_OUT_ROOT}"
 cp "${DEB_OUT_ROOT}" "${TAURI_BUNDLE_DIR}/${PKG_NAME}.deb"
 
+# Generate SHA-256 checksum manifest
+cd "${ROOT_DIR}"
+sha256sum "${PKG_NAME}.deb" > "${ROOT_DIR}/SHA256SUMS.txt"
+cp "${ROOT_DIR}/SHA256SUMS.txt" "${TAURI_BUNDLE_DIR}/SHA256SUMS.txt"
+
 echo "[5/5] Verifying built .deb package metadata and contents..."
 dpkg-deb --info "${DEB_OUT_ROOT}"
 dpkg-deb --contents "${DEB_OUT_ROOT}"
 ls -lh "${DEB_OUT_ROOT}"
+cat "${ROOT_DIR}/SHA256SUMS.txt"

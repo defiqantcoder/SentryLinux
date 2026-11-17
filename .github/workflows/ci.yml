@@ -1,0 +1,96 @@
+name: SentryLinux CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+    name: Build, Test & Package (.deb)
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential \
+            pkg-config \
+            libgtk-3-dev \
+            libwebkit2gtk-4.1-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            dpkg-dev \
+            libpolkit-gobject-1-dev \
+            libsecret-1-dev
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Setup Rust stable toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Cache Cargo dependencies and build artifacts
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            daemon -> daemon/target
+            src-tauri -> src-tauri/target
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run TypeScript typecheck & Vite build
+        run: npm run build
+
+      - name: Run Rust Daemon unit tests
+        run: cargo test --manifest-path daemon/Cargo.toml --verbose
+
+      - name: Run Rust Desktop Shell unit tests
+        run: cargo test --manifest-path src-tauri/Cargo.toml --verbose
+
+      - name: Check Rust Daemon clippy lints
+        run: cargo clippy --manifest-path daemon/Cargo.toml -- -D warnings
+
+      - name: Check Rust Desktop Shell clippy lints
+        run: cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings
+
+      - name: Build release binaries
+        run: |
+          cargo build --release --manifest-path daemon/Cargo.toml
+          cargo build --release --manifest-path src-tauri/Cargo.toml
+
+      - name: Run integration test suite
+        run: npm test
+
+      - name: Build official Debian package (.deb)
+        run: bash scripts/build-deb.sh
+
+      - name: Verify Debian package contents and control metadata
+        run: |
+          dpkg-deb --info sentrylinux_*.deb
+          dpkg-deb --contents sentrylinux_*.deb
+          cat SHA256SUMS.txt
+
+      - name: Upload Debian Package & Checksum Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sentrylinux-ubuntu-24.04-amd64-deb
+          path: |
+            sentrylinux_*.deb
+            SHA256SUMS.txt
+          retention-days: 14
