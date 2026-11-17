@@ -1,0 +1,568 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#00a574", "on-secondary-fixed-variant": "#5516be", "surface-bright": "#383849", "on-background": "#e3e0f7", "secondary": "#d0bcff", "secondary-fixed-dim": "#d0bcff", "on-error": "#690005", "on-primary-fixed-variant": "#852400", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "outline": "#aa8a80", "on-surface": "#e3e0f7", "surface-container": "#1e1e2e", "tertiary-fixed": "#68fcbf", "on-primary-fixed": "#3a0b00", "on-tertiary": "#003825", "primary-fixed-dim": "#ffb59e", "primary-container": "#f85e2a", "on-primary": "#5e1700", "primary-fixed": "#ffdbd0", "primary": "#ffb59e", "on-tertiary-container": "#003120", "on-surface-variant": "#e2bfb4", "tertiary-fixed-dim": "#45dfa4", "surface-tint": "#ffb59e", "surface": "#121221", "inverse-surface": "#e3e0f7", "surface-container-lowest": "#0d0d1c", "on-secondary-fixed": "#23005c", "inverse-primary": "#ae3200", "background": "#121221", "on-primary-container": "#521300", "on-tertiary-fixed": "#002114", "tertiary": "#45dfa4", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "on-secondary": "#3c0091", "on-secondary-container": "#c4abff", "surface-container-low": "#1a1a2a", "surface-variant": "#333344", "outline-variant": "#5a4139", "error": "#ffb4ab", "on-error-container": "#ffdad6", "on-tertiary-fixed-variant": "#005137", "surface-dim": "#121221", "inverse-on-surface": "#2f2f40", "surface-container-high": "#292839" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-compact": "0.75rem", "gutter-dense": "0.5rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-md": "0.75rem", "margin": "1.5rem", "gutter": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-lg": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"], "title-sm": ["Inter"], "body-lg": ["JetBrains Mono"], "code-sm": ["JetBrains Mono"], "body-md": ["JetBrains Mono"], "headline-md": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="font-title-sm text-title-sm">Overview</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><span class="font-title-sm text-title-sm">DNS Sentry</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><span class="font-title-sm text-title-sm">Outbound Intercepts</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a aria-current="page" class="flex items-center justify-between px-space-md py-2 transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg" data-path="network-profiles-and-wireguard" href="#"><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- 1. TOP SUB-HEADER & CONTEXT BAR -->
+<section class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span>Configuration</span>
+<span class="material-symbols-outlined text-[12px]">chevron_right</span>
+<span class="text-primary font-semibold">Network Profiles &amp; WireGuard Co-Existence</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-tertiary">wg0-proton</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">(10.2.0.2/32)</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[15px]">verified</span>
+<span>resolvectl Link 4: <strong class="text-on-surface">Strict NextDNS (~.)</strong></span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-container/20 text-primary-fixed-dim font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary-container text-[15px]">shield</span>
+<span>Kill Switch: nftables HARD DROP</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-code-sm text-code-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">alt_route</span>
+<span>Fwmark 51820 (tbl 51820)</span>
+</span>
+</div>
+</div>
+<!-- Context Actions -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface text-label-md font-label-md transition-colors" title="Import WireGuard configuration profile">
+<span class="material-symbols-outlined text-[16px]">file_upload</span>
+<span>+ Import .conf</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface text-label-md font-label-md transition-colors" id="flush-cache-btn" title="Trigger systemd-resolved and kernel fib cache flush">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">sync</span>
+<span>Flush DNS &amp; Route Cache</span>
+</button>
+<button class="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-primary-container text-on-primary-container font-title-sm text-title-sm hover:brightness-110 active:brightness-95 transition-all shadow-sm" id="apply-rules-btn">
+<span class="material-symbols-outlined text-[18px]">security_update_good</span>
+<span>Apply Network Rules</span>
+</button>
+</div>
+</section>
+<!-- 2. TOP TELEMETRY & HEALTH METRICS -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Tunnel Latency -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container shadow-sm min-h-[128px]">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">
+<span>Tunnel Latency &amp; Keepalive</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">network_ping</span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight font-bold">18</span>
+<span class="font-title-sm text-title-sm text-tertiary font-bold">ms</span>
+<span class="ml-auto inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-highest font-code-sm text-code-sm text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> nominal
+        </span>
+</div>
+<div class="flex flex-col gap-0.5 font-code-sm text-code-sm text-on-surface-variant truncate">
+<span class="truncate">Handshake: 42s ago • Persistent: 25s</span>
+<span class="text-on-surface-variant/70 truncate">Peer: 185.159.157.34:51820</span>
+</div>
+</div>
+<!-- Card 2: Live Throughput -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container shadow-sm min-h-[128px]">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">
+<span>Throughput (wg0-proton)</span>
+<span class="material-symbols-outlined text-[16px] text-primary">swap_vert</span>
+</div>
+<div class="flex items-center justify-between gap-2 my-1">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg text-on-surface font-bold">48.2</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">↓ MB/s</span>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2 font-bold">12.4</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">↑ MB/s</span>
+</div>
+<!-- Live Sparkline Inline SVG -->
+<svg class="w-16 h-8 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 64 24">
+<path class="text-tertiary" d="M0 20 L8 18 L16 21 L24 10 L32 12 L40 6 L48 14 L56 4 L64 8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path class="text-primary-container" d="M0 23 L8 22 L16 19 L24 18 L32 17 L40 14 L48 16 L56 12 L64 15" opacity="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>Rx: 4.82 GiB</span>
+<span>Tx: 1.15 GiB</span>
+</div>
+</div>
+<!-- Card 3: DNS Leak Guard -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container shadow-sm min-h-[128px]">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">
+<span>DNS Leak Integrity</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-display-lg text-display-lg text-tertiary font-bold">0 Leaks</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Strict DoH Mode</span>
+</div>
+<div class="flex flex-col gap-0.5 font-code-sm text-code-sm text-on-surface-variant truncate">
+<span class="truncate">resolved: 127.0.0.53:53 mapped</span>
+<span class="text-tertiary-fixed truncate">Plaintext Port 53: REJECTED (nftables)</span>
+</div>
+</div>
+<!-- Card 4: Active Profile -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container shadow-sm min-h-[128px]">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wide">
+<span>Network Context</span>
+<span class="material-symbols-outlined text-[16px] text-primary-container">wifi_protected_setup</span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-headline-md text-headline-md text-on-surface font-bold truncate">StarCoffee_5G</span>
+</div>
+<div class="flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-on-surface-variant">Untrusted Public Wi-Fi</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-container/20 text-primary-fixed-dim font-label-sm text-label-sm font-semibold">MAX DEFENSE</span>
+</div>
+</div>
+</section>
+<!-- 3. MAIN SPLIT INTERFACE (2-Column Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- LEFT / CENTER COLUMN: Tunnels, Profiles, and Split Rules (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- A. WireGuard Tunnels Management -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">vpn_key</span>
+<span class="font-title-sm text-title-sm text-on-surface">WireGuard Interfaces &amp; Endpoints</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest p-0.5 rounded-lg text-label-sm font-label-sm">
+<button class="px-2 py-0.5 rounded bg-surface-container-highest text-on-surface font-medium">All (3)</button>
+<button class="px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface">Active (1)</button>
+<button class="px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface">Standby (2)</button>
+</div>
+</div>
+<div class="flex flex-col p-space-md gap-space-md">
+<!-- Active Tunnel: Proton CH -->
+<div class="flex flex-col gap-space-sm p-space-md rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-title-sm text-title-sm text-on-surface font-bold">wg0-proton-ch</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Zurich Core-1</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm font-semibold">ACTIVE DEFAULT</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2.5 py-1 rounded bg-surface-container-highest hover:bg-surface-bright text-error font-label-md text-label-md transition-colors" title="Bring down wg0">Disconnect</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant" title="Regenerate Ephemeral Keys">
+<span class="material-symbols-outlined text-[16px]">chevron_forward</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-highest text-on-surface-variant" title="View /sys/class/net/wg0">
+<span class="material-symbols-outlined text-[16px]">code</span>
+</button>
+</div>
+</div>
+<!-- Technical attributes grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs font-code-sm text-code-sm pt-1">
+<div class="flex flex-col p-2 rounded bg-surface-container">
+<span class="text-on-surface-variant text-[10px] uppercase font-label-sm">Tunnel IP / Subnet</span>
+<span class="text-on-surface font-bold truncate">10.2.0.2/32, fd00::2/128</span>
+</div>
+<div class="flex flex-col p-2 rounded bg-surface-container">
+<span class="text-on-surface-variant text-[10px] uppercase font-label-sm">Remote Peer Endpoint</span>
+<span class="text-tertiary font-bold truncate">185.159.157.34:51820</span>
+</div>
+<div class="flex flex-col p-2 rounded bg-surface-container">
+<span class="text-on-surface-variant text-[10px] uppercase font-label-sm">AllowedIPs (Routing)</span>
+<span class="text-primary-fixed-dim font-bold truncate">0.0.0.0/0, ::/0 (Split Bypass)</span>
+</div>
+</div>
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant pt-0.5">
+<span class="truncate">PublicKey: <code class="text-on-surface">8yKp9r4XzL6T21G...dE2=</code></span>
+<span class="text-tertiary-fixed font-semibold">PSK: Blake2s Enforced</span>
+</div>
+</div>
+<!-- Standby Tunnel: Mullvad NL -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-bright"></span>
+<span class="font-title-sm text-title-sm text-on-surface">wg-mullvad-nl</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Amsterdam-04</span>
+<span class="font-code-sm text-code-sm text-secondary">Shadowsocks Hop Ready</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+                Endpoint: 194.242.118.4:51820 • Allowed: 10.64.0.0/10 • MTU: 1380
+              </div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+              Engage Tunnel
+            </button>
+</div>
+<!-- Standby Tunnel: Work Internal VPC -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-bright"></span>
+<span class="font-title-sm text-title-sm text-on-surface">wg-corp-internal</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">AWS Frankfurt VPC</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Split-Only</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+                Prefixes: 10.100.0.0/16, 172.16.0.0/12 • DNS: 10.100.0.2 (corp.lan)
+              </div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+              Inject Routes
+            </button>
+</div>
+</div>
+</div>
+<!-- B. Network Profiles & Auto-Switching Rules -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">wifi_find</span>
+<span class="font-title-sm text-title-sm text-on-surface">Dynamic NetworkManager Profiles</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary-fixed">Dispatcher Daemon: Active</span>
+</div>
+<div class="flex flex-col p-space-md gap-space-md">
+<!-- Profile 1: Untrusted Active -->
+<div class="p-space-md rounded-lg bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">security</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-sm text-title-sm text-on-surface font-bold">Untrusted Wi-Fi / Cafes</span>
+<span class="px-2 py-0.2 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold">ACTIVE SSID</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Matched SSID: StarCoffee_5G • Gateway: 192.168.43.1 (Isolation ON)</span>
+</div>
+</div>
+<!-- GNOME Switch Component -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+<div class="flex flex-wrap gap-space-xs font-code-sm text-code-sm pt-1">
+<span class="px-2 py-1 rounded bg-surface-container text-tertiary">✓ Force WireGuard</span>
+<span class="px-2 py-1 rounded bg-surface-container text-tertiary">✓ Block RFC1918 LAN</span>
+<span class="px-2 py-1 rounded bg-surface-container text-tertiary">✓ nftables Kill Switch</span>
+<span class="px-2 py-1 rounded bg-surface-container text-primary-fixed-dim">✓ MAC Randomization: Rotated</span>
+</div>
+</div>
+<!-- Profile 2: Home Fiber -->
+<div class="p-space-md rounded-lg bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[18px]">home</span>
+<div>
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">Home Fiber (6GHz &amp; 10GbE)</span>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Auto-detected: BSSID 3C:84:6A:11:92:F0 • Subnet: 192.168.1.0/24</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+<div class="flex flex-wrap gap-space-xs font-code-sm text-code-sm">
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant">Allow Local mDNS/Bonjour</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant">WireGuard Split Bypass Enabled</span>
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant">NextDNS Ultra-Low Latency Anycast</span>
+</div>
+</div>
+<!-- Profile 3: Cellular USB Hotspot -->
+<div class="p-space-md rounded-lg bg-surface-container-low shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">signal_cellular_alt</span>
+<div>
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">Cellular USB / Metered Hotspot</span>
+<div class="font-code-sm text-code-sm text-on-surface-variant">Driver: cdc_mbim (wwan0) • MTU clamped to 1280 to eliminate TCP MSS resend</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- C. Split-Tunneling & Exclusion Rules (cgroups v2) -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">call_split</span>
+<span class="font-title-sm text-title-sm text-on-surface">Application Split-Tunneling (eBPF &amp; cgroups v2)</span>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline">+ Add App Rule</button>
+</div>
+<div class="flex flex-col p-space-md gap-space-sm">
+<div class="flex items-center justify-between p-2.5 rounded bg-surface-container-low font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[16px]">sports_esports</span>
+<span class="text-on-surface font-semibold">Steam / Proton Gaming Engine</span>
+<span class="text-on-surface-variant text-[11px]">(cgroup: /sys/fs/cgroup/games.slice)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-primary font-code-sm">Bypass to Physical wlan0</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] cursor-pointer hover:text-error">delete</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded bg-surface-container-low font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">developer_board</span>
+<span class="text-on-surface font-semibold">Docker Swarm / Local Podman Bridges</span>
+<span class="text-on-surface-variant text-[11px]">(CIDR: 172.17.0.0/16, 10.88.0.0/16)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-tertiary font-code-sm">Retain in Bridge veth</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] cursor-pointer hover:text-error">delete</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded bg-surface-container-low font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface text-[16px]">tv</span>
+<span class="text-on-surface font-semibold">Plex / Local Media Streaming Server</span>
+<span class="text-on-surface-variant text-[11px]">(Target: 192.168.1.150:32400)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant font-code-sm">LAN Gateway Direct</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] cursor-pointer hover:text-error">delete</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Diagnostics, Routing Inspector, and Kill Switch (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- A. Gemini Network Path & Co-Existence Forensics -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">psychology</span>
+<span class="font-title-sm text-title-sm text-on-surface">Gemini Path Forensics</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-code-sm text-code-sm">
+            Confidence 99.4%
+          </span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-tertiary font-title-sm text-title-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Zero Collision Verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              WireGuard fwmark <code class="text-on-surface font-code-sm">51820</code> cleanly separates systemd-resolved local DoH sockets from egress interfaces. No routing loop detected between <code class="text-on-surface font-code-sm">systemd-resolved</code> and tunnel encapsulation.
+            </p>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5 font-code-sm text-code-sm">
+<div class="flex items-center justify-between text-on-surface">
+<span>Path MTU Health:</span>
+<span class="text-tertiary">Optimal (1420 bytes)</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 94%"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant text-[11px]">
+<span>Wi-Fi MTU: 1500</span>
+<span>WG Overhead: 80 bytes</span>
+</div>
+</div>
+<!-- Synthetic DNS leak test trigger -->
+<button class="w-full py-2 px-3 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-title-sm text-title-sm flex items-center justify-center gap-2 transition-colors" id="leak-test-btn">
+<span class="material-symbols-outlined text-[16px] text-tertiary">troubleshoot</span>
+<span>Simulate Synthetic DNS Leak &amp; Route Check</span>
+</button>
+</div>
+</div>
+<!-- B. System Routing Table Diff & Priority Inspector -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px]">terminal</span>
+<span class="font-title-sm text-title-sm text-on-surface">Kernel FIB Rules &amp; Table 51820</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">ip rule / ip route</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Monospace terminal output -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest font-code-sm text-code-sm text-on-surface flex flex-col gap-1 overflow-x-auto leading-relaxed">
+<div class="text-on-surface-variant"># ip rule show</div>
+<div class="text-tertiary">0:    from all lookup local</div>
+<div class="text-primary font-bold">100:  from all fwmark 0xca6c lookup 51820</div>
+<div class="text-on-surface-variant">32766: from all lookup main</div>
+<div class="text-on-surface-variant">32767: from all lookup default</div>
+<div class="mt-1 text-on-surface-variant"># ip route show table 51820</div>
+<div class="text-tertiary-fixed">default dev wg0 scope link</div>
+<div class="text-on-surface-variant">10.2.0.0/24 dev wg0 proto kernel scope link src 10.2.0.2</div>
+</div>
+<!-- Flowchart / Telemetry Pipeline -->
+<div class="flex flex-col gap-1.5 pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Traffic Encapsulation Chain</span>
+<div class="flex items-center justify-between gap-1 p-2 rounded-lg bg-surface-container-low text-center font-code-sm text-[11px] text-on-surface">
+<div class="p-1 rounded bg-surface-container">App</div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">arrow_forward</span>
+<div class="p-1 rounded bg-surface-container text-tertiary">eBPF mark</div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">arrow_forward</span>
+<div class="p-1 rounded bg-surface-container text-secondary">resolved</div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">arrow_forward</span>
+<div class="p-1 rounded bg-primary-container text-on-primary-container font-semibold">wg0 Encrypt</div>
+<span class="material-symbols-outlined text-[12px] text-on-surface-variant">arrow_forward</span>
+<div class="p-1 rounded bg-surface-container">wlan0</div>
+</div>
+</div>
+</div>
+</div>
+<!-- C. Emergency Kill Switch & Hardware Isolation Controls -->
+<div class="flex flex-col rounded-xl bg-surface-container overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container-high">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-error text-[18px]">drive_file_rename_outline</span>
+<span class="font-title-sm text-title-sm text-on-surface">Kill Switch &amp; Strict Leak Defenses</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">ENFORCED</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Toggle 1: Hard Kill Switch -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Hard Kill Switch (nftables)</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Drop all outbound non-wg0 packets on interface loss</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Toggle 2: Local LAN Block -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Block RFC1918 Local LAN Access</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Prevents rogue gateway interception on untrusted Wi-Fi</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+<!-- Toggle 3: IPv6 Non-Tunneled Reject -->
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">IPv6 Blackhole Mitigation</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Reject physical IPv6 router advertisements via sysctl</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-checked:bg-primary-container rounded-full transition-colors"></div>
+<div class="absolute left-1 top-1 bg-on-surface w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. BOTTOM LOG STREAM: wireguard-nm.log -->
+<section class="flex flex-col rounded-xl bg-surface-container-low overflow-hidden shadow-sm"><div class="w-full flex justify-center py-1 bg-surface-container select-none cursor-grab active:cursor-grabbing border-b border-surface-container-high/30"><div class="w-8 h-1 rounded-full bg-surface-container-highest hover:bg-on-surface-variant transition-colors"></div></div>
+<div class="flex items-center justify-between px-space-md py-space-sm bg-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">dvr</span>
+<span class="font-title-sm text-title-sm text-on-surface">wireguard-nm.log — Kernel Routing &amp; Handshake Watcher</span>
+</div>
+<div class="flex items-center gap-2"><span class="flex items-center gap-1 font-code-sm text-code-sm text-tertiary mr-1"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span> Streaming /var/log/sentry/routing.log</span><div class="flex items-center gap-1 bg-surface-container-low p-0.5 rounded-lg"><button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" id="clear-logs-btn" title="Clear log stream"><span class="material-symbols-outlined text-[16px]">clear_all</span></button><button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" id="toggle-log-expand-btn" title="Toggle maximize drawer height"><span class="material-symbols-outlined text-[16px]">unfold_more</span></button><button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" id="toggle-log-collapse-btn" title="Collapse log drawer"><span class="material-symbols-outlined text-[16px]">keyboard_arrow_down</span></button></div></div>
+</div>
+<div class="p-space-md font-code-sm text-code-sm text-on-surface flex flex-col gap-1 max-h-48 overflow-y-auto leading-relaxed" id="log-container">
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant">[14:35:10]</span>
+<span class="text-primary-fixed-dim">[INFO]</span>
+<span class="text-on-surface">wireguard: wg0: Handshake for peer 1 (185.159.157.34:51820) established [RTT: 18.2ms]</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant">[14:35:10]</span>
+<span class="text-tertiary">[SYSTEMD]</span>
+<span class="text-on-surface">resolvectl: Link 4 (wg0) set-dns: 45.90.28.0 (DoH endpoint: dns.nextdns.io)</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant">[14:35:11]</span>
+<span class="text-tertiary-fixed">[NFTABLES]</span>
+<span class="text-on-surface">rule #88 committed: oifname != "wg0" ip daddr != 185.159.157.34 drop</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant">[14:35:12]</span>
+<span class="text-tertiary">[RESOLVECTL]</span>
+<span class="text-tertiary font-semibold">Strict routing verified: 0 plain UDP/TCP 53 leaks on physical wlan0</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-on-surface-variant">[14:35:37]</span>
+<span class="text-primary-fixed-dim">[KEEPALIVE]</span>
+<span class="text-on-surface">Sent persistent keepalive to 185.159.157.34:51820; ack received in 18ms</span>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Desktop Micro-Interactions for Tauri v2 Linux App Shell
+  document.getElementById('flush-cache-btn')?.addEventListener('click', function() {
+    const icon = this.querySelector('.material-symbols-outlined');
+    if (icon) {
+      icon.classList.add('animate-spin');
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+        appendLog('INFO', 'systemd-resolved & fib routing cache flushed successfully (0 errors)');
+      }, 750);
+    }
+  });
+
+  document.getElementById('apply-rules-btn')?.addEventListener('click', function() {
+    this.classList.add('opacity-75');
+    setTimeout(() => {
+      this.classList.remove('opacity-75');
+      appendLog('NFTABLES', 'Re-evaluated and applied ruleset table 51820 to kernel via netlink');
+    }, 400);
+  });
+
+  document.getElementById('leak-test-btn')?.addEventListener('click', function() {
+    const btn = this;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin text-tertiary">sync</span> Probing 12 external resolvers via raw sockets...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      appendLog('AUDIT', 'Synthetic DNS leak test finished: 12 probes routed cleanly into wg0 tunnel (0 leaked)');
+    }, 1200);
+  });
+
+  document.getElementById('clear-logs-btn')?.addEventListener('click', function() {
+    const container = document.getElementById('log-container');
+    if (container) {
+      container.innerHTML = '<div class="text-on-surface-variant text-[11px]">[Log stream cleared by user. Listening for kernel events...]</div>';
+    }
+  });
+
+  function appendLog(category, msg) {
+    const container = document.getElementById('log-container');
+    if (!container) return;
+    const now = new Date();
+    const timeStr = '[' + now.toTimeString().split(' ')[0] + ']';
+    
+    const row = document.createElement('div');
+    row.className = 'flex items-baseline gap-2';
+    row.innerHTML = `
+      <span class="text-on-surface-variant">${timeStr}</span>
+      <span class="text-tertiary-fixed font-bold">[${category}]</span>
+      <span class="text-on-surface">${msg}</span>
+    `;
+    container.appendChild(row);
+    container.scrollTop = container.scrollHeight;
+  }
+</script></main></div>
+
+</body></html>

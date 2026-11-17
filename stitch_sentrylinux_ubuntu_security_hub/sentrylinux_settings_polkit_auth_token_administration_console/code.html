@@ -1,0 +1,459 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#00a574", "on-secondary-fixed-variant": "#5516be", "surface-bright": "#383849", "on-background": "#e3e0f7", "secondary": "#d0bcff", "secondary-fixed-dim": "#d0bcff", "on-error": "#690005", "on-primary-fixed-variant": "#852400", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "outline": "#aa8a80", "on-surface": "#e3e0f7", "surface-container": "#1e1e2e", "tertiary-fixed": "#68fcbf", "on-primary-fixed": "#3a0b00", "on-tertiary": "#003825", "primary-fixed-dim": "#ffb59e", "primary-container": "#f85e2a", "on-primary": "#5e1700", "primary-fixed": "#ffdbd0", "primary": "#ffb59e", "on-tertiary-container": "#003120", "on-surface-variant": "#e2bfb4", "tertiary-fixed-dim": "#45dfa4", "surface-tint": "#ffb59e", "surface": "#121221", "inverse-surface": "#e3e0f7", "surface-container-lowest": "#0d0d1c", "on-secondary-fixed": "#23005c", "inverse-primary": "#ae3200", "background": "#121221", "on-primary-container": "#521300", "on-tertiary-fixed": "#002114", "tertiary": "#45dfa4", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "on-secondary": "#3c0091", "on-secondary-container": "#c4abff", "surface-container-low": "#1a1a2a", "surface-variant": "#333344", "outline-variant": "#5a4139", "error": "#ffb4ab", "on-error-container": "#ffdad6", "on-tertiary-fixed-variant": "#005137", "surface-dim": "#121221", "inverse-on-surface": "#2f2f40", "surface-container-high": "#292839" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-compact": "0.75rem", "gutter-dense": "0.5rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-md": "0.75rem", "margin": "1.5rem", "gutter": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-lg": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"], "title-sm": ["Inter"], "body-lg": ["JetBrains Mono"], "code-sm": ["JetBrains Mono"], "body-md": ["JetBrains Mono"], "headline-md": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="font-title-sm text-title-sm">Overview</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><span class="font-title-sm text-title-sm">DNS Sentry</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><span class="font-title-sm text-title-sm">Outbound Intercepts</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Context Header & Action Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Configuration</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">chevron_right</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary">Settings &amp; Polkit Auth</span>
+</div>
+<div class="flex items-center gap-space-md flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Privilege &amp; System Authorization</h1>
+<div class="flex items-center gap-space-xs bg-surface-container-high px-space-sm py-0.5 rounded-full shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-on-surface">polkitd 124 (systemd)</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-tertiary">key</span>
+<span class="font-code-sm text-code-sm text-on-surface">pam_u2f.so armed</span>
+</div>
+</div>
+</div>
+<!-- Top Action Buttons -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span class="font-title-sm text-title-sm">Export .rules</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">lock_reset</span>
+<span class="font-title-sm text-title-sm">Revoke All Tokens</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-all shadow-md">
+<span class="material-symbols-outlined text-[18px]">add_moderator</span>
+<span class="font-title-sm text-title-sm">Register Security Key (FIDO2)</span>
+</button>
+</div>
+</div>
+<!-- Telemetry KPI Strip (4 Grid Columns) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Token Lifecycle</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">shield_lock</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-semibold">14m 22s</span>
+<span class="font-code-sm text-code-sm text-tertiary">Sliding TTL</span>
+</div>
+<div class="flex items-center gap-space-xs pt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">UID 1000 (ubuntu) • pts/0 + Tauri</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Policy Engine Rules</span>
+<span class="material-symbols-outlined text-[18px] text-primary">policy</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-semibold">14</span>
+<span class="font-title-sm text-title-sm text-on-surface-variant">Active Rules</span>
+</div>
+<div class="flex items-center gap-space-xs pt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">/etc/polkit-1/rules.d/50-sentry.rules</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Privilege Escalation</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">fingerprint</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-secondary font-semibold">Strict PAM</span>
+</div>
+<div class="flex items-center gap-space-xs pt-0.5">
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate">Password + FIDO2 Required (No NOPASSWD)</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Telemetry &amp; Heuristics</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">smart_toy</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg text-on-surface font-semibold">100% Local</span>
+</div>
+<div class="flex items-center gap-space-xs pt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-tertiary-fixed-dim truncate">Gemma 2B / Ollama • 0 Cloud Calls</span>
+</div>
+</div>
+</div>
+<!-- Polkit Action Rules Matrix & Granular Overrides -->
+<div class="flex flex-col rounded-xl bg-surface-container shadow-sm overflow-hidden">
+<!-- Adwaita Preference Group Header & Filtering -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md p-space-md bg-surface-container-high">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Registered Polkit Action Matrix</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Policy actions under org.sentrylinux.* handled by Polkit-1 JavaScript engine</span>
+</div>
+<!-- Filter Chips & Search -->
+<div class="flex items-center gap-space-xs flex-wrap w-full sm:w-auto">
+<div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">search</span>
+<input class="bg-transparent border-0 outline-none text-on-surface font-code-sm text-code-sm placeholder:text-on-surface-variant w-32 focus:w-44 transition-all" placeholder="Filter actions..." type="text">
+</div>
+<div class="flex items-center p-0.5 bg-surface-container-low rounded-lg gap-0.5">
+<button class="px-space-sm py-1 rounded font-label-sm text-label-sm bg-surface-container-highest text-on-surface font-semibold shadow-xs">All (14)</button>
+<button class="px-space-sm py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface">Quarantine</button>
+<button class="px-space-sm py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface">Network</button>
+<button class="px-space-sm py-1 rounded font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface">CIS Audit</button>
+</div>
+</div>
+</div>
+<!-- Adwaita Action Rows -->
+<div class="flex flex-col divide-y divide-surface-container-highest/20">
+<!-- Row 1 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md gap-space-md hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="p-2 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">org.sentrylinux.quarantine.shred</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary font-code-sm text-[10px]">auth_admin_keep</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-code-sm text-[10px]">TTL: 15m</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Permanently wipe quarantined inodes using DoD/NIST standard (<code class="font-code-sm text-on-surface">shred -u -z</code>)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 self-end sm:self-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Root / Security Key</span>
+<!-- GNOME Style Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md gap-space-md hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="p-2 rounded-lg bg-surface-container-highest text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">emergency</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">org.sentrylinux.network.killswitch</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-secondary font-code-sm text-[10px]">auth_self_keep</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-low text-on-surface-variant font-code-sm text-[10px]">TTL: 30m</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Engage kernel nftables emergency hard kill switch &amp; flush route tables</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 self-end sm:self-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Prompt Once Per Session</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md gap-space-md hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="p-2 rounded-lg bg-surface-container-highest text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">org.sentrylinux.daemon.batchrestart</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-error font-code-sm text-[10px]">auth_admin</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/20 text-error font-code-sm text-[10px]">No TTL</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Restart stale daemons holding unlinked memory descriptors (needrestart backend)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 self-end sm:self-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Prompt Every Execution</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md gap-space-md hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="p-2 rounded-lg bg-surface-container-highest text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">org.sentrylinux.cis.applybenchmark</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary font-code-sm text-[10px]">auth_admin_keep</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-code-sm text-[10px]">TTL: 10m</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Execute USG remediation scripts and trigger Btrfs read-only subvolume snapshots</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 self-end sm:self-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Hardware Token or Sudo Pass</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-space-md gap-space-md hover:bg-surface-container-high/40 transition-colors">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="p-2 rounded-lg bg-surface-container-highest text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">org.sentrylinux.ebpf.attach</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-error font-code-sm text-[10px]">auth_admin</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/20 text-error font-code-sm text-[10px]">Strict</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Attach kprobe &amp; fexit probes directly to kernel socket hooks for deep outbound inspection</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0 self-end sm:self-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Root Auth Only</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Hardware Auth & Polkit Session Tuning (Two-Column Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Left Column: Hardware Tokens & PAM -->
+<div class="flex flex-col rounded-xl bg-surface-container p-space-md gap-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">security</span>
+<span class="font-title-sm text-title-sm text-on-surface">Hardware Tokens &amp; PAM Biometrics</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary">pam_u2f active</span>
+</div>
+<!-- Connected Device Status Banner -->
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-high">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">usb</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">YubiKey 5C NFC</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Serial: 18492041 • FIDO2 L2 • PIN Armed</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs bg-tertiary/10 px-space-xs py-1 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">User Present</span>
+</div>
+</div>
+<!-- Settings Rows -->
+<div class="flex flex-col divide-y divide-surface-container-highest/20">
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Enforce FIDO2 for CIS Remediations</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Reject password-only escalation for destructive operations</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Allow PIN Caching in Active Desktop</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Flush PIN cache instantly upon GNOME Screen Lock</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Fallback to Local Sudo if Token Detached</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Allows local break-glass password escalation</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Right Column: Polkit Session & Grace Period Tuning -->
+<div class="flex flex-col rounded-xl bg-surface-container p-space-md gap-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">timer</span>
+<span class="font-title-sm text-title-sm text-on-surface">Polkit Session &amp; Sudo Grace Tuning</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">/etc/sudoers.d/01-sentry</span>
+</div>
+<!-- Slider Control -->
+<div class="flex flex-col gap-space-xs p-space-sm rounded-lg bg-surface-container-high">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">Admin Authorization Lifetime</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">15 Minutes (Default)</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary-container" max="60" min="0" type="range" value="15">
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-[10px]">
+<span>0m (Every run)</span>
+<span>15m (Recommended)</span>
+<span>30m</span>
+<span>60m (Max)</span>
+</div>
+</div>
+<!-- Settings Rows -->
+<div class="flex flex-col divide-y divide-surface-container-highest/20">
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Invalidate Tokens on IP / Route Change</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Prevents session hijacking across untrusted Wi-Fi transitions</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Re-authenticate for Emergency Lockdown</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Disable to enable one-click immediate panic trigger</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between py-space-sm">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Isolate Polkit TTY Session from Desktop</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ensure SSH/pts privilege grants never inherit into Wayland</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Local AI & Privacy Configuration Group -->
+<div class="flex flex-col rounded-xl bg-surface-container p-space-md gap-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">neurology</span>
+<span class="font-title-sm text-title-sm text-on-surface">Local AI Inference &amp; Telemetry Privacy Controls</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary/10 px-space-xs py-0.5 rounded">Zero External Telemetry</span>
+</div>
+<!-- Provider Selection Tabs -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-high hover:bg-surface-container-highest cursor-pointer transition-colors border-2 border-primary-container">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">Embedded Gemma 2B</span>
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">In-process ONNX runtime. GPU accelerated, instant response, 100% offline.</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-sm text-on-surface">Ollama Daemon</span>
+<span class="w-2 h-2 rounded-full bg-surface-container-highest"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Connect to local socket <code class="font-code-sm text-on-surface">127.0.0.1:11434</code>. Supports Llama 3 / Mistral.</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high cursor-pointer transition-colors">
+<div class="flex items-center justify-between mb-1">
+<span class="font-title-sm text-title-sm text-on-surface">Air-Gapped Heuristics</span>
+<span class="w-2 h-2 rounded-full bg-surface-container-highest"></span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Disable neural weights entirely. Pure deterministic regex &amp; eBPF filters.</span>
+</div>
+</div>
+<!-- Detailed Privacy Settings -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-space-xs">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Cloud Telemetry Leak</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Strictly off (Enforced by nftables)</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" disabled="" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Anonymize Inode Dumps</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hash usernames in debug reports</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm text-on-surface">Local Model VRAM Cap</span>
+<span class="font-code-sm text-code-sm text-tertiary">2.4 GB / 8.0 GB (Allocated)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">memory</span>
+</div>
+</div>
+</div>
+<!-- Integrated Monospace Polkit & Auth Audit Terminal Stream -->
+<div class="flex flex-col rounded-xl bg-surface-container-lowest shadow-sm overflow-hidden">
+<!-- Terminal Header -->
+<div class="relative flex flex-col bg-surface-container-low border-b border-surface-container-highest/20 transition-colors cursor-pointer select-none"><div class="flex justify-center pt-1 pb-0.5 w-full"><span class="w-8 h-1 rounded-full bg-surface-container-highest hover:bg-surface-bright transition-colors"></span></div><div class="flex items-center justify-between px-space-md pb-space-xs"><div class="flex items-center gap-space-xs"><button aria-expanded="true" aria-label="Collapse Terminal Drawer" class="w-6 h-6 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[16px]">keyboard_arrow_down</span></button><span class="material-symbols-outlined text-[14px] text-on-surface-variant">data_object</span><span class="font-code-sm text-code-sm font-semibold text-on-surface">/var/log/auth.log • Polkit Daemon Real-Time Audit</span><span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-code-sm text-[10px]">5 entries</span></div><div class="flex items-center gap-space-sm"><span class="font-code-sm text-code-sm text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> STREAMING</span><button class="font-code-sm text-code-sm text-on-surface-variant hover:text-on-surface transition-colors px-1 py-0.5 rounded hover:bg-surface-container-high">Clear</button><div class="flex items-center gap-0.5 ml-1 pl-space-xs border-l border-surface-container-highest/40"><button aria-label="Expand View" title="Expand View" class="w-6 h-6 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[14px]">open_in_full</span></button><button aria-label="Collapse Terminal Drawer" title="Collapse Terminal Drawer" class="w-6 h-6 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[14px]">expand_more</span></button></div></div></div></div>
+<!-- Log Console Body -->
+<div class="p-space-md font-code-sm text-code-sm text-on-surface flex flex-col gap-1 overflow-x-auto select-text leading-relaxed">
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">15:42:01.104</span>
+<span class="text-primary font-semibold">[POLKIT]</span>
+<span class="text-on-surface">polkitd[124]: Registered Action <span class="text-primary-fixed-dim">org.sentrylinux.quarantine.shred</span> [auth_admin_keep]</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">15:42:01.109</span>
+<span class="text-secondary font-semibold">[PAM]</span>
+<span class="text-on-surface">pam_u2f(polkit-1:auth): FIDO2 token challenge response verified successfully (YubiKey 5C NFC)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">15:42:01.112</span>
+<span class="text-tertiary font-semibold">[AUTH]</span>
+<span class="text-on-surface">Operator <code class="text-tertiary-fixed-dim">ubuntu (uid=1000)</code> granted privilege token (valid for 900s, sliding window)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">15:42:14.882</span>
+<span class="text-on-surface-variant font-semibold">[SENTRY]</span>
+<span class="text-on-surface">Local AI backend initialized: <span class="text-tertiary">Gemma 2B</span> on DirectML/Vulkan GPU 0 (0 cloud egress calls)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">15:43:02.041</span>
+<span class="text-primary font-semibold">[POLKIT]</span>
+<span class="text-on-surface">pkexec(org.sentrylinux.ebpf.attach): Token re-validated via local active session keyring</span>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

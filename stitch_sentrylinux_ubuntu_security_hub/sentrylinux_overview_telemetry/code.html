@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#45dfa4", "error": "#ffb4ab", "tertiary-container": "#00a574", "on-primary-fixed": "#3a0b00", "on-secondary-container": "#c4abff", "on-secondary-fixed-variant": "#5516be", "on-tertiary-container": "#003120", "on-surface": "#e3e0f7", "inverse-surface": "#e3e0f7", "surface-container-high": "#292839", "secondary": "#d0bcff", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "surface-variant": "#333344", "on-primary-fixed-variant": "#852400", "inverse-on-surface": "#2f2f40", "on-surface-variant": "#e2bfb4", "secondary-fixed-dim": "#d0bcff", "on-background": "#e3e0f7", "on-primary": "#5e1700", "outline": "#aa8a80", "on-secondary-fixed": "#23005c", "surface-container-lowest": "#0d0d1c", "surface-container": "#1e1e2e", "surface-bright": "#383849", "primary-fixed": "#ffdbd0", "on-primary-container": "#521300", "background": "#121221", "primary-container": "#f85e2a", "primary": "#ffb59e", "on-tertiary-fixed": "#002114", "on-tertiary-fixed-variant": "#005137", "inverse-primary": "#ae3200", "surface-container-low": "#1a1a2a", "surface-dim": "#121221", "on-error": "#690005", "outline-variant": "#5a4139", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "tertiary-fixed-dim": "#45dfa4", "on-secondary": "#3c0091", "surface": "#121221", "tertiary-fixed": "#68fcbf", "on-error-container": "#ffdad6", "on-tertiary": "#003825", "surface-tint": "#ffb59e", "primary-fixed-dim": "#ffb59e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "0.75rem", "gutter": "1rem", "gutter-dense": "0.5rem", "space-xl": "1.5rem", "margin": "1.5rem", "space-lg": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-compact": "0.75rem" }, "fontFamily": { "title-sm": ["Inter"], "label-sm": ["Inter"], "code-sm": ["JetBrains Mono"], "label-md": ["Inter"], "headline-md": ["Inter"], "body-md": ["JetBrains Mono"], "display-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["JetBrains Mono"] }, "fontSize": { "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a aria-current="page" class="flex items-center justify-between px-space-md py-2 transition-colors bg-primary-container text-on-primary-container rounded-lg" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">shield</span><span class="font-title-sm text-title-sm">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">public</span><span class="font-title-sm text-title-sm">DNS Sentry</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-highest text-tertiary">428/s</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">track_changes</span><span class="font-title-sm text-title-sm">Outbound Intercepts</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container">1</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening & Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">checklist</span><span class="font-title-sm text-title-sm">USG & Lynis CIS Audit</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">radar</span><span class="font-title-sm text-title-sm">Malware & Sweep</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">restart_alt</span><span class="font-title-sm text-title-sm">Daemon Restarts & needrestart</span></div></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">hub</span><span class="font-title-sm text-title-sm">Network Profiles & WireGuard</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_supervised</span><span class="font-title-sm text-title-sm">Rules & Quarantine</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">tune</span><span class="font-title-sm text-title-sm">Settings & Polkit Auth</span></div></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full">
+<!-- Desktop Top Control Bar & Live Banner -->
+<section class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-container/80 backdrop-blur-xl shadow-md">
+<div class="flex items-center gap-space-md">
+<div class="relative flex items-center justify-center w-14 h-14 rounded-full bg-surface-container-high/80 shrink-0">
+<svg class="w-14 h-14 -rotate-90" viewbox="0 0 48 48">
+<circle class="text-surface-container-highest" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary-container" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="7.5" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface leading-none">94</span>
+<span class="font-code-sm text-[8px] text-tertiary uppercase font-bold">SECURE</span>
+</div>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-title-sm text-title-sm text-on-surface">System Defense Scorecard</h2>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-code-sm text-[10px]">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+            CIS Level 2 Hardened
+          </span>
+</div>
+<p class="font-code-sm text-code-sm text-outline">Last atomic snapshot: 14m ago (/etc git-backed tree #9fa2c4)</p>
+</div>
+</div>
+<!-- Quick Action / Lockdown Switcher -->
+<div class="flex items-center flex-wrap gap-space-sm">
+<div class="flex items-center gap-space-sm px-space-md py-1.5 rounded-lg bg-surface-container-low shadow-sm">
+<div class="flex flex-col items-end">
+<span class="font-label-md text-label-md text-on-surface">Auto-Revert Shield</span>
+<span class="font-code-sm text-code-sm text-outline">05:00 Watchdog</span>
+</div>
+<div class="relative group cursor-pointer" id="lockdown-pill">
+<button aria-label="Toggle Lockdown" class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out bg-surface-container-highest focus:outline-none" id="lockdown-btn" onclick="toggleLockdown()">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-on-surface shadow ring-0 transition duration-200 ease-in-out translate-x-0.5 mt-0.5" id="lockdown-thumb"></span>
+</button>
+<!-- Tooltip -->
+<div class="absolute bottom-full right-0 mb-2 hidden group-hover:flex flex-col w-56 p-space-sm bg-surface-container-high rounded shadow-xl text-on-surface z-50" role="tooltip">
+<span class="font-title-sm text-title-sm text-primary">Zero-Trust Lockdown</span>
+<span class="font-body-md text-code-sm text-on-surface-variant">Freezes all outbound non-DNS sockets. Automatically rolls back after 5 mins if ping fails.</span>
+</div>
+</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all active:scale-95 shadow-sm" onclick="triggerQuickAudit()">
+<span class="material-symbols-outlined text-[16px] text-tertiary">policy</span>
+<span class="font-title-sm text-title-sm">Audit System</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container hover:brightness-110 transition-all shadow-md active:scale-95 font-semibold">
+<span class="material-symbols-outlined text-[16px]">sync_saved_locally</span>
+<span class="font-title-sm text-title-sm">Snapshot /etc</span>
+</button>
+</div>
+</section>
+<!-- Metric Quick Stats (Telemetry Grid) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mt-space-md">
+<!-- Stat 1 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">DNS Queries Blocked</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">cloud_sync</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-code-sm text-[28px] font-bold text-on-surface tracking-tight">4,281</span>
+<span class="font-code-sm text-code-sm text-tertiary">+12%</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-outline">NextDNS DoH Active (1.8ms)</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-tertiary/40 to-transparent"></div>
+</div>
+<!-- Stat 2 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Unresolved Intercepts</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">filter_alt</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-code-sm text-[28px] font-bold text-on-surface tracking-tight">0</span>
+<span class="font-code-sm text-code-sm text-tertiary">Zero backlog</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-outline">eBPF OpenSnitch Filter Live</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+</div>
+<!-- Stat 3 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">AppArmor Integrity</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">verified</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-code-sm text-[28px] font-bold text-on-surface tracking-tight">4 / 4</span>
+<span class="font-code-sm text-code-sm text-outline font-normal">Daemons</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-outline">Strict Enforcing (68 profiles)</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-tertiary/40 to-transparent"></div>
+</div>
+<!-- Stat 4 -->
+<div class="flex flex-col justify-between p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Pending needrestart</span>
+<span class="material-symbols-outlined text-primary-container text-[20px]">restart_alt</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-baseline gap-space-xs">
+<span class="font-code-sm text-[28px] font-bold text-primary-container tracking-tight">1</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">CVE Alert</span>
+</div>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-code-sm text-code-sm text-outline">libssl3 patched in disk</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary-container/40 to-transparent"></div>
+</div>
+</section>
+<!-- Critical Banner: needrestart & Kernel Telemetry -->
+<section class="mt-space-md rounded-xl bg-surface-container/85 backdrop-blur-xl shadow-md p-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container text-[22px]">warning</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface">Stale Memory Modules Detected:</span>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">libssl.so.3</span>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">libc.so.6</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-error-container text-on-error-container">Critical CVE-2024-5535</span>
+</div>
+<p class="font-body-md text-code-sm text-on-surface-variant mt-0.5">
+            2 daemons run on superseded shared objects: <span class="text-on-surface font-semibold">systemd-resolved</span>, <span class="text-on-surface font-semibold">cron</span>. Memory remap recommended.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-xs self-end md:self-center shrink-0">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+          Defer 2 Hours
+        </button>
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-title-sm text-title-sm hover:brightness-110 shadow-sm transition-all active:scale-95" onclick="handleDaemonRestart(this)">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Graceful Restart (Polkit)</span>
+</button>
+</div>
+</div>
+<!-- Kernel Security Footnote -->
+<div class="mt-space-md pt-space-xs flex flex-wrap items-center justify-between gap-space-sm font-code-sm text-code-sm text-outline">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">memory</span>
+<span>Linux 6.8.0-40-generic</span>
+<span>•</span>
+<span class="text-tertiary">Lockdown: Integrity Mode</span>
+<span>•</span>
+<span>eBPF LSM active</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span>/proc/sys/kernel/kptr_restrict: 2 (Restricted)</span>
+</div>
+</div>
+</section>
+<!-- Central Grid: Live Feed & Service Health -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-md mt-space-md">
+<!-- Left: AI-Augmented Real-time Incident Feed (7 cols) -->
+<div class="lg:col-span-7 flex flex-col rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md p-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">bolt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Live Incident Feed</h3>
+<span class="font-code-sm text-code-sm px-1.5 py-0.5 rounded bg-surface-container-highest text-secondary">Gemini eBPF Hook</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Filter Feed">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Export Log">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+<!-- Feed List -->
+<div class="flex flex-col gap-space-sm mt-space-xs">
+<!-- Event Item 1 (Critical AI Intervention) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-outline">14:22:04</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-error-container text-on-error-container">CRITICAL</span>
+<span class="font-title-sm text-title-sm text-on-surface">Binary Execution Anomaly</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">auto_awesome</span>
+              Gemini Insight
+            </span>
+</div>
+<div class="mt-space-xs font-code-sm text-code-sm text-on-surface-variant">
+<span class="text-primary font-mono">/usr/bin/curl</span> spawned by unauthenticated crontab worker [PID: 40912]
+          </div>
+<!-- AI Reasoning Block -->
+<div class="mt-2 p-2 rounded bg-surface-container/90 flex flex-col gap-1 shadow-inner">
+<div class="flex items-center gap-1 text-secondary font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+<span>Heuristic Score: 0.88 — Flagged outbound beacon attempt to untrusted ASN (AS9009)</span>
+</div>
+<div class="flex items-center justify-between text-outline font-code-sm text-[11px] pt-1">
+<span>Parent: /usr/sbin/cron → Target: 185.162.251.10:443</span>
+<div class="flex items-center gap-2">
+<button class="text-primary hover:underline font-semibold" onclick="alert('Isolating PID 40912')">Kill & Isolate PID</button>
+<span>•</span>
+<button class="text-secondary hover:underline" onclick="alert('Displaying execution call tree')">View Lineage</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Item 2 (AppArmor Deny) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-outline">14:18:12</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-primary-container text-on-primary-container">WARN</span>
+<span class="font-title-sm text-title-sm text-on-surface">AppArmor Enforced Block</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary">Intervention 0ms</span>
+</div>
+<p class="mt-space-xs font-code-sm text-code-sm text-on-surface-variant">
+            Process <span class="text-on-surface font-semibold">/usr/sbin/cupsd</span> requested write access to <span class="text-error">/etc/shadow</span>. Profile violated: <code>usr.sbin.cupsd</code>. Blocked.
+          </p>
+</div>
+<!-- Event Item 3 (WireGuard Keepalive) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-outline">14:05:30</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-surface-container-highest text-tertiary">INFO</span>
+<span class="font-title-sm text-title-sm text-on-surface">WireGuard Tunnel Re-keyed</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">wg0-fra</span>
+</div>
+<p class="mt-space-xs font-code-sm text-code-sm text-on-surface-variant">
+            Handshake renewed with Frankfurt Exit (185.195.234.82). Co-existence routing verified via <span class="text-on-surface">resolvectl link 4</span>.
+          </p>
+</div>
+<!-- Event Item 4 (SSH Fail2ban) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-outline">13:52:19</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase bg-primary-container text-on-primary-container">MITIGATED</span>
+<span class="font-title-sm text-title-sm text-on-surface">SSH Brute-Force Thwarted</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">jail: sshd</span>
+</div>
+<p class="mt-space-xs font-code-sm text-code-sm text-on-surface-variant">
+            14 invalid auth attempts with user 'root' from <span class="text-error font-mono">185.220.101.4</span>. IP added to iptables DROP rule for 72h.
+          </p>
+</div>
+</div>
+</div>
+<!-- Right: Active Security Services Health (5 cols) -->
+<div class="lg:col-span-5 flex flex-col rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md p-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">security</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Core Security Services</h3>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-tertiary/10 text-tertiary font-mono">Ubuntu 24.04</span>
+</div>
+<!-- Service Stack (Adwaita Preference List Style) -->
+<div class="flex flex-col gap-space-xs mt-space-xs">
+<!-- Service 1: UFW -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[18px]">local_fire_department</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-on-surface">UFW (Firewall)</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Default Deny Inbound • WireGuard/DNS Out</span>
+</div>
+</div>
+<input aria-label="Toggle UFW" checked="" class="w-5 h-5 accent-primary-container cursor-pointer rounded" type="checkbox"/>
+</div>
+<!-- Service 2: AppArmor -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-on-surface">AppArmor LSM</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">68 loaded • 0 in complain mode</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary/10 text-tertiary">Enforce</span>
+</div>
+<!-- Service 3: Fail2ban -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[18px]">shield_person</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-on-surface">Fail2ban Daemon</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">sshd, nginx, sudo • 3 IP drops</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface">3 Bans</span>
+</div>
+<!-- Service 4: USBGuard -->
+<div class="flex items-center justify-between p-space-md rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary text-[18px]">usb</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-on-surface">USBGuard IPC</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Unauthorized MassStorage Denied</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-tertiary/10 text-tertiary">Locked</span>
+</div>
+</div>
+<!-- Quick Scan Action Button -->
+<div class="mt-auto pt-space-md">
+<button class="w-full flex items-center justify-center gap-space-xs p-2.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all active:scale-[0.99] shadow-sm" onclick="runDebsumsScan(this)">
+<span class="material-symbols-outlined text-[16px] text-tertiary">manage_search</span>
+<span class="font-title-sm text-title-sm">Scan Package Integrity (debsums)</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Network Co-existence & Telemetry Inspector Tray -->
+<section class="mt-space-md grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Tunnel Box -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">WireGuard (wg0-fra)</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">sync_alt</span>
+</div>
+<div class="my-space-sm space-y-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Endpoint:</span>
+<span class="text-on-surface">185.195.234.82:51820</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Rx / Tx:</span>
+<span class="text-on-surface">1.42 GB / 218 MB</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">AllowedIPs:</span>
+<span class="text-tertiary">0.0.0.0/0, ::/0</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<!-- DNS Co-existence Box -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">NextDNS + Proton Routing</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">hub</span>
+</div>
+<div class="my-space-sm space-y-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Systemd-resolved:</span>
+<span class="text-tertiary">Link 4 (Exclusive)</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Crypt Engine:</span>
+<span class="text-on-surface">DNS-over-HTTPS (DoH)</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Leak Test:</span>
+<span class="text-tertiary font-semibold">0 Leaks Detected</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Security Audit Progress -->
+<div class="p-space-md rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">Lynis CIS Compliance</span>
+<span class="material-symbols-outlined text-primary-container text-[18px]">fact_check</span>
+</div>
+<div class="my-space-sm space-y-1">
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Hardening Index:</span>
+<span class="text-primary-container font-bold">82 / 100</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Suggestions:</span>
+<span class="text-on-surface">4 items remaining</span>
+</div>
+<div class="flex justify-between font-code-sm text-code-sm">
+<span class="text-outline">Last Lynis Scan:</span>
+<span class="text-outline">Today, 06:00 UTC</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+<div class="bg-primary-container h-1.5 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  let isLockdownActive = false;
+
+  function toggleLockdown() {
+    isLockdownActive = !isLockdownActive;
+    const btn = document.getElementById('lockdown-btn');
+    const thumb = document.getElementById('lockdown-thumb');
+    
+    if (isLockdownActive) {
+      btn.classList.remove('bg-surface-container-highest');
+      btn.classList.add('bg-error');
+      thumb.classList.remove('translate-x-0.5');
+      thumb.classList.add('translate-x-5');
+      alert('SentryLinux: Immediate Zero-Trust Lockdown engaged. Inbound & Outbound non-DNS sockets dropped.');
+    } else {
+      btn.classList.add('bg-surface-container-highest');
+      btn.classList.remove('bg-error');
+      thumb.classList.add('translate-x-0.5');
+      thumb.classList.remove('translate-x-5');
+      alert('SentryLinux: Lockdown disengaged. Normal profile active.');
+    }
+  }
+
+  function handleDaemonRestart(button) {
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Authenticating Polkit...</span>';
+    setTimeout(() => {
+      button.innerHTML = '<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span><span>Daemons Remapped!</span>';
+      setTimeout(() => {
+        button.innerHTML = originalText;
+        button.disabled = false;
+      }, 3000);
+    }, 1400);
+  }
+
+  function runDebsumsScan(button) {
+    const originalHtml = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<span class="material-symbols-outlined text-[16px] animate-spin text-tertiary">refresh</span><span class="font-title-sm text-title-sm">Verifying /usr checksums...</span>';
+    setTimeout(() => {
+      button.innerHTML = '<span class="material-symbols-outlined text-[16px] text-tertiary">done_all</span><span class="font-title-sm text-title-sm">100% Packages Clean</span>';
+      setTimeout(() => {
+        button.innerHTML = originalHtml;
+        button.disabled = false;
+      }, 2500);
+    }, 1800);
+  }
+
+  function triggerQuickAudit() {
+    alert('Lynis quick-probe initiated via pkexec sentry-helper --audit');
+  }
+</script></main></div></body></html>

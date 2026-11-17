@@ -1,0 +1,212 @@
+# PromptForge Local AI Rules (.continuerules) — SentryLinux
+# Compatible with Continue IDE Extension + Ollama (qwen2.5-coder:14b @ http://127.0.0.1:11434)
+
+## Project Overview
+- App: SentryLinux — AI-augmented endpoint security hub, automated hardening console, and network sentry for Ubuntu 24.04 LTS.
+- Platform: Native Ubuntu Desktop Application (Tauri v2 + React 19)
+- Preferred Language: Rust + Tauri v2 (GTK4 / Libadwaita UI layout; Rust telemetry daemon (eBPF/auditd, tokio, aya-rs); Python 3.12 bindings; google-genai SDK for Gemini 3.8 Flash triage and Gemini 3.1 Pro forensic reasoning; D-Bus / polkit execution bridge.)
+- Idea: SentryLinux unifies Ubuntu's fragmented CLI security ecosystem—auditd, AppArmor, Lynis, UFW, OpenSnitch, Fail2ban, Suricata, ClamAV, LMD, RKhunter, chkrootkit, AIDE, Debsums, USBGuard, and NextDNS—into a native desktop workstation. 
+
+Instead of draining system resources training heavy ML models locally, SentryLinux employs an intelligent dual-model AI tier: Gemini 3.8 Flash delivers sub-second event triage, live outbound socket evaluation, and structured Pydantic alerts, while Gemini 3.1 Pro performs cross-tool attack correlation, rootkit false-positive verification against signed package manifests, and forensic post-mortems. 
+
+The app resolves the chronic Linux networking friction between Proton VPN and NextDNS via dynamic resolvectl interface scoping and automated linked IP synchronization, and features a granular USG CIS benchmark checklist with interactive diff previews prior to privileged execution.
+
+SentryLinux is an all-in-one native endpoint security console and defense orchestration layer engineered for Ubuntu 24.04 LTS (Noble Numbat). It consolidates the fragmented Linux security ecosystem—kernel syscalls, application firewalls, host intrusion detectors, compliance benchmarks, and rootkit scanners—into a unified Libadwaita desktop interface. Telemetry is triaged locally and augmented by a dual Gemini architecture: Gemini 3.8 Flash handles sub-second event triage, interactive toast notifications, and schema parsing, while Gemini 3.1 Pro takes over deep cross-tool correlation, rootkit hook verification, and complex incident post-mortems.High-Level System Architecture┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                                SYSTEM TELEMETRY INTAKE                                 │
+│  eBPF/auditd  •  OpenSnitch  •  Suricata  •  NextDNS SSE  •  AIDE  •  USBGuard  •  LMD │
+└──────────────────────────────────────────┬─────────────────────────────────────────────┘
+                                           │ Syscall events, alerts, and socket streams
+                                           ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                               LOCAL RUST ENGINE & DAEMON                               │
+│  - Heuristic pre-filter (drops benign noise)    - Local encrypted SQLite spool (offline)│
+│  - D-Bus / Polkit privileged execution bridge   - Battery & resource-aware process nice│
+└────────────────────────────────────┬─────────────────┬─────────────────────────────────┘
+                                     │                 │
+             ┌───────────────────────┘                 └────────────────────────┐
+             ▼ (Low-latency stream)                                             ▼ (Complex anomalies)
+┌────────────────────────────────────────┐             ┌────────────────────────────────────────┐
+│      GEMINI 3.8 FLASH (TRIAGE)         │             │        GEMINI 3.1 PRO (REASONING)      │
+│  - Real-time outbound socket analysis  │             │  - Cross-tool attack correlation       │
+│  - Pydantic structured alert triage    │             │  - Rootkit hook vs distro patch checks │
+│  - Instant AppArmor & UFW rule drafts  │             │  - Multi-stage breach forensics        │
+└───────────────────┬────────────────────┘             └────────────────────┬───────────────────┘
+                    │                                                       │
+                    └──────────────────────────┬────────────────────────────┘
+                                               ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                           NATIVE GTK4 / LIBADWAITA SHELL                               │
+│  - Command Center Dashboard             - Real-Time NextDNS Stream & Inline Gates      │
+│  - Lynis 3-Tier Interactive Cards       - USG / CIS Granular Yes/No Checklist Matrix   │
+│  - Simplewall-style Outbound Popovers   - Emergency 1-Click "Lockdown Mode"            │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+Complete Feature Matrix1. Dual-AI Triage & Forensic ReasoningReal-Time Stream Evaluation (Gemini 3.8 Flash): Instantaneous evaluation of rapid incoming events (e.g., unexpected outbound socket requests, log spikes, AppArmor denials) into strictly validated Pydantic JSON schemas with risk severity ratings (LOW to CRITICAL).Deep Multi-Signal Correlation (Gemini 3.1 Pro): Synthesizes disconnected clues across independent subsystems—such as an external port probe on UFW, a subsequent Fail2ban jail trip, an unauthorized pam login, and an AIDE checksum change—into an intelligible narrative describing active intrusion campaigns.Two-Stage Rootkit Double-Check:Stage 1: Scans flagged system binaries against official Canonical-signed package release hashes via debsums -c.Stage 2: Unresolved hash or timestamp mismatches are sent to Gemini 3.1 Pro alongside package metadata to determine whether the deviation is a known Ubuntu distribution security backport or an actual malicious kernel/library hook.Interactive Dry-Run Diffs: Mitigations (e.g., sysctl hardening, UFW syntax, AppArmor profiles) are staged in a visual diff inspection window before the user authorizes execution via Polkit.2. Network Defense & Dynamic Traffic GatingNextDNS Live Telemetry & Control:Real-Time Query Stream: Live-tails outbound DNS queries in the desktop UI using NextDNS Server-Sent Events (SSE).Instant Domain Gating: One-click "Allow" and "Deny" actions next to every live domain entry, applying immediately to NextDNS allowlists and denylists via REST API.Encryption & Leak Watchdog: Continuous verification of active DNS-over-HTTPS/TLS routing with visual warnings if requests leak to unencrypted UDP 53 fallback resolvers.Interactive Application Firewall (OpenSnitch Integration):Simplewall-style interactive desktop popovers prompting the user whenever an unknown binary initiates an outbound connection: "Process /usr/bin/curl (PID 4012) wants to reach 198.51.100.23:443. Allow Once, Allow Always, or Deny?"UFW Management & Visual Rules:Visual rules table for inbound/outbound ports and services.Interactive GeoIP Map: World map rendering blocked inbound connection attempts by source country.Self-Expiring Passes: Temporary access rules (e.g., "Allow SSH for 2 hours") that decay and drop automatically via background timers.Fail2ban & CrowdSec Collaboration:Visual jail metrics showing banned IP counts and attack targets.Searchable ban table with an immediate "Forgive / Unban" action.Community blocklist synchronization powered by CrowdSec to preemptively drop malicious addresses before they hit local ports.Suricata (Network IDS/IPS):Rolling parser for fast.log and eve.json.AI-driven alert deduplication, grouping recurring signature bursts into single high-level threat incidents.3. Hardening, Auditing & System ComplianceLynis Three-Tier Audit Flow:Tier 1 (Warning Card): High-level hardening gauge (0–100) and vulnerability tally.Tier 2 (AI Hint & Deep Dive): Plain-language explanation of the specific vulnerability and how it could be exploited.Tier 3 (Interactive Fix): Step-by-step remediation with a side-by-side config preview before applying changes.Ubuntu Security Guide (USG) Interactive Checklist:Comprehensive CIS Benchmark matrix for Ubuntu 24.04 with individual Yes/No toggles for each rule, replacing blunt, all-or-nothing automation.   Hardening profile slider ranging from Developer Friendly to Strict CIS Level 2 Lockdown.   AppArmor Profile Studio:Visual status table showing all loaded profiles with instant toggles between Enforce and Complain modes.Integrated aa-logprof dialogs prompting users to permanently permit or restrict access when a confined application hits a restriction.Learning Sandbox Mode: Automated profile generator that records a binary's execution paths via aa-genprof, validates syntax, and compiles an AppArmor profile in /etc/apparmor.d/.needrestart Watchdog:Persistent desktop banner identifying obsolete libraries held open by running processes post-apt upgrades.One-click "Restart Obsolete Services" action to refresh daemons without terminal disruption.Live sysctl Security Workbench:Toggleable kernel hardening switches with built-in presets:kernel.kptr_restrict = 2 (conceals kernel pointers)kernel.dmesg_restrict = 1 (restricts dmesg logs to root)net.ipv4.tcp_syncookies = 1 (SYN flood defense)net.ipv4.conf.all.rp_filter = 1 (source route validation & IP spoof protection)Checksec & Vulnerability Watchdog:Binary mitigation auditor checking local executables for RELRO, Stack Canaries, NX bit, and Position Independent Executables (PIE).Local dependency CVE scanner (via Trivy integration) auditing installed deb packages and development repositories.4. Host Integrity, Anti-Malware & Rootkit DetectionClamAV & Linux Malware Detect (LMD):On-demand scan controls: Quick Scan, Full System Scan, and Custom Directory Target.Quarantine Vault: Safe storage area to inspect, restore, or securely wipe malicious binaries.Signature Manager: freshclam definition status display with manual update triggers.Real-Time fanotify Sentry: Kernel-level file system hooks watching hot ingestion paths (~/Downloads, /tmp) for immediate malware screening on write.RKhunter & chkrootkit Unified Scanner:"Deep Clean" single-click routine that sequences both scanners, suppressing CLI verbosity in favor of clear status badges.Post-apt Auto-Baseline: Hooks into APT's DPkg::Post-Invoke to run rkhunter --propupd automatically after verified updates to avoid false alarms.AIDE (Advanced Intrusion Detection Environment):One-click "Initialize Baseline" and "Verify Integrity" checkpoints.Git-Backed /etc Tracker: Visual diff viewer for modified system configuration files backed by an automated local Git repository.Debsums Package Healer:Background package validation (debsums -c).One-click "Heal Package" action triggering clean, verified package reinstallation (apt-get install --reinstall) for corrupted or tampered binaries.OSSEC HIDS Dashboard:Translates active /var/ossec/logs/alerts/alerts.log entries into readable activity summaries with associated MITRE ATT&CK tags.Kernel Syscall Watcher (auditd & eBPF):Telemetry monitoring for low-level process creation (execve), raw socket binds, and unauthorized credential reads.Application Sandboxing (Firejail / Bubblewrap):Context-menu action to run untrusted binaries inside isolated namespaces with restricted file system and network visibility.5. Identity, Hardware & Physical Device DefenseUSBGuard Hardware Sentry:Kernel-level BadUSB and rubber-ducky defense that intercepts unrecognized USB descriptors.Desktop notifications offering "Authorize Once", "Always Authorize", or "Block & Reject".SSH & Sudoer Persistence Sentry:Dedicated file monitor watching ~/.ssh/authorized_keys, /etc/sudoers, and /etc/sudoers.d/.Generates immediate high-priority alerts if a new public key or NOPASSWD entry is injected.SUID / SGID Binary Auditor:Periodic and on-demand scanner identifying unexpected SUID/SGID bits set outside standard system directories (/usr/bin).Hardware Token & PAM-U2F Manager:Enrollment UI for FIDO2 / YubiKey hardware tokens.Toggles to enforce hardware-bound physical presence for sudo commands and the GNOME lock screen via pam-u2f.Network Privacy & MAC Randomization:One-click controls interacting with NetworkManager to enforce randomized MAC addressing across Wi-Fi and Ethernet connections.6. Operational Resilience & Emergency ControlsOne-Click "Lockdown Mode":Emergency system tray kill-switch that instantly sets UFW to drop all incoming and outgoing connections (preserving only localhost), sets all AppArmor profiles to Enforce, and severs non-loopback sockets.Offline Telemetry Spooling:Encrypted local SQLite cache that spools security events if network connectivity drops, queueing them for retroactive Gemini triage once online.Battery & Resource-Aware Scheduler:Deferment engine that checks AC power status before triggering resource-intensive jobs (full AIDE re-indexing, ClamAV full drive scans, Lynis audits), applying nice -n 19 ionice -c 3 during active user sessions.Zero Plain-Text Credentials:Gemini API keys and NextDNS credentials are stored strictly in the system vault using GNOME Keyring / libsecret via the desktop Secret Service API.7. Workflow, Design & AI Scaffolding SyncDesign Token Integration: UI specs and color palettes aligned with Google Stitch design systems via DESIGN.md.Gemini Canvas Collaboration: Exportable Markdown/HTML workspace artifacts enabling side-by-side spec review and refinement directly in Gemini Canvas.SpecForge Studio Blueprint Compatibility: Full structural alignment with spec.md, tasks.md, agents.md, and .specforge.json manifests for automated coding agent workflows.Google Antigravity (AGY) & Gemini Code CLI Orchestration: Designed to integrate with automated build verification runs, unit test harnesses, and headless code generation cycles.
+Beyond host monitoring and network gating, a hardened Ubuntu 24.04 workstation requires proactive systemd isolation auditing, bootloader and TPM attestation, desktop portal sandboxing, and automated rollback snapshots before any AI remediation runs.
+
+8. Systemd Service Isolation & Exposure Auditing
+Automated systemd-analyze security Pipeline:
+
+Ingests and parses Ubuntu’s native service exposure ratings, scoring every running system and user daemon on an exposure scale from 0.0 (Hardened) to 10.0 (Exposed/Unsafe).
+
+Evaluates critical sandbox primitives per service: ProtectSystem=strict, ProtectHome=yes, NoNewPrivileges=yes, PrivateTmp=yes, CapabilityBoundingSet=, and RestrictRealtime=yes.
+
+AI-Guided Systemd Drop-In Generator:
+
+Instead of manually crafting systemd overrides, Gemini analyzes the service’s runtime dependencies and drafts a safe drop-in unit file (/etc/systemd/system/<service>.d/99-hardening.conf).
+
+Features a simulated run to ensure tightening socket or filesystem restrictions will not break system operations before writing to disk.
+
+9. Boot Chain, Firmware & Hardware-Rooted Integrity
+TPM 2.0 PCR Attestation Monitor:
+
+Monitors Platform Configuration Registers (PCR 0, 2, 4, 7) via tpm2-tools to detect unauthorized modifications to the UEFI firmware, Option ROMs, bootloader (GRUB), or kernel command lines before the OS boots.
+
+Alerts on unexpected PCR hash drift that could indicate evil maid attacks, firmware implants, or unauthorized boot tampering.
+
+LUKS Keyslot & FDE Sentry:
+
+Audits Full Disk Encryption key slots via cryptsetup luksDump, tracking active key slots, wipe commands, and passphrases.
+
+Alerts immediately if an unrecognized encryption key, recovery pin, or Clevis/Tang binding is added to the partition header.
+
+Secure Boot & Kernel Lockdown Enforcer:
+
+Visual status monitor tracking mokutil and Machine Owner Keys (MOK).
+
+Verifies kernel lockdown status (kernel.lockdown=integrity or confidentiality) to guarantee unsigned kernel modules or direct /dev/mem memory writes cannot bypass system security.
+
+10. Desktop Isolation, Portals & Sandboxing
+Native Flatpak Permission Manager (Flatseal Integration):
+
+Built-in viewer and editor auditing sandbox overrides across installed Flatpak applications.
+
+Toggles for filesystem escape hatches (filesystem=host, filesystem=home), X11 display socket access, device subsystem visibility, and background execution permissions.
+
+Wayland & XDG Portal Snoop Guard:
+
+Real-time watchdog over the XDG Desktop Portal D-Bus interface.
+
+Triggers desktop warnings whenever an unprivileged application attempts screen casting, remote desktop control, global input sniffing, or clipboard polling under Wayland.
+
+Unprivileged Landlock & Seccomp Launchpad:
+
+"Run with Landlock" context menu option: launches untrusted scripts or ad-hoc binaries locked strictly to their immediate working directory without requiring root privileges.
+
+11. Package Provenance, PPA & Supply Chain Defense
+Third-Party PPA & APT Source Auditor:
+
+Scans /etc/apt/sources.list and /etc/apt/sources.list.d/*.sources for deprecated, unsigned, or high-risk third-party repositories.
+
+Validates repository GPG keys against modern /etc/apt/keyrings/ standards, warning on legacy, insecure /etc/apt/trusted.gpg additions.
+
+Signature & Provenance Verifier (Sigstore / Cosign / AppImage):
+
+Integrated drag-and-drop verification for standalone binaries, AppImages, and .deb archives checking Cosign signatures, SHA-256 sums, and developer provenance before execution.
+
+Container & Rootless Podman Vulnerability Watchdog:
+
+Taps into local Docker/Podman runtimes to audit running containers against Trivy vulnerability databases, checking for containers running with --privileged, host network binding, or root user flags.
+
+12. Disaster Recovery, Failsafe Snapshots & Safe Rollbacks
+Pre-Remediation Snapshots (Btrfs / Snapper / Timeshift):
+
+Automated hooks that take a lightweight read-only snapshot of the root/home subvolume or capture an /etc checkpoint before applying any USG CIS profile, sysctl override, or batch package changes.
+
+Side-by-side "Roll Back System State" button if an applied hardening rule disrupts Wi-Fi, audio, or desktop daemons.
+
+Air-Gapped Emergency Rescue Script:
+
+Automatically generates and updates an emergency rescue shell script (/boot/sentry-rescue.sh) with executable permissions.
+
+If network access or user permissions lock up, dropping into emergency recovery mode or TTY allows executing a single command to flush UFW to default allow, disable AppArmor enforcement, and reset network interfaces.
+
+13. VPN Tunnel & Kill-Switch Sentry
+WireGuard / Proton VPN Interface Binding:
+
+Monitors active wg0 or tun0 tunnels; integrates with Netfilter/NFTables to enforce a hard-drop kill-switch preventing DNS or IP leaks if the VPN drops unexpectedly.
+
+Displays active IP, exit country, and cryptographic handshake status directly in the system status pill.
+
+1. Plain-English Syscall & Journal Query Engine ("Ask Sentry")
+Instead of forcing you to memorize arcane ausearch syntax or dig through dense journalctl flags, add an integrated search bar wired to Gemini 3.8 Flash. You type questions like:
+
+"Did any background process touch my .ssh/ folder in the last 48 hours?"
+
+"Which applications made outbound connections while the screen was locked last night?"
+
+Gemini translates your question into the exact ausearch -k ... or journalctl -u ... commands, the local daemon runs them against the audit logs, and Gemini summarizes the raw output into a concise timeline with highlighted PIDs.
+
+2. Pre-Execution "Blast Radius" & Dependency Analysis
+Before you click "One-Click Mitigate" or kill a suspicious process, Gemini 3.1 Pro maps the operational blast radius. It inspects process ancestry (pstree), active shared libraries, and open file descriptors to answer:
+
+"If I terminate PID 4092 or block this subnet, what else breaks?"
+
+It warns you if killing a rogue subprocess will crash your desktop session, tear down your local audio sink, or disrupt dependent container mounts, suggesting a surgical SIGSTOP or cgroup freeze instead of an indiscriminate kill -9.
+
+3. Natural-Language-to-Native Policy Compiler
+Eliminate the need to hand-craft AppArmor profile abstractions, complex UFW port ranges, or Fail2ban regex filters. You describe the rule in plain English, and Gemini 3.8 Flash compiles and validates the exact native syntax:
+
+Prompt: "Only allow my local subnet to connect to port 8080, drop everything else, and limit failed attempts to 3 per minute."
+
+Output: Stages the validated UFW rule set and a matching Fail2ban filter definition into your staging review drawer with syntax verification passed.
+
+4. NextDNS CDN & CNAME Dependency Untangler
+When browsing the real-time NextDNS query stream, blocking domains blindly often breaks essential web services due to CNAME cloaking and shared content delivery networks.
+
+When you click "Deny" on an unfamiliar tracking endpoint, Gemini 3.8 Flash inspects the apex domain and known tracker hierarchies.
+
+It alerts you with a quick tooltip before submitting the API call: "Blocking smetrics.service.com will break OAuth login flows on service.com because session verification tokens share that CDN endpoint."
+
+5. Dual-Model "Safety Critic" Gate for Staged Mitigations
+Any autonomous or AI-generated remediation command carries a risk of hallucinating destructive flags (like an overly broad chmod -R or a restrictive iptables -F that locks out your SSH/TTY session).
+
+Implement an automated critic loop: whenever Gemini 3.8 Flash drafts an automated fix or systemd drop-in override, the proposed diff is sent to an adversarial Gemini 3.1 Pro prompt configured solely as a Safety Auditor.
+
+It checks the command against a strict rubric (no credential wipes, no lockouts of the primary user, no disruption of core boot targets) and flags potential side effects before the GUI ever surfaces the Polkit authorization prompt.
+
+14. Proton VPN & NextDNS Co-Existence Engine
+Three-State Network Mode Selector: Desktop switch eliminating configuration conflicts between VPN tunneling and encrypted DNS:
+
+NextDNS Only: Binds local network interfaces (wlan0/eth0) directly to your NextDNS profile via DoT/DoH; leaves VPN disabled.
+
+Proton VPN Only: Routes all system traffic through Proton VPN with native Proton NetShield DNS resolvers (10.2.0.1).
+
+Co-Existence Mode (Proton + NextDNS): Tunnels all outbound traffic through Proton VPN while routing DNS exclusively to your authenticated NextDNS profile without leaks or lockouts.
+
+Native WireGuard Profile Manager: Directly manages Proton WireGuard connection profiles (.conf), dynamically injecting NextDNS Anycast resolvers (45.90.28.0, 45.90.30.0) and eliminating conflicts caused by proprietary desktop clients.
+
+Dynamic resolvectl Interface Scoping: Configures systemd-resolved per-interface routing via D-Bus instead of overwriting /etc/systemd/resolved.conf on disk:
+
+Assigns the root routing domain (~.) directly to the active tunnel interface (wg0/proton0).
+
+Automatically tears down interface routes and restores local resolver defaults on disconnect, preventing "DNS address not found" post-session deadlocks.
+
+Automated NextDNS Linked IP Synchronization: Background hook monitoring the VPN tunnel handshake. The moment a new egress IP is established, the daemon triggers an automated call to the NextDNS API (POST /profiles/:profile_id/sync), binding your custom filtering rules to the active VPN exit node.
+
+DNS Deadlock & "Rescue DNS" Watchdog: Monitors resolution latency and error states. If queries drop, hang, or return persistent SERVFAIL, SentryLinux auto-flushes DNS caches (resolvectl flush-caches) and offers a one-click tray recovery action to restore connectivity without restarting NetworkManager.
+
+## Feature Requirements
+1. Inspect system health scores, active intrusion alerts, and unhandled daemon restarts from a unified Libadwaita dashboard
+2. Filter and live-tail NextDNS queries over Server-Sent Events with instant 1-click domain allow and deny gating
+3. Authorize or reject process outbound connections via interactive desktop popovers backed by OpenSnitch and UFW
+4. Switch between NextDNS Only, Proton VPN Only, and Co-Existence modes with automated WireGuard and resolvectl route scoping
+5. Audit CIS benchmarks via granular Yes/No toggles in USG and inspect side-by-side config diffs before applying fixes
+6. Run double-checked rootkit and malware sweeps combining ClamAV, LMD, RKhunter, and Debsums package healing
+7. Trigger 1-click Emergency Lockdown from the system tray to sever untrusted sockets and force AppArmor enforcement
+
+## Architectural & Security Guardrails
+- Stack: Rust (eBPF aya-rs, tokio, reqwest), Python 3.12 (PyGObject, GTK4, Libadwaita), systemd/auditd/OpenSnitch/NextDNS APIs, @google/genai (Gemini 3.8 Flash & Gemini 3.1 Pro), libsecret-1 keyring.
+- Architecture: Low-overhead Rust root daemon monitoring kernel syscalls and log sockets, communicating via D-Bus and polkit with a sandboxed GTK4/Libadwaita user desktop shell, querying Gemini via structured Pydantic JSON contracts.
+- Testing: Unit tests for log parser regexes and resolvectl state machines; mock auditd telemetry test harnesses; path canonicalization security assertions; verification of zero plaintext key storage in files.
+- Security: All API keys stored in GNOME Keyring via libsecret; file exports canonicalized with ../ traversal rejection; least-privilege polkit action profiles for UFW/AppArmor rule manipulation.
+- Rule: Never run destructive mitigation commands (iptables -F, rm, kill -9) without user approval and side-by-side diff previews.
+- Rule: Always canonicalize filesystem paths and reject directory traversal (../) before disk operations.
+- Rule: Structure all Gemini triage requests with strict Pydantic schemas enforcing severity, summary, and remediation commands.
+- Rule: Enforce GNOME Libadwaita Human Interface Guidelines with full dark mode support and keyboard-accessible navigation.
+
+## Local Model & Continue Instructions
+- Provider Preference: ollama
+- Ollama Endpoint: http://127.0.0.1:11434
+- Recommended Local Model: qwen2.5-coder:14b
+- Notes: Use local Ollama models for offline regex refinement, log parsing unit tests, and AppArmor profile syntax linting.
+- Multi-Agent Active: Respect path ownership boundaries declared in COLLABORATION.md.

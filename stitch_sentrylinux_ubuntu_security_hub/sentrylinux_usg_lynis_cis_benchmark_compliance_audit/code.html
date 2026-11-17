@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#45dfa4", "error": "#ffb4ab", "tertiary-container": "#00a574", "on-primary-fixed": "#3a0b00", "on-secondary-container": "#c4abff", "on-secondary-fixed-variant": "#5516be", "on-tertiary-container": "#003120", "on-surface": "#e3e0f7", "inverse-surface": "#e3e0f7", "surface-container-high": "#292839", "secondary": "#d0bcff", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "surface-variant": "#333344", "on-primary-fixed-variant": "#852400", "inverse-on-surface": "#2f2f40", "on-surface-variant": "#e2bfb4", "secondary-fixed-dim": "#d0bcff", "on-background": "#e3e0f7", "on-primary": "#5e1700", "outline": "#aa8a80", "on-secondary-fixed": "#23005c", "surface-container-lowest": "#0d0d1c", "surface-container": "#1e1e2e", "surface-bright": "#383849", "primary-fixed": "#ffdbd0", "on-primary-container": "#521300", "background": "#121221", "primary-container": "#f85e2a", "primary": "#ffb59e", "on-tertiary-fixed": "#002114", "on-tertiary-fixed-variant": "#005137", "inverse-primary": "#ae3200", "surface-container-low": "#1a1a2a", "surface-dim": "#121221", "on-error": "#690005", "outline-variant": "#5a4139", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "tertiary-fixed-dim": "#45dfa4", "on-secondary": "#3c0091", "surface": "#121221", "tertiary-fixed": "#68fcbf", "on-error-container": "#ffdad6", "on-tertiary": "#003825", "surface-tint": "#ffb59e", "primary-fixed-dim": "#ffb59e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "0.75rem", "gutter": "1rem", "gutter-dense": "0.5rem", "space-xl": "1.5rem", "margin": "1.5rem", "space-lg": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-compact": "0.75rem" }, "fontFamily": { "title-sm": ["Inter"], "label-sm": ["Inter"], "code-sm": ["JetBrains Mono"], "label-md": ["Inter"], "headline-md": ["Inter"], "body-md": ["JetBrains Mono"], "display-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["JetBrains Mono"] }, "fontSize": { "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">shield</span><span class="font-title-sm text-title-sm">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">public</span><span class="font-title-sm text-title-sm">DNS Sentry</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-highest text-tertiary">428/s</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">track_changes</span><span class="font-title-sm text-title-sm">Outbound Intercepts</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container">1</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">checklist</span><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">radar</span><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">restart_alt</span><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></div></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">hub</span><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_supervised</span><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">tune</span><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></div></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full">
+<!-- Interactive Script for Libadwaita active toggles, sidebar highlight sync & diff drawer preview -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Highlight sidebar active state according to prompt requirements
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'usg-and-lynis-cis-audit') {
+          link.classList.remove('text-on-surface-variant');
+          link.classList.add('bg-primary-container', 'text-on-primary-container', 'rounded-lg', 'font-semibold', 'shadow-sm');
+        } else {
+          link.classList.remove('bg-primary-container', 'text-on-primary-container');
+        }
+      });
+    });
+
+    function toggleRemediation(id) {
+      const toggle = document.getElementById(id);
+      if (!toggle) return;
+      const dot = toggle.querySelector('.toggle-dot');
+      const isChecked = toggle.getAttribute('data-checked') === 'true';
+      if (isChecked) {
+        toggle.setAttribute('data-checked', 'false');
+        toggle.classList.remove('bg-primary-container');
+        toggle.classList.add('bg-surface-container-highest');
+        dot.classList.remove('translate-x-5', 'bg-on-primary');
+        dot.classList.add('translate-x-0.5', 'bg-on-surface-variant');
+      } else {
+        toggle.setAttribute('data-checked', 'true');
+        toggle.classList.remove('bg-surface-container-highest');
+        toggle.classList.add('bg-primary-container');
+        dot.classList.remove('translate-x-0.5', 'bg-on-surface-variant');
+        dot.classList.add('translate-x-5', 'bg-on-primary');
+      }
+    }
+
+    function toggleAiDetail(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.toggle('hidden');
+      }
+    }
+  </script>
+<!-- Sub-Header & Libadwaita Window Control Bar -->
+<div class="flex flex-col gap-space-md mb-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-container-low/80 backdrop-blur-md p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Compliance &amp; Hardening</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-code-sm text-code-sm text-primary">USG &amp; Lynis CIS Benchmark</span>
+</div>
+<div class="flex items-center gap-space-md mt-1">
+<div class="flex items-center gap-space-xs bg-surface-container px-space-md py-1.5 rounded-lg shadow-inner cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+<span class="font-title-sm text-title-sm text-on-surface">CIS Ubuntu 24.04 LTS Server/Workstation v1.0.0 — Level 2 Hardened</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-tertiary-container/20 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm font-medium">CIS Level 2 Target: 95% Hardened</span>
+</div>
+</div>
+</div>
+<!-- Action buttons -->
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">history</span>
+<span class="font-label-md text-label-md">Revert Snapshot (<span class="font-code-sm text-primary">#9fa2c4</span>)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+<span class="font-label-md text-label-md">Generate PDF/HTML</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-semibold shadow-md">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span class="font-title-sm text-title-sm">Run Full USG Scan</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 3-Column Cockpit Grid: Categories Rail, Rules Checklist, Atomic Diff Drawer -->
+<div class="grid grid-cols-12 gap-space-lg items-start">
+<!-- Column 1: CIS Benchmark Sections Rail (Span 3) -->
+<div class="col-span-12 xl:col-span-3 flex flex-col gap-space-md">
+<div class="bg-surface-container-low/90 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">CIS Domain Sections</span>
+<span class="font-code-sm text-code-sm text-tertiary">6 Active Modules</span>
+</div>
+<!-- Section 1 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-container transition-colors cursor-pointer flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface truncate">1. Initial Setup</span>
+<span class="font-code-sm text-code-sm text-tertiary">96%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>Filesystems &amp; Updates</span>
+<span>24/25 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-tertiary h-full rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<!-- Section 2 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-container transition-colors cursor-pointer flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface truncate">2. Services &amp; Daemons</span>
+<span class="font-code-sm text-code-sm text-primary">88%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>SSH, Cups, RPC</span>
+<span>15/17 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Section 3 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-container transition-colors cursor-pointer flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface truncate">3. Network Configuration</span>
+<span class="font-code-sm text-code-sm text-tertiary">94%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>Firewall, Sysctl, IPv6</span>
+<span>32/34 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-tertiary h-full rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<!-- Section 4 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-container transition-colors cursor-pointer flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface truncate">4. Logging &amp; Auditing</span>
+<span class="font-code-sm text-code-sm text-tertiary">91%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>auditd, rsyslog</span>
+<span>21/23 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-tertiary h-full rounded-full" style="width: 91%"></div>
+</div>
+</div>
+<!-- Section 5: ACTIVE -->
+<div class="p-space-sm rounded-lg bg-surface-container-high/90 shadow-inner flex flex-col gap-1 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-center justify-between pl-1">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold truncate">5. Access, Auth &amp; PAM</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">85%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm pl-1">
+<span>su, sudo, password hashing</span>
+<span>17/20 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5 ml-1 mr-1">
+<div class="bg-primary-container h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Section 6 -->
+<div class="p-space-sm rounded-lg hover:bg-surface-container transition-colors cursor-pointer flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface truncate">6. Maintenance &amp; Perms</span>
+<span class="font-code-sm text-code-sm text-tertiary">100%</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-code-sm text-code-sm">
+<span>File ownership &amp; stickies</span>
+<span>18/18 pass</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden mt-0.5">
+<div class="bg-tertiary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- Hardening Score Ring Card -->
+<div class="bg-surface-container-low/90 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-sm shadow-md">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Lynis &amp; USG Summary</span>
+<div class="flex items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">84</span>
+<span class="font-title-sm text-title-sm text-on-surface-variant">/100</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lynis Hardening Index</span>
+</div>
+<!-- Inline Telemetry Donut Chart -->
+<div class="relative w-16 h-16 flex items-center justify-center shrink-0">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="84, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-code-sm text-code-sm text-primary font-bold">84</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-on-surface-variant">USG Ubuntu Baseline</span>
+<span class="text-tertiary font-semibold">91.2%</span>
+</div>
+<div class="flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-on-surface-variant">Remediation Candidates</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-medium">8 Items</span>
+</div>
+<div class="flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-on-surface-variant">Audit Tooling</span>
+<span class="text-on-surface">usg 24.04.1 + lynis 3.1.2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Center Compliance Rules Checklist (Span 5) -->
+<div class="col-span-12 xl:col-span-5 flex flex-col gap-space-md">
+<!-- Filter Bar & Search -->
+<div class="bg-surface-container-low/90 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-sm shadow-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest/80 text-on-surface font-body-md text-body-md pl-9 pr-16 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-container placeholder:text-on-surface-variant/50 transition-all" placeholder="Filter rules, CVEs, or sysctl keys..." type="text"/>
+<span class="absolute right-3 top-2.5 font-code-sm text-code-sm text-on-surface-variant px-1 rounded bg-surface-container-high">Ctrl+F</span>
+</div>
+<!-- Severity Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-0.5">
+<button class="px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm whitespace-nowrap">
+            All (42)
+          </button>
+<button class="px-space-sm py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold whitespace-nowrap flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+            Failed / Required (6)
+          </button>
+<button class="px-space-sm py-1 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">
+            Passed (32)
+          </button>
+<button class="px-space-sm py-1 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm whitespace-nowrap">
+            Manual (4)
+          </button>
+</div>
+</div>
+<!-- Itemized Rules List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Rule 5.2.3: SSH MaxAuthTries (High Risk - Queued Fix) -->
+<div class="bg-surface-container-low/95 rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-start justify-between gap-space-sm pl-1">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-primary font-bold">Rule 5.2.3</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/80 text-on-error-container font-label-sm text-label-sm">High Risk</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">sshd</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mt-0.5">Ensure SSH MaxAuthTries is set to 4 or less</h3>
+</div>
+<!-- Interactive GNOME-style Toggle -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Stage Fix</span>
+<div class="w-11 h-6 bg-primary-container rounded-full flex items-center p-0.5 cursor-pointer transition-colors shadow-inner" data-checked="true" id="toggle-523" onclick="toggleRemediation('toggle-523')">
+<div class="toggle-dot w-5 h-5 rounded-full bg-on-primary transform translate-x-5 transition-transform shadow"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-xs font-code-sm text-code-sm flex items-center justify-between text-on-surface-variant pl-2">
+<span>Current: <span class="text-error">MaxAuthTries 6</span></span>
+<span>Target: <span class="text-tertiary">MaxAuthTries 4</span></span>
+</div>
+<div class="flex items-center justify-between pl-1 pt-1">
+<button class="flex items-center gap-space-xs px-space-sm py-1 rounded-md bg-secondary-container/30 hover:bg-secondary-container/50 text-secondary transition-colors" onclick="toggleAiDetail('ai-exp-523')">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm font-medium">AI Explain Vulnerability</span>
+</button>
+<span class="font-code-sm text-code-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span> Queued in diff
+            </span>
+</div>
+<!-- Expandable AI Box -->
+<div class="mt-1 p-space-sm rounded-lg bg-surface-container flex flex-col gap-1 text-on-surface-variant font-body-md text-body-md" id="ai-exp-523">
+<div class="flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+<span>Gemini Threat Assessment</span>
+</div>
+<p class="text-on-surface text-code-sm font-code-sm">
+              An adversary with repeated SSH password guessing opportunities can attempt 6 passwords per TCP socket before disconnect. Restricting to 4 drastically amplifies brute-force latency and triggers systemd-fail2ban lockout thresholds within 2 cycles.
+            </p>
+</div>
+</div>
+<!-- Rule 3.1.2: Send Redirects (Medium Risk - Non-Compliant) -->
+<div class="bg-surface-container-low/95 rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<div class="flex items-start justify-between gap-space-sm pl-1">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-primary font-bold">Rule 3.1.2</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Medium Risk</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm">Non-Compliant</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mt-0.5">Ensure packet redirect sending is disabled</h3>
+</div>
+<!-- Interactive GNOME-style Toggle -->
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enforce</span>
+<div class="w-11 h-6 bg-primary-container rounded-full flex items-center p-0.5 cursor-pointer transition-colors shadow-inner" data-checked="true" id="toggle-312" onclick="toggleRemediation('toggle-312')">
+<div class="toggle-dot w-5 h-5 rounded-full bg-on-primary transform translate-x-5 transition-transform shadow"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-xs font-code-sm text-code-sm text-on-surface-variant pl-2">
+<code>net.ipv4.conf.all.send_redirects = 1 (Expected: 0)</code>
+</div>
+</div>
+<!-- Rule 5.3.4: pam_faillock (High Risk - Queued) -->
+<div class="bg-surface-container-low/95 rounded-xl p-space-md shadow-sm hover:shadow-md transition-shadow flex flex-col gap-space-sm relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-space-sm pl-1">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-primary font-bold">Rule 5.3.4</span>
+<span class="px-space-xs py-0.5 rounded bg-error-container/80 text-on-error-container font-label-sm text-label-sm">High Risk</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">Queued in Staging</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface mt-0.5">Ensure pam_faillock is configured for failed login lockouts</h3>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="w-11 h-6 bg-primary-container rounded-full flex items-center p-0.5 cursor-pointer transition-colors shadow-inner" data-checked="true" id="toggle-534" onclick="toggleRemediation('toggle-534')">
+<div class="toggle-dot w-5 h-5 rounded-full bg-on-primary transform translate-x-5 transition-transform shadow"></div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest/80 rounded-lg p-space-xs font-code-sm text-code-sm text-on-surface-variant pl-2 flex items-center justify-between">
+<span>Target: /etc/security/faillock.conf</span>
+<span class="text-tertiary">deny = 3 unlock_time = 900</span>
+</div>
+</div>
+<!-- Rule 5.4.1.1: Password Expiration (Compliant - PASS) -->
+<div class="bg-surface-container-low/60 rounded-xl p-space-md flex flex-col gap-space-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">Rule 5.4.1.1</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> PASS
+                </span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Ensure password expiration is 365 days or less in /etc/login.defs</h3>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary shrink-0">PASS_MAX_DAYS 180</span>
+</div>
+</div>
+<!-- Rule 1.4.1: Core Dumps Restricted (Remediated - PASS) -->
+<div class="bg-surface-container-low/60 rounded-xl p-space-md flex flex-col gap-space-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">Rule 1.4.1</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Remediated
+                </span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Ensure core dumps are restricted (fs.suid_dumpable = 0 &amp; systemd-coredump)</h3>
+</div>
+<span class="material-symbols-outlined text-[18px] text-tertiary">lock</span>
+</div>
+</div>
+<!-- Rule 4.1.3: auditd Active (Remediated - PASS) -->
+<div class="bg-surface-container-low/60 rounded-xl p-space-md flex flex-col gap-space-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="font-code-sm text-code-sm text-on-surface-variant font-bold">Rule 4.1.3</span>
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Remediated
+                </span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-code-sm text-code-sm">Critical</span>
+</div>
+<h3 class="font-title-sm text-title-sm text-on-surface">Ensure auditd service is enabled and active</h3>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">systemctl active</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 3: Interactive 'Review & Apply Diff' Drawer / Panel (Span 4) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col gap-space-md sticky top-20">
+<div class="bg-surface-container-low/95 backdrop-blur-md rounded-xl p-space-md flex flex-col gap-space-md shadow-xl">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">difference</span>
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">Atomic Remediation Staging</span>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container/20 text-primary font-code-sm text-code-sm">
+            3 Queued
+          </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant -mt-1">
+          Review generated configuration diffs before invoking Polkit authentication. Atomic commit writes with rollback journaling.
+        </p>
+<!-- Target Diff 1: sshd_config.d -->
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest rounded-lg p-space-sm font-code-sm text-code-sm overflow-x-auto">
+<div class="flex items-center justify-between text-on-surface-variant pb-1">
+<span class="text-primary truncate">/etc/ssh/sshd_config.d/99-cis-hardening.conf</span>
+<span class="text-[10px] px-1 rounded bg-surface-container-high text-on-surface-variant">diff: +3 -1</span>
+</div>
+<div class="flex flex-col gap-0.5 font-code-sm">
+<div class="text-on-surface-variant/40">@@ -14,4 +14,6 @@</div>
+<div class="bg-error-container/25 text-error px-1 rounded-sm flex items-center gap-2">
+<span>-</span><span>MaxAuthTries 6</span>
+</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>MaxAuthTries 4</span>
+</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>ClientAliveInterval 300</span>
+</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>ClientAliveCountMax 2</span>
+</div>
+</div>
+</div>
+<!-- Target Diff 2: sysctl.d -->
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest rounded-lg p-space-sm font-code-sm text-code-sm overflow-x-auto">
+<div class="flex items-center justify-between text-on-surface-variant pb-1">
+<span class="text-primary truncate">/etc/sysctl.d/99-cis-network.conf</span>
+<span class="text-[10px] px-1 rounded bg-surface-container-high text-on-surface-variant">diff: +2 -0</span>
+</div>
+<div class="flex flex-col gap-0.5 font-code-sm">
+<div class="text-on-surface-variant/40">@@ -0,0 +1,2 @@</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>net.ipv4.conf.all.send_redirects = 0</span>
+</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>net.ipv4.conf.default.send_redirects = 0</span>
+</div>
+</div>
+</div>
+<!-- Target Diff 3: faillock.conf -->
+<div class="flex flex-col gap-space-xs bg-surface-container-lowest rounded-lg p-space-sm font-code-sm text-code-sm overflow-x-auto">
+<div class="flex items-center justify-between text-on-surface-variant pb-1">
+<span class="text-primary truncate">/etc/security/faillock.conf</span>
+<span class="text-[10px] px-1 rounded bg-surface-container-high text-on-surface-variant">diff: +2 -0</span>
+</div>
+<div class="flex flex-col gap-0.5 font-code-sm">
+<div class="text-on-surface-variant/40">@@ -22,2 +22,4 @@</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>deny = 3</span>
+</div>
+<div class="bg-tertiary-container/25 text-tertiary px-1 rounded-sm flex items-center gap-2">
+<span>+</span><span>unlock_time = 900</span>
+</div>
+</div>
+</div>
+<!-- Gemini AI Callout Card -->
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col gap-1.5 shadow-sm">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span class="font-title-sm text-title-sm font-semibold">Gemini Security Intelligence</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+            Setting <span class="font-code-sm text-primary">MaxAuthTries 4</span> neutralizes automated brute-force attacks over SSH without disrupting public-key authentication workflows. Changes are staged into atomic commit branch <span class="font-code-sm text-tertiary">#9fa2c5</span>.
+          </p>
+</div>
+<!-- Bottom Action Bar & Rollback Info -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="w-1/2 py-2 px-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-title-sm text-title-sm transition-colors text-center shadow-sm">
+              Simulate Dry-Run
+            </button>
+<button class="w-1/2 py-2 px-space-sm rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-title-sm text-title-sm font-semibold transition-all flex items-center justify-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[18px]">security</span>
+<span>Apply Fixes</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant text-[11px] font-label-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary">restore</span>
+<span>Snapshot Safety: Automatic Btrfs &amp; Git checkpoint will be created prior to disk write.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

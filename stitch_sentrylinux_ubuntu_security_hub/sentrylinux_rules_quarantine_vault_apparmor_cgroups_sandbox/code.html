@@ -1,0 +1,633 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-container": "#00a574", "on-secondary-fixed-variant": "#5516be", "surface-bright": "#383849", "on-background": "#e3e0f7", "secondary": "#d0bcff", "secondary-fixed-dim": "#d0bcff", "on-error": "#690005", "on-primary-fixed-variant": "#852400", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "outline": "#aa8a80", "on-surface": "#e3e0f7", "surface-container": "#1e1e2e", "tertiary-fixed": "#68fcbf", "on-primary-fixed": "#3a0b00", "on-tertiary": "#003825", "primary-fixed-dim": "#ffb59e", "primary-container": "#f85e2a", "on-primary": "#5e1700", "primary-fixed": "#ffdbd0", "primary": "#ffb59e", "on-tertiary-container": "#003120", "on-surface-variant": "#e2bfb4", "tertiary-fixed-dim": "#45dfa4", "surface-tint": "#ffb59e", "surface": "#121221", "inverse-surface": "#e3e0f7", "surface-container-lowest": "#0d0d1c", "on-secondary-fixed": "#23005c", "inverse-primary": "#ae3200", "background": "#121221", "on-primary-container": "#521300", "on-tertiary-fixed": "#002114", "tertiary": "#45dfa4", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "on-secondary": "#3c0091", "on-secondary-container": "#c4abff", "surface-container-low": "#1a1a2a", "surface-variant": "#333344", "outline-variant": "#5a4139", "error": "#ffb4ab", "on-error-container": "#ffdad6", "on-tertiary-fixed-variant": "#005137", "surface-dim": "#121221", "inverse-on-surface": "#2f2f40", "surface-container-high": "#292839" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-compact": "0.75rem", "gutter-dense": "0.5rem", "space-sm": "0.5rem", "space-lg": "1rem", "space-md": "0.75rem", "margin": "1.5rem", "gutter": "1rem", "space-xl": "1.5rem", "space-xs": "0.25rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-lg": ["Inter"], "label-md": ["Inter"], "display-lg": ["Inter"], "title-sm": ["Inter"], "body-lg": ["JetBrains Mono"], "code-sm": ["JetBrains Mono"], "body-md": ["JetBrains Mono"], "headline-md": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><span class="font-title-sm text-title-sm">Overview</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><span class="font-title-sm text-title-sm">DNS Sentry</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><span class="font-title-sm text-title-sm">Outbound Intercepts</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold transition-colors shadow-sm" data-path="rules-and-quarantine" href="#"><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full">
+<!-- Interactive Script for Tab Switching & Sidebar Link Sync -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Highlight Rules & Quarantine in navigation sidebar dynamically
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'rules-and-quarantine') {
+          link.className = 'flex items-center justify-between px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container font-semibold transition-colors shadow-sm';
+        } else {
+          link.classList.remove('bg-primary-container', 'text-on-primary-container');
+        }
+      });
+    });
+
+    function switchVaultTab(tabIndex, button) {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.className = 'tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all';
+      });
+      button.className = 'tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-bright text-on-surface shadow-sm transition-all';
+      
+      const cards = document.querySelectorAll('.quarantine-card');
+      if (tabIndex === 0) {
+        cards.forEach(c => c.style.display = 'flex');
+      } else if (tabIndex === 1) {
+        cards.forEach((c, i) => c.style.display = (i === 0 || i === 1) ? 'flex' : 'none');
+      } else if (tabIndex === 2) {
+        cards.forEach((c, i) => c.style.display = (i === 0) ? 'flex' : 'none');
+      } else {
+        cards.forEach(c => c.style.display = 'none');
+      }
+    }
+
+    function toggleAppArmorSwitch(button) {
+      const isEnforced = button.getAttribute('data-enforce') === 'true';
+      const knob = button.querySelector('.switch-knob');
+      const label = button.parentElement.querySelector('.mode-label');
+      
+      if (isEnforced) {
+        button.setAttribute('data-enforce', 'false');
+        button.className = 'relative inline-flex h-6 w-11 items-center rounded-full bg-surface-container-highest transition-colors cursor-pointer';
+        knob.style.transform = 'translateX(2px)';
+        if (label) {
+          label.textContent = 'Complain';
+          label.className = 'mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant';
+        }
+      } else {
+        button.setAttribute('data-enforce', 'true');
+        button.className = 'relative inline-flex h-6 w-11 items-center rounded-full bg-primary-container transition-colors cursor-pointer';
+        knob.style.transform = 'translateX(22px)';
+        if (label) {
+          label.textContent = 'Enforce';
+          label.className = 'mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold';
+        }
+      }
+    }
+  </script>
+<!-- Top Context & Kernel Enforcement Status Bar -->
+<header class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md pb-space-lg mb-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">security</span>
+<h1 class="font-headline-lg text-headline-lg tracking-tight text-on-surface">Rules &amp; Quarantine Vault</h1>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-primary-container/20 text-primary-container font-semibold ml-space-xs">Adwaita Core</span>
+</div>
+<!-- Enforcement Chips -->
+<div class="flex flex-wrap items-center gap-space-xs pt-0.5">
+<div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">AppArmor 4.0.0-beta3 <span class="text-on-surface">(68 enforce, 4 complain)</span></span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">cgroup v2: <span class="text-on-surface">/sentry.slice</span> (Limits active)</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[13px] text-primary">lock</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Vault: <span class="text-on-surface">/var/lib/sentry/quarantine</span> (0000 +i)</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-sm py-1 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[13px] text-tertiary">memory</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">SECCOMP: <span class="text-tertiary-fixed-dim">BPF JIT Active</span></span>
+</div>
+</div>
+</div>
+<!-- Top Action Buttons -->
+<div class="flex items-center gap-space-xs shrink-0 self-start xl:self-center">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">folder_zip</span>
+<span>Export Profiles (.d)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-label-md font-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">quick_reference_all</span>
+<span>Audit Logs (dmesg)</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-primary-container hover:bg-[#d64515] active:bg-[#bf3d13] text-on-primary-container text-label-md font-label-md font-semibold transition-all shadow-md">
+<span class="material-symbols-outlined text-[18px]">add_moderator</span>
+<span>+ Create Quarantine Jail / Rule</span>
+</button>
+</div>
+</header>
+<!-- Top Telemetry & Vault Capacity Gauges (4 Grid Bento Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Card 1: Quarantined Binaries -->
+<div class="bg-surface-container-low/95 p-space-md rounded-xl flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Isolated Binaries</span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-tertiary-container/20 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+          Zero Egress Leak
+        </span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">3</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Inodes Jailed</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-xs">
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>Trojan / Dropper / Script</span>
+<span class="text-error font-semibold">1 Critical</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden flex">
+<div class="bg-error h-full" style="width: 33.3%;"></div>
+<div class="bg-primary-container h-full" style="width: 33.3%;"></div>
+<div class="bg-secondary h-full" style="width: 33.4%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: AppArmor Enforcements -->
+<div class="bg-surface-container-low/95 p-space-md rounded-xl flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-tertiary/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">AppArmor Confinement</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">94.4% Active</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">68</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Enforce / 4 Complain</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-xs">
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>firefox, sshd, ping, bwrap</span>
+<span class="text-tertiary font-semibold">Strict LSM</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden flex">
+<div class="bg-tertiary h-full" style="width: 94.4%;"></div>
+<div class="bg-outline h-full" style="width: 5.6%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: cgroup v2 Resources -->
+<div class="bg-surface-container-low/95 p-space-md rounded-xl flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-secondary-container/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">cgroup v2 Jails</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">CPU 5% Clamped</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">12.4</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ 256 MB RAM</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-xs">
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>Disk I/O Throttled</span>
+<span class="text-secondary font-semibold">100 KB/s Ceiling</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-secondary-container h-full" style="width: 4.8%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: Vault Storage Integrity -->
+<div class="bg-surface-container-low/95 p-space-md rounded-xl flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Vault Integrity</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+</div>
+<div class="flex items-baseline gap-space-xs my-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">Btrfs Ro</span>
+<span class="font-body-md text-body-md text-on-surface-variant">LUKS AES-256</span>
+</div>
+<div class="flex flex-col gap-1 pt-space-xs">
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-surface-variant">
+<span>Subvolume Snapshot #104</span>
+<span class="text-tertiary font-semibold">+i Immutable</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+<div class="bg-tertiary h-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quarantine Vault & Isolated Binaries Table / List -->
+<section class="flex flex-col gap-space-md mb-space-xl">
+<!-- Header with Filter Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm bg-surface-container-low/80 p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs overflow-x-auto p-0.5">
+<button class="tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-bright text-on-surface shadow-sm transition-all" onclick="switchVaultTab(0, this)">
+          All Quarantined (3)
+        </button>
+<button class="tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" onclick="switchVaultTab(1, this)">
+          Malware &amp; Inodes (2)
+        </button>
+<button class="tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" onclick="switchVaultTab(2, this)">
+          Staged for Deletion (1)
+        </button>
+<button class="tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" onclick="switchVaultTab(3, this)">
+          False Positive Exclusions (0)
+        </button>
+</div>
+<!-- Search Input -->
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-highest/60 text-on-surface font-body-md text-body-md pl-9 pr-12 py-1.5 rounded-full outline-none focus:bg-surface-container-highest transition-colors placeholder:text-on-surface-variant/60" placeholder="Filter quarantined hash, path, or inode... (Ctrl+F)" type="text">
+<span class="absolute right-3 top-2 font-code-sm text-code-sm text-on-surface-variant/60 bg-surface-container-low px-1.5 py-0.5 rounded">Ctrl+F</span>
+</div>
+</div>
+<!-- Quarantined Artifact Cards Stack -->
+<div class="flex flex-col gap-space-md" id="quarantine-artifacts-list">
+<!-- Item 1: High Alert ELF Trojan -->
+<article class="quarantine-card bg-surface-container-low p-space-md rounded-xl flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center shrink-0 text-on-error-container shadow-inner">
+<span class="material-symbols-outlined text-[22px]">coronavirus</span>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-mono tracking-tight">srv_mon</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-semibold uppercase">High Alert</span>
+<span class="font-code-sm text-code-sm text-error font-semibold">Trojan.Mirai.Agent (Inode #91823)</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">ELF 64-bit LSB</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-space-md gap-y-0.5 font-code-sm text-code-sm text-on-surface-variant">
+<div class="truncate">
+<span class="text-outline">Origin:</span> <span class="text-on-surface">/tmp/.x11-unix/.cache/srv_mon</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Vault:</span> <span class="text-on-surface">/var/lib/sentry/quarantine/91823.isolated</span>
+</div>
+<div class="truncate">
+<span class="text-outline">SHA256:</span> <span class="text-primary font-mono">7f8a91b29df14ac01948ee912e75cb41c</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Permissions:</span> <span class="text-error font-semibold">0000 (No exec, No read, Root locked)</span>
+</div>
+</div>
+<!-- Containment Parameters -->
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Sandbox Jail:</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">memory.max=16M</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">pids.max=1</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary">eBPF egress drop</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-primary-fixed-dim">SELinux/AppArmor: quarantined_t</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap xl:flex-col items-end gap-space-xs shrink-0 w-full xl:w-auto mt-space-xs xl:mt-0">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-error-container hover:bg-error hover:text-on-error text-on-error-container font-label-md text-label-md font-semibold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">delete_forever</span>
+<span>Permanently Shred (shred -u -z)</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px] text-secondary">terminal</span>
+<span>Ghidra / Hex View</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Override</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 2: Medium Alert Obfuscated Python Dropper -->
+<article class="quarantine-card bg-surface-container-low p-space-md rounded-xl flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center shrink-0 text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-[22px]">code_blocks</span>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-mono tracking-tight">telemetry_updater.py</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-primary-container/30 text-primary-container font-semibold uppercase">Medium Risk</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Reverse TCP Shell Payload (Base64 + socket)</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Python 3.12 Script</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-space-md gap-y-0.5 font-code-sm text-code-sm text-on-surface-variant">
+<div class="truncate">
+<span class="text-outline">Origin:</span> <span class="text-on-surface">~/.local/share/gnome-shell/extensions/telemetry_updater.py</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Vault:</span> <span class="text-on-surface">/var/lib/sentry/quarantine/88210.isolated</span>
+</div>
+<div class="truncate">
+<span class="text-outline">SHA256:</span> <span class="text-primary font-mono">c4a201e523f009ebbc55d013f99bf</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Permissions:</span> <span class="text-on-surface">0000 (Chmod lock, AST decompiled)</span>
+</div>
+</div>
+<!-- Containment Parameters -->
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Sandbox Jail:</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">network.unshare=CLONE_NEWNET</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">tmpfs=/tmp:ro</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary">bwrap sandbox</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap xl:flex-col items-end gap-space-xs shrink-0 w-full xl:w-auto mt-space-xs xl:mt-0">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md font-semibold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">data_object</span>
+<span>Inspect Deobfuscated AST</span>
+</button>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-highest hover:bg-error-container hover:text-on-error-container text-on-surface-variant font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Shred</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>False Positive</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Item 3: Suspicious Dynamic Library Hook -->
+<article class="quarantine-card bg-surface-container-low p-space-md rounded-xl flex flex-col xl:flex-row items-start xl:items-center justify-between gap-space-md hover:bg-surface-container transition-all shadow-sm">
+<div class="flex items-start gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 text-secondary shadow-inner">
+<span class="material-symbols-outlined text-[22px]">extension</span>
+</div>
+<div class="flex flex-col gap-space-xs min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-mono tracking-tight">libcustom_hook.so</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-secondary font-semibold uppercase">Persistence Hook</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">LD_PRELOAD persistence without dpkg provenance</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Shared Object</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-space-md gap-y-0.5 font-code-sm text-code-sm text-on-surface-variant">
+<div class="truncate">
+<span class="text-outline">Origin:</span> <span class="text-on-surface">/etc/ld.so.preload target hook</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Vault:</span> <span class="text-on-surface">/var/lib/sentry/quarantine/44102.isolated</span>
+</div>
+<div class="truncate">
+<span class="text-outline">SHA256:</span> <span class="text-primary font-mono">993e50a418be29d1c0029341aa72</span>
+</div>
+<div class="truncate">
+<span class="text-outline">Inodes:</span> <span class="text-on-surface">#44102 (chattr +i applied)</span>
+</div>
+</div>
+<!-- Containment Parameters -->
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Protection Hook:</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface">/etc/ld.so.preload sanitized</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary">Dpkg checksum verified</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-wrap xl:flex-col items-end gap-space-xs shrink-0 w-full xl:w-auto mt-space-xs xl:mt-0">
+<button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md font-semibold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span>
+<span>Verify Dpkg Baseline</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-highest hover:bg-error-container hover:text-on-error-container text-on-surface-variant font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span>Shred Inode</span>
+</button>
+</div>
+</article>
+</div>
+</section>
+<!-- AppArmor Profile Manager & cgroups v2 Sandbox Matrix (Split View) -->
+<section class="grid grid-cols-1 xl:grid-cols-2 gap-space-lg mb-space-xl">
+<!-- AppArmor Profile Rules Card -->
+<div class="bg-surface-container-low/95 p-space-lg rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[20px]">admin_panel_settings</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">AppArmor Active Profiles</h2>
+</div>
+<button class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_fix_high</span>
+<span>aa-genprof</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Kernel-enforced mandatory access control policies. Toggle between strict containment and complain-only monitoring.
+        </p>
+<!-- Preference List -->
+<div class="flex flex-col gap-space-xs mt-space-sm bg-surface-container rounded-lg p-space-xs">
+<!-- Profile 1: firefox -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-sm text-title-sm text-on-surface font-mono">usr.bin.firefox</span>
+<span class="mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold">Enforce</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Blocks direct ~/.ssh reads, camera/mic sandbox gate</span>
+</div>
+<button aria-label="Toggle Firefox profile" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-container transition-colors cursor-pointer" data-enforce="true" onclick="toggleAppArmorSwitch(this)">
+<span class="switch-knob inline-block h-4 w-4 transform rounded-full bg-on-primary transition duration-200 ease-in-out" style="transform: translateX(22px);"></span>
+</button>
+</div>
+<!-- Profile 2: curl-restricted -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-sm text-title-sm text-on-surface font-mono">usr.bin.curl-restricted</span>
+<span class="mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold">Enforce</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Restricted egress CIDRs; denies raw execution hooks</span>
+</div>
+<button aria-label="Toggle Curl profile" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-container transition-colors cursor-pointer" data-enforce="true" onclick="toggleAppArmorSwitch(this)">
+<span class="switch-knob inline-block h-4 w-4 transform rounded-full bg-on-primary transition duration-200 ease-in-out" style="transform: translateX(22px);"></span>
+</button>
+</div>
+<!-- Profile 3: dnsmasq -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-sm text-title-sm text-on-surface font-mono">usr.sbin.dnsmasq</span>
+<span class="mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-semibold">Enforce</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Chroot to /etc/dnsmasq.d/; drops CAP_NET_RAW after bind</span>
+</div>
+<button aria-label="Toggle dnsmasq profile" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-container transition-colors cursor-pointer" data-enforce="true" onclick="toggleAppArmorSwitch(this)">
+<span class="switch-knob inline-block h-4 w-4 transform rounded-full bg-on-primary transition duration-200 ease-in-out" style="transform: translateX(22px);"></span>
+</button>
+</div>
+<!-- Profile 4: electron apps (complain mode) -->
+<div class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 transition-colors">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-title-sm text-title-sm text-on-surface font-mono">usr.bin.electron-apps</span>
+<span class="mode-label font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Complain</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Telemetry log only, ignores SIGKILL on sandbox escape audit</span>
+</div>
+<button aria-label="Toggle Electron apps profile" class="relative inline-flex h-6 w-11 items-center rounded-full bg-surface-container-highest transition-colors cursor-pointer" data-enforce="false" onclick="toggleAppArmorSwitch(this)">
+<span class="switch-knob inline-block h-4 w-4 transform rounded-full bg-on-surface-variant transition duration-200 ease-in-out" style="transform: translateX(2px);"></span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Profiles managed: /etc/apparmor.d/</span>
+<button class="font-label-md text-label-md text-primary-container hover:underline">Reload AppArmor Daemon</button>
+</div>
+</div>
+<!-- cgroup v2 Sandbox Jails (Active Isolation Slices) -->
+<div class="bg-surface-container-low/95 p-space-lg rounded-xl flex flex-col justify-between shadow-sm">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">layers</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">cgroup v2 Sandbox Slices</h2>
+</div>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-tertiary">Unified Hierarchy</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Resource-throttled kernel slices guaranteeing containment even under root privileges.
+        </p>
+<!-- Slices List -->
+<div class="flex flex-col gap-space-sm mt-space-sm">
+<!-- Slice 1: sentry-jail-untrusted.slice -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-xs shadow-inner">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm font-mono text-on-surface">sentry-jail-untrusted.slice</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-semibold">Active: 0 Tasks</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-xs pt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">CPU Max</span>
+<span class="font-code-sm text-code-sm text-on-surface">50000 100000 (50%)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Memory High</span>
+<span class="font-code-sm text-code-sm text-on-surface">128M</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Memory Max</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">192M (OOM Kill)</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">IO Weight</span>
+<span class="font-code-sm text-code-sm text-on-surface">io.weight=50</span>
+</div>
+</div>
+</div>
+<!-- Slice 2: sentry-jail-browser-isolated.slice -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-xs shadow-inner">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm font-mono text-on-surface">sentry-jail-browser-isolated.slice</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-secondary-container/40 text-secondary font-semibold">bwrap Micro-VM</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-xs pt-1">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Net Namespace</span>
+<span class="font-code-sm text-code-sm text-on-surface">veth-jail0</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">IPC Space</span>
+<span class="font-code-sm text-code-sm text-on-surface">Isolated</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Tmpfs</span>
+<span class="font-code-sm text-code-sm text-on-surface">Ephemeral 32M</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline">Seccomp</span>
+<span class="font-code-sm text-code-sm text-tertiary">Syscall Filter</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Mount: /sys/fs/cgroup/sentry.slice</span>
+<button class="font-label-md text-label-md text-secondary hover:underline">Re-balance Cgroup Slices</button>
+</div>
+</div>
+</section>
+<!-- Gemini Quarantine Forensics & Execution Lineage -->
+<section class="bg-surface-container-low/95 p-space-lg rounded-xl flex flex-col gap-space-md mb-space-xl shadow-sm relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-48 h-48 bg-secondary-container/15 rounded-full blur-3xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-inner">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<h3 class="font-headline-md text-headline-md text-on-surface">Gemini Quarantine Forensics</h3>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-secondary-container/30 text-secondary font-semibold">AI Confidence: 99.6%</span>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Dynamic Execution Sandbox &amp; Reverse-Engineering Diagnostic</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+<span>readelf -h -S</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[16px] text-tertiary">science</span>
+<span>Micro-Sandbox Re-Exec</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-[#d64515] font-label-md text-label-md font-semibold transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>STIX 2.1 JSON Report</span>
+</button>
+</div>
+</div>
+<!-- Forensic Breakdown Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md pt-space-xs">
+<!-- Inode & Disassembly Summary -->
+<div class="lg:col-span-2 p-space-md rounded-lg bg-surface-container flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Target: Inode #91823 (srv_mon)</span>
+<span class="font-code-sm text-code-sm text-error font-semibold">Mirai-Linux.x86_64 Core</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+          Binary attempted raw socket creation (<code class="text-secondary font-mono">SOCK_RAW</code>) and bound to external port 443 with a known Mirai C2 beaconing signature. The process was trapped via the kernel <code class="text-tertiary font-mono">sys_enter_socket</code> eBPF tracepoint, immediately throttled by <code class="text-on-surface font-mono">sentry.slice</code>, and had its file descriptor unlinked into the immutable vault.
+        </p>
+<!-- Static Vector Graph / SVG Spark -->
+<div class="pt-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-1 block">Threat Vector Decomposition</span>
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1">
+<div class="flex items-center gap-2 px-space-sm py-1.5 rounded bg-surface-container-high shrink-0">
+<span class="material-symbols-outlined text-error text-[16px]">router</span>
+<span class="font-code-sm text-code-sm text-on-surface">Raw Socket Binding</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">BLOCKED</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[14px]">arrow_forward</span>
+<div class="flex items-center gap-2 px-space-sm py-1.5 rounded bg-surface-container-high shrink-0">
+<span class="material-symbols-outlined text-primary text-[16px]">folder_off</span>
+<span class="font-code-sm text-code-sm text-on-surface">Inode Invalidation (0000)</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">LOCKED</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[14px]">arrow_forward</span>
+<div class="flex items-center gap-2 px-space-sm py-1.5 rounded bg-surface-container-high shrink-0">
+<span class="material-symbols-outlined text-secondary text-[16px]">lock_reset</span>
+<span class="font-code-sm text-code-sm text-on-surface">Chattr +i Vault Enforced</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">IMMUTABLE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Forensics Stats & Key Indicators -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col justify-between gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Extracted Threat Signatures</span>
+<div class="flex flex-col gap-space-xs font-code-sm text-code-sm">
+<div class="flex items-center justify-between pb-1">
+<span class="text-on-surface-variant">Packed Header:</span>
+<span class="text-primary font-mono font-semibold">UPX 4.22 modified</span>
+</div>
+<div class="flex items-center justify-between pb-1">
+<span class="text-on-surface-variant">C2 Destination:</span>
+<span class="text-error font-mono font-semibold">185.220.101.44:443</span>
+</div>
+<div class="flex items-center justify-between pb-1">
+<span class="text-on-surface-variant">Dpkg Deviation:</span>
+<span class="text-on-surface font-mono">Orphaned inode (/tmp)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Privilege Esc:</span>
+<span class="text-tertiary font-mono">Preemptively Neutralized</span>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface-container-high/60 text-center">
+<span class="font-label-sm text-label-sm text-tertiary">Safe to retain in vault for reverse triage</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Integrated Monospace Telemetry Terminal Stream -->
+<section class="bg-surface-container-lowest rounded-xl flex flex-col shadow-md relative overflow-hidden transition-all duration-200" id="quarantine-terminal-drawer"><div class="w-full flex items-center justify-center pt-2 pb-1 cursor-pointer hover:bg-surface-container-high/40 transition-colors" onclick="toggleTerminalDrawer()" title="Drag handle / Toggle drawer"><div class="w-10 h-1 rounded-full bg-surface-container-highest"></div></div><div class="flex items-center justify-between px-space-md pb-space-xs"><div class="flex items-center gap-space-xs"><span class="w-2.5 h-2.5 rounded-full bg-error"></span><span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span><span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span><span class="font-code-sm text-code-sm text-on-surface font-semibold ml-space-xs truncate">quarantine-audit.log — /var/log/sentry/quarantine.log &amp; dmesg audit trail</span></div><div class="flex items-center gap-space-sm"><span class="font-code-sm text-code-sm text-tertiary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span><span class="hidden md:inline">STREAMING (eBPF + AppArmor auditd)</span></span><div class="flex items-center gap-1 bg-surface-container-high/60 rounded-lg p-0.5"><button aria-label="Toggle Full Height" class="p-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" onclick="toggleTerminalHeight(this)" title="Toggle Full Height"><span class="material-symbols-outlined text-[16px]">open_in_full</span></button><button aria-label="Collapse Drawer" class="flex items-center gap-1 px-space-xs py-1 rounded hover:bg-surface-bright text-on-surface-variant hover:text-on-surface transition-colors font-label-sm text-label-sm" id="terminal-collapse-btn" onclick="toggleTerminalDrawer()" title="Collapse Drawer"><span class="material-symbols-outlined text-[16px] transition-transform duration-200" id="terminal-collapse-icon">expand_more</span><span class="hidden md:inline" id="terminal-collapse-text">Collapse Drawer</span></button></div></div></div><div class="font-body-md text-body-md text-on-surface-variant flex flex-col gap-1 p-space-sm m-space-md mt-0 bg-surface-container-lowest rounded-lg overflow-x-auto select-text font-mono transition-all duration-200" id="terminal-body-container"><div class="flex items-start gap-space-sm hover:bg-surface-container-high/40 p-0.5 rounded transition-colors"><span class="text-outline shrink-0">14:02:18.104</span><span class="text-error font-semibold shrink-0">[AUDIT:APPARMOR]</span><span class="text-on-surface">type=1400 apparmor="DENIED" operation="open" profile="usr.bin.firefox" name="/home/ubuntu/.ssh/id_ed25519" pid=12401 comm="firefox" requested_mask="r" denied_mask="r" fsuid=1000</span></div><div class="flex items-start gap-space-sm hover:bg-surface-container-high/40 p-0.5 rounded transition-colors"><span class="text-outline shrink-0">14:02:18.109</span><span class="text-primary-container font-semibold shrink-0">[BPF:LSM]</span><span class="text-on-surface">File rename <code class="text-primary">/tmp/.x11-unix/.cache/srv_mon</code> intercepted by LSM hook; routed to quarantine root vault</span></div><div class="flex items-start gap-space-sm hover:bg-surface-container-high/40 p-0.5 rounded transition-colors"><span class="text-outline shrink-0">14:02:18.112</span><span class="text-tertiary font-semibold shrink-0">[VAULT:CHMOD]</span><span class="text-on-surface">Inode 91823 secured with chmod 0000; chattr +i applied. Btrfs read-only subvolume committed snapshot #104</span></div><div class="flex items-start gap-space-sm hover:bg-surface-container-high/40 p-0.5 rounded transition-colors"><span class="text-outline shrink-0">14:02:18.115</span><span class="text-secondary font-semibold shrink-0">[CGROUP:KILL]</span><span class="text-on-surface">Jailed rogue worker exceeded memory quota (oom-kill triggered in <code class="text-secondary">/sys/fs/cgroup/sentry.slice/untrusted</code>)</span></div><div class="flex items-start gap-space-sm hover:bg-surface-container-high/40 p-0.5 rounded transition-colors"><span class="text-outline shrink-0">14:02:19.450</span><span class="text-tertiary font-semibold shrink-0">[SECCOMP:BPF]</span><span class="text-on-surface">Syscall 41 (socket) filtered and dropped for isolated child process PID 12408 in bwrap sandbox</span></div></div></section>
+</div></main></div>
+
+</body></html>

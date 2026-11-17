@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#45dfa4", "error": "#ffb4ab", "tertiary-container": "#00a574", "on-primary-fixed": "#3a0b00", "on-secondary-container": "#c4abff", "on-secondary-fixed-variant": "#5516be", "on-tertiary-container": "#003120", "on-surface": "#e3e0f7", "inverse-surface": "#e3e0f7", "surface-container-high": "#292839", "secondary": "#d0bcff", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "surface-variant": "#333344", "on-primary-fixed-variant": "#852400", "inverse-on-surface": "#2f2f40", "on-surface-variant": "#e2bfb4", "secondary-fixed-dim": "#d0bcff", "on-background": "#e3e0f7", "on-primary": "#5e1700", "outline": "#aa8a80", "on-secondary-fixed": "#23005c", "surface-container-lowest": "#0d0d1c", "surface-container": "#1e1e2e", "surface-bright": "#383849", "primary-fixed": "#ffdbd0", "on-primary-container": "#521300", "background": "#121221", "primary-container": "#f85e2a", "primary": "#ffb59e", "on-tertiary-fixed": "#002114", "on-tertiary-fixed-variant": "#005137", "inverse-primary": "#ae3200", "surface-container-low": "#1a1a2a", "surface-dim": "#121221", "on-error": "#690005", "outline-variant": "#5a4139", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "tertiary-fixed-dim": "#45dfa4", "on-secondary": "#3c0091", "surface": "#121221", "tertiary-fixed": "#68fcbf", "on-error-container": "#ffdad6", "on-tertiary": "#003825", "surface-tint": "#ffb59e", "primary-fixed-dim": "#ffb59e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "0.75rem", "gutter": "1rem", "gutter-dense": "0.5rem", "space-xl": "1.5rem", "margin": "1.5rem", "space-lg": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-compact": "0.75rem" }, "fontFamily": { "title-sm": ["Inter"], "label-sm": ["Inter"], "code-sm": ["JetBrains Mono"], "label-md": ["Inter"], "headline-md": ["Inter"], "body-md": ["JetBrains Mono"], "display-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["JetBrains Mono"] }, "fontSize": { "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">shield</span><span class="font-title-sm text-title-sm">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">public</span><span class="font-title-sm text-title-sm">DNS Sentry</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-highest text-tertiary">428/s</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">track_changes</span><span class="font-title-sm text-title-sm">Outbound Intercepts</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container">1</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">checklist</span><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">radar</span><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="daemon-restarts-and-needrestart" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">restart_alt</span><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></div></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">hub</span><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_supervised</span><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">tune</span><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></div></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full gap-space-lg select-text">
+<!-- Active Navigation Sync for Host Shell -->
+<script>
+    (function syncActiveNav() {
+      try {
+        const navLinks = document.querySelectorAll('aside nav a');
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-path') === 'dns-sentry') {
+            link.classList.add('bg-primary-container', 'text-on-primary-container');
+            link.classList.remove('text-on-surface-variant');
+            const badge = link.querySelector('span:last-child');
+            if (badge) {
+              badge.classList.remove('bg-surface-container-highest', 'text-tertiary');
+              badge.classList.add('bg-on-primary-container', 'text-primary');
+            }
+          } else {
+            link.classList.remove('bg-primary-container', 'text-on-primary-container');
+          }
+        });
+      } catch (e) {
+        console.warn('Navigation state sync bypassed:', e);
+      }
+    })();
+  </script>
+<!-- Ambient Backdrop Lighting Glows -->
+<div class="relative w-full">
+<div class="absolute -top-10 left-1/4 w-96 h-40 bg-primary-container/10 blur-[100px] pointer-events-none rounded-full"></div>
+<div class="absolute top-20 right-10 w-80 h-48 bg-secondary-container/15 blur-[90px] pointer-events-none rounded-full"></div>
+<!-- Title & Stream Diagnostics Row -->
+<div class="relative flex flex-col xl:flex-row xl:items-center justify-between gap-space-md mb-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs bg-surface-container-high px-2.5 py-1 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[18px]">stream</span>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight font-semibold">DNS Sentry — Live Query Stream</h1>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">tun4 / resolvectl</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/80">
+          Kernel socket hooks intercepting eBPF cgroup egress paired with NextDNS ultra-low latency DoH resolver.
+        </p>
+</div>
+<!-- Real-time Status Badges & Controls -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-low shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">SSE Live Stream: <span class="font-code-sm text-tertiary-fixed-dim">NextDNS DoH (link 4)</span></span>
+</div>
+<div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-low shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-tertiary">speed</span>
+<span class="font-label-md text-label-md text-on-surface">RTT: <span class="font-code-sm text-tertiary font-semibold">1.8ms</span></span>
+</div>
+<div class="flex items-center gap-space-xs px-3 py-1.5 rounded-full bg-surface-container-low shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-primary">verified</span>
+<span class="font-label-md text-label-md text-on-surface">DNSSEC Strict</span>
+</div>
+</div>
+</div>
+<!-- Action Toolbar (GNOME / Libadwaita Pill Panel) -->
+<div class="p-space-sm rounded-xl bg-surface-container-low shadow-md flex flex-col gap-space-sm mt-space-md">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-sm">
+<!-- Search Input Bar -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest text-on-surface font-code-sm text-code-sm pl-9 pr-24 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-container placeholder:text-on-surface-variant/40" id="querySearchInput" placeholder="Search domains, client processes (/usr/bin/curl), or IPs (supports regex ^.*)..." type="text"/>
+<div class="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 pointer-events-none">
+<span class="font-code-sm text-[10px] text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded shadow-sm">.* REGEX</span>
+<span class="font-code-sm text-[10px] text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded shadow-sm">Ctrl+F</span>
+</div>
+</div>
+<!-- Master Telemetry Controls -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 lg:pb-0">
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container hover:opacity-90 active:scale-95 transition-all shadow-sm" id="streamToggleBtn">
+<span class="material-symbols-outlined text-[16px]" id="streamIcon">pause</span>
+<span class="font-label-md text-label-md font-semibold" id="streamStatusText">Pause Stream</span>
+</button>
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">mop</span>
+<span class="font-label-md text-label-md">Clear Buffer</span>
+</button>
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">download</span>
+<span class="font-label-md text-label-md">Export PCAP/JSON</span>
+</button>
+<div class="h-5 w-px bg-surface-container-highest mx-1"></div>
+<button class="flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-bright transition-all shadow-sm" title="Rate Limiting &amp; Triage Config">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span class="font-label-md text-label-md">Triage Mode</span>
+</button>
+</div>
+</div>
+<!-- Quick Filter Pills -->
+<div class="flex items-center gap-space-xs overflow-x-auto pt-1 no-scrollbar text-on-surface-variant">
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-primary-container text-on-primary-container font-semibold transition-all">
+          All Queries (428/s)
+        </button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Blocked Trackers (142/s)
+        </button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Allowed (286/s)
+        </button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 animate-pulse">
+<span class="material-symbols-outlined text-[13px]">warning</span> Malware / C2 Flagged (3)
+        </button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">
+          Encrypted DoH/DoT
+        </button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container text-on-surface hover:bg-surface-container-high transition-all">
+          Local Queries (mDNS / systemd)
+        </button>
+</div>
+</div>
+</div>
+<!-- KPI Metric Overview Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Metric 1: Total Queries -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Ingested (24h)</span>
+<span class="material-symbols-outlined text-[18px] text-tertiary">dns</span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-space-sm">
+<span class="font-display-lg text-[28px] font-bold text-on-surface tracking-tight">1,284,912</span>
+<span class="font-code-sm text-code-sm text-tertiary">+12.4%</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1.5">
+<div class="h-1.5 flex-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container w-[99.4%]"></div>
+</div>
+<span class="font-code-sm text-[10px] text-on-surface-variant font-medium">99.4% DoH</span>
+</div>
+</div>
+<!-- Metric 2: Threats & C2 -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">Threats &amp; C2 Neutralized</span>
+<span class="material-symbols-outlined text-[18px] text-error">fitbit_jumping_jacks</span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-space-sm">
+<span class="font-display-lg text-[28px] font-bold text-error tracking-tight">1,402</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">quarantined</span>
+</div>
+<div class="mt-space-xs flex items-center justify-between text-on-surface-variant">
+<span class="font-code-sm text-[11px] text-error/90 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">shield</span> NextDNS + ThreatFeed
+        </span>
+<span class="font-code-sm text-[10px] bg-error-container text-on-error-container px-1.5 py-0.2 rounded font-semibold">100% Intercept</span>
+</div>
+</div>
+<!-- Metric 3: Tracking & Telemetry -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Tracking Suppressed</span>
+<span class="material-symbols-outlined text-[18px] text-primary">filter_alt</span>
+</div>
+<div class="flex items-baseline gap-space-xs mt-space-sm">
+<span class="font-display-lg text-[28px] font-bold text-on-surface tracking-tight">38.6%</span>
+<span class="font-code-sm text-code-sm text-primary">overall egress</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1.5">
+<div class="h-1.5 flex-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[38.6%]"></div>
+</div>
+<span class="font-code-sm text-[10px] text-on-surface-variant">496,170 Drops</span>
+</div>
+</div>
+<!-- Metric 4: Latency & Sparkline -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container p-space-md shadow-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Avg Resolution Time</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">bolt</span>
+</div>
+<div class="flex items-baseline justify-between mt-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-[28px] font-bold text-on-surface tracking-tight">1.84</span>
+<span class="font-code-sm text-code-sm text-tertiary">ms</span>
+</div>
+<!-- Micro Inline Sparkline SVG -->
+<svg class="w-24 h-6 text-tertiary" fill="none" preserveaspectratio="none" viewbox="0 0 100 24">
+<path d="M0,18 L12,16 L24,19 L36,12 L48,15 L60,8 L72,11 L84,5 L96,7 L100,6" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="mt-space-xs flex items-center justify-between">
+<span class="font-code-sm text-[11px] text-on-surface-variant">Anycast Edge: Frankfurt-FRA1</span>
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+</div>
+</div>
+</div>
+<!-- Real-Time SSE Stream Monospace Tabular Panel -->
+<div class="relative rounded-xl bg-surface-container overflow-hidden shadow-xl flex flex-col">
+<!-- Log Header Strip -->
+<div class="px-space-md py-space-sm bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span class="font-title-sm text-title-sm text-on-surface">Live Resolv Egress Socket Stream</span>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-tertiary">142 buffered records</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="hidden sm:flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Auto-Scroll Active</span>
+</div>
+<button class="p-1 rounded hover:bg-surface-bright text-on-surface-variant transition-colors" title="Toggle Compact Mode">
+<span class="material-symbols-outlined text-[16px]">view_compact</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-code-sm text-code-sm border-collapse min-w-[1100px]">
+<thead>
+<tr class="bg-surface-container-highest/60 text-on-surface-variant uppercase text-[10px] tracking-wider font-semibold">
+<th class="py-2.5 px-space-md w-28">Timestamp</th>
+<th class="py-2.5 px-space-md w-56">Client / Process</th>
+<th class="py-2.5 px-space-md min-w-[260px]">Domain &amp; Record</th>
+<th class="py-2.5 px-space-md w-52">Intelligence &amp; Category</th>
+<th class="py-2.5 px-space-md w-40">Protocol &amp; Sec</th>
+<th class="py-2.5 px-space-md w-36">Status</th>
+<th class="py-2.5 px-space-md text-right w-44">Triage Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest/30" id="sseStreamTableBody">
+<!-- Row 1: C2 Alert (Critical Coral Intrusion) -->
+<tr class="bg-error-container/20 hover:bg-error-container/30 transition-colors group">
+<td class="py-3 px-space-md text-error font-medium">14:26:01.842</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-error">terminal</span>
+<span class="text-on-surface font-semibold">/usr/bin/curl</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 40912</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs font-semibold">
+<span class="material-symbols-outlined text-[14px] text-error">gavel</span>
+<span class="text-error truncate max-w-xs">c2-stealth-beacon.xyz</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">A</span>
+</div>
+<div class="text-[10px] text-on-surface-variant/80 pl-5">Resolved CNAME: pool-nl.darkdns.org</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm font-semibold bg-error text-on-error">
+<span class="material-symbols-outlined text-[13px]">smart_toy</span>
+                Gemini C2 / Phishing
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-error">BOGUS</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold text-[11px] uppercase tracking-wide">
+                BLOCKED (Rule #412)
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-90 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors" title="Deep Gemini AI Analysis">
+<span class="material-symbols-outlined text-[14px] text-secondary">psychology</span>
+</button>
+<button class="px-2 py-1 bg-error-container hover:bg-error hover:text-on-error text-on-error-container rounded text-[11px] font-label-md font-semibold transition-colors" title="Quarantine Subprocess Tree">
+                  Kill Tree
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Discord Telemetry (Blocked Tracker) -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:26:01.710</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">forum</span>
+<span class="text-on-surface">discord</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 18420</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">track_changes</span>
+<span class="text-on-surface truncate max-w-xs font-mono">telemetry.discordapp.com</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">HTTPS</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-secondary-container/40 text-on-secondary-container">
+                Analytics &amp; Telemetry
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary">TLS 1.3</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-medium text-[11px]">
+                SINKHOLED 0.0.0.0
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                  Allow
+                </button>
+<button class="px-2 py-1 bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant rounded text-[11px] font-label-md transition-colors">
+                  Inspect
+                </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Anthropic API (Trusted Endpoint - Allowed) -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:26:01.402</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-tertiary">code_blocks</span>
+<span class="text-on-surface">code</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 32104</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">api</span>
+<span class="text-tertiary-fixed font-semibold truncate max-w-xs font-mono">api.anthropic.com</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">A</span>
+</div>
+<div class="text-[10px] text-on-surface-variant/70 pl-5">160.79.104.10 (Cloudflare Edge)</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-tertiary-container/30 text-tertiary">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                Trusted API Endpoint
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary font-semibold">DNSSEC OK</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary-fixed font-semibold text-[11px]">
+                ALLOWED
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-error-container hover:text-on-error-container text-on-surface-variant rounded text-[11px] font-label-md transition-colors">
+                  Deny
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Ubuntu Security Mirror (System Verified) -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:26:00.998</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-primary">system_update</span>
+<span class="text-on-surface">systemd-resolved</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 742</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary">check_circle</span>
+<span class="text-on-surface truncate max-w-xs font-mono">archive.ubuntu.com</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">A / AAAA</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-tertiary-container/20 text-tertiary">
+                Verified Ubuntu Mirror
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary">DNSSEC OK</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary-fixed font-semibold text-[11px]">
+                ALLOWED
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                  Details
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Spotify Telemetry Tracker -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:26:00.412</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">graphic_eq</span>
+<span class="text-on-surface">spotify</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 19822</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-primary">block</span>
+<span class="text-on-surface truncate max-w-xs font-mono">tracker.spotify.com</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">HTTPS</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-primary-container/20 text-primary">
+                Ad Tracker (EasyList)
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Filtered</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-container font-semibold text-[11px]">
+                BLOCKED (Rule #88)
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                  Whitelist
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Local AI Agent Worker Outbound -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:25:59.882</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary">memory</span>
+<span class="text-on-surface">python3 (ai-worker)</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 51201</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">hub</span>
+<span class="text-on-surface truncate max-w-xs font-mono">huggingface.co</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">SVCB</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-secondary-container/50 text-on-secondary-container">
+<span class="material-symbols-outlined text-[12px]">psychology</span>
+                AI Model Repository
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary">TLS 1.3</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary-fixed font-semibold text-[11px]">
+                ALLOWED
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                  Audit IPC
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 7: Microsoft Telemetry (In App Center) -->
+<tr class="hover:bg-surface-container-high/40 transition-colors group">
+<td class="py-3 px-space-md text-on-surface-variant">14:25:59.201</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[15px] text-on-surface-variant">code</span>
+<span class="text-on-surface">code</span>
+<span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID 32104</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-primary">visibility_off</span>
+<span class="text-on-surface truncate max-w-xs font-mono">in.appcenter.ms</span>
+<span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">AAAA</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm bg-secondary-container/40 text-on-secondary-container">
+                Crashlytics &amp; Telemetry
+              </span>
+</td>
+<td class="py-3 px-space-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="text-tertiary">DoH</span>
+<span class="text-outline">/</span>
+<span class="text-tertiary">Strict Valid</span>
+</div>
+</td>
+<td class="py-3 px-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container-highest text-primary font-medium text-[11px]">
+                SINKHOLED 0.0.0.0
+              </span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+<button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                  Allow
+                </button>
+<button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+<span class="material-symbols-outlined text-[15px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Live Telemetry Append Simulation Indicator -->
+<div class="px-space-md py-2 bg-surface-container-lowest/80 flex items-center justify-between text-on-surface-variant font-code-sm text-[11px]">
+<div class="flex items-center gap-space-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span>Awaiting kernel netlink event socket push...</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span>Dropped rate: 0.0001%</span>
+<span>|</span>
+<span>eBPF Filter ID: #7712</span>
+</div>
+</div>
+</div>
+<!-- Deep Query Inspection Modal Drawer (Interactive Libadwaita Sub-Pane) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- Left Column: Gemini AI Deep Inspection Card -->
+<div class="lg:col-span-2 rounded-xl bg-surface-container p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-7 h-7 rounded-lg bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[16px]">psychology</span>
+</div>
+<div>
+<h2 class="font-title-sm text-title-sm text-on-surface">Gemini Autonomous Query Triage</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Real-time heuristics analysis on intercepted payload #40912</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Severity: High (9.4/10)
+        </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low font-code-sm text-code-sm flex flex-col gap-space-xs text-on-surface">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Target: <span class="text-error font-semibold">c2-stealth-beacon.xyz</span></span>
+<span class="text-[10px]">Shannon Entropy: 4.82 (High / Encrypted DGA)</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant/90 leading-relaxed mt-1">
+<strong class="text-on-surface">Finding:</strong> The binary <code class="text-primary font-mono bg-surface-container-highest px-1 rounded">/usr/bin/curl</code> attempted resolution of a newly-registered domain (age: 48h) mapped to a fast-flux DNS network. Origin process was spawned by non-interactive shell in <code class="text-primary font-mono bg-surface-container-highest px-1 rounded">/tmp/.x11-unix/.cache</code>.
+        </div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-tertiary text-[15px]">check_circle</span>
+<span>AppArmor IPC sandbox isolated socket #55</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors">
+            Generate Lynis Report
+          </button>
+<button class="px-3 py-1.5 rounded-lg bg-error-container hover:bg-error hover:text-on-error text-on-error-container font-label-md text-label-md font-semibold transition-colors">
+            Commit Blacklist to NextDNS
+          </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Micro Live Stats & Resolver Cache -->
+<div class="rounded-xl bg-surface-container p-space-md shadow-md flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-on-surface">Resolver Cache Stat</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">memory</span>
+</div>
+<div class="flex flex-col gap-space-xs font-code-sm text-code-sm">
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant">Cache Hit Ratio</span>
+<span class="text-tertiary font-semibold">91.4%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[91.4%]"></div>
+</div>
+<div class="flex justify-between items-center py-1 mt-1">
+<span class="text-on-surface-variant">eBPF Ring Buffer</span>
+<span class="text-primary font-semibold">1,000 / 10,000</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[10%]"></div>
+</div>
+<div class="flex justify-between items-center py-1 mt-1">
+<span class="text-on-surface-variant">NextDNS API Sync</span>
+<span class="text-on-surface flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> 0.2s ago
+          </span>
+</div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<button class="w-full py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md text-center transition-colors">
+          Flush Local systemd DNS Cache
+        </button>
+</div>
+</div>
+</div>
+<!-- Bottom Telemetry Status Drawer / Ubuntu Footer Strip -->
+<div class="mt-space-xs p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="flex items-center gap-space-xs text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px]">security</span>
+<span class="text-on-surface font-semibold">Profile:</span>
+<span class="text-on-surface-variant">Ultra-Hardened-Workstation</span>
+</div>
+<div class="hidden lg:flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm">
+<span class="text-outline">•</span>
+<span>Blocklists: <span class="text-tertiary">OISD</span> + <span class="text-tertiary">NextDNS Threat Intel</span> + <span class="text-primary">Ubuntu AppArmor IPC</span></span>
+</div>
+</div>
+<!-- Co-existence Active Routing Indicator -->
+<div class="flex items-center gap-space-sm flex-wrap justify-end">
+<div class="flex items-center gap-space-xs px-2.5 py-1 rounded bg-surface-container-highest text-on-surface font-code-sm text-[11px]">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Co-Existence: <strong class="text-tertiary font-medium">ProtonVPN (wg0)</strong> default + <strong class="text-primary font-medium">NextDNS DoH</strong> link-scoped</span>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant/80">/run/systemd/resolve/resolv.conf</span>
+</div>
+</div>
+<!-- Dynamic Simulated Stream Script for Real-Time UI Ergonomics -->
+<script>
+    (function initRealTimeStreamSimulation() {
+      const toggleBtn = document.getElementById('streamToggleBtn');
+      const streamIcon = document.getElementById('streamIcon');
+      const streamStatusText = document.getElementById('streamStatusText');
+      const tableBody = document.getElementById('sseStreamTableBody');
+      const searchInput = document.getElementById('querySearchInput');
+
+      let isStreaming = true;
+
+      // Realistic query generator mock for simulated SSE stream
+      const sampleQueries = [
+        {
+          proc: 'google-chrome',
+          pid: '11024',
+          icon: 'language',
+          domain: 'clients4.google.com',
+          type: 'HTTPS',
+          cat: 'Telemetry / Services',
+          catColor: 'bg-secondary-container/30 text-on-secondary-container',
+          proto: 'DoH / TLS 1.3',
+          status: 'ALLOWED',
+          statusColor: 'bg-tertiary-container/30 text-tertiary-fixed'
+        },
+        {
+          proc: 'git',
+          pid: '45911',
+          icon: 'fork_right',
+          domain: 'github.com',
+          type: 'A',
+          cat: 'Developer Repository',
+          catColor: 'bg-tertiary-container/20 text-tertiary',
+          proto: 'DoH / Strict',
+          status: 'ALLOWED',
+          statusColor: 'bg-tertiary-container/30 text-tertiary-fixed'
+        },
+        {
+          proc: 'cupsd',
+          pid: '984',
+          icon: 'print',
+          domain: 'printer.lan.internal',
+          type: 'PTR',
+          cat: 'Local Network mDNS',
+          catColor: 'bg-surface-container-highest text-on-surface-variant',
+          proto: 'Link-Local',
+          status: 'ALLOWED',
+          statusColor: 'bg-tertiary-container/30 text-tertiary-fixed'
+        },
+        {
+          proc: 'analytics-agent',
+          pid: '62100',
+          icon: 'troubleshoot',
+          domain: 'track.adservice.net',
+          type: 'A',
+          cat: 'Ad Tracker (EasyList)',
+          catColor: 'bg-primary-container/20 text-primary',
+          proto: 'DoH / Filtered',
+          status: 'BLOCKED (Rule #104)',
+          statusColor: 'bg-primary-container text-on-primary-container'
+        }
+      ];
+
+      function formatCurrentTime() {
+        const now = new Date();
+        const hrs = String(now.getHours()).padStart(2, '0');
+        const min = String(now.getMinutes()).padStart(2, '0');
+        const sec = String(now.getSeconds()).padStart(2, '0');
+        const ms = String(now.getMilliseconds()).padStart(3, '0');
+        return `${hrs}:${min}:${sec}.${ms}`;
+      }
+
+      function injectStreamRow() {
+        if (!isStreaming || !tableBody) return;
+
+        const rand = sampleQueries[Math.floor(Math.random() * sampleQueries.length)];
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-surface-container-high/40 transition-colors group animate-fadeIn';
+        row.innerHTML = `
+          <td class="py-3 px-space-md text-on-surface-variant">${formatCurrentTime()}</td>
+          <td class="py-3 px-space-md">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[15px] text-on-surface-variant">${rand.icon}</span>
+              <span class="text-on-surface">${rand.proc}</span>
+              <span class="text-on-surface-variant/70 text-[10px] bg-surface-container-low px-1 rounded">PID ${rand.pid}</span>
+            </div>
+          </td>
+          <td class="py-3 px-space-md">
+            <div class="flex items-center gap-space-xs">
+              <span class="material-symbols-outlined text-[14px] text-on-surface-variant">dns</span>
+              <span class="text-on-surface truncate max-w-xs font-mono">${rand.domain}</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-mono">${rand.type}</span>
+            </div>
+          </td>
+          <td class="py-3 px-space-md">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-label-sm ${rand.catColor}">
+              ${rand.cat}
+            </span>
+          </td>
+          <td class="py-3 px-space-md text-on-surface-variant">
+            <div class="flex items-center gap-1">
+              <span class="text-tertiary">DoH</span>
+              <span class="text-outline">/</span>
+              <span>${rand.proto.split('/')[1] || 'OK'}</span>
+            </div>
+          </td>
+          <td class="py-3 px-space-md">
+            <span class="px-2 py-0.5 rounded ${rand.statusColor} font-semibold text-[11px]">
+              ${rand.status}
+            </span>
+          </td>
+          <td class="py-3 px-space-md text-right">
+            <div class="flex items-center justify-end gap-1 opacity-70 group-hover:opacity-100">
+              <button class="px-2 py-1 bg-surface-container-high hover:bg-surface-bright text-on-surface rounded text-[11px] font-label-md transition-colors">
+                Action
+              </button>
+              <button class="p-1 hover:bg-surface-container-highest text-on-surface-variant rounded">
+                <span class="material-symbols-outlined text-[15px]">more_vert</span>
+              </button>
+            </div>
+          </td>
+        `;
+
+        // Prepend to top of logs and maintain buffer max 20 rows in view
+        tableBody.insertBefore(row, tableBody.children[1] || null);
+        if (tableBody.children.length > 20) {
+          tableBody.removeChild(tableBody.lastElementChild);
+        }
+      }
+
+      // Stream interval ticker
+      let intervalTimer = setInterval(injectStreamRow, 3400);
+
+      // Play/Pause button behavior
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          isStreaming = !isStreaming;
+          if (isStreaming) {
+            streamIcon.textContent = 'pause';
+            streamStatusText.textContent = 'Pause Stream';
+            toggleBtn.classList.remove('bg-surface-container-high', 'text-on-surface');
+            toggleBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+          } else {
+            streamIcon.textContent = 'play_arrow';
+            streamStatusText.textContent = 'Resume Stream';
+            toggleBtn.classList.remove('bg-primary-container', 'text-on-primary-container');
+            toggleBtn.classList.add('bg-surface-container-high', 'text-on-surface');
+          }
+        });
+      }
+
+      // Interactive search filter
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const val = e.target.value.toLowerCase();
+          const rows = tableBody.querySelectorAll('tr');
+          rows.forEach(r => {
+            const text = r.textContent.toLowerCase();
+            r.style.display = text.includes(val) ? '' : 'none';
+          });
+        });
+      }
+    })();
+  </script>
+</div></main></div></body></html>

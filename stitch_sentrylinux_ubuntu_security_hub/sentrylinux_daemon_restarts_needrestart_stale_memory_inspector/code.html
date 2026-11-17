@@ -1,0 +1,456 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#45dfa4", "error": "#ffb4ab", "tertiary-container": "#00a574", "on-primary-fixed": "#3a0b00", "on-secondary-container": "#c4abff", "on-secondary-fixed-variant": "#5516be", "on-tertiary-container": "#003120", "on-surface": "#e3e0f7", "inverse-surface": "#e3e0f7", "surface-container-high": "#292839", "secondary": "#d0bcff", "secondary-fixed": "#e9ddff", "error-container": "#93000a", "surface-variant": "#333344", "on-primary-fixed-variant": "#852400", "inverse-on-surface": "#2f2f40", "on-surface-variant": "#e2bfb4", "secondary-fixed-dim": "#d0bcff", "on-background": "#e3e0f7", "on-primary": "#5e1700", "outline": "#aa8a80", "on-secondary-fixed": "#23005c", "surface-container-lowest": "#0d0d1c", "surface-container": "#1e1e2e", "surface-bright": "#383849", "primary-fixed": "#ffdbd0", "on-primary-container": "#521300", "background": "#121221", "primary-container": "#f85e2a", "primary": "#ffb59e", "on-tertiary-fixed": "#002114", "on-tertiary-fixed-variant": "#005137", "inverse-primary": "#ae3200", "surface-container-low": "#1a1a2a", "surface-dim": "#121221", "on-error": "#690005", "outline-variant": "#5a4139", "surface-container-highest": "#333344", "secondary-container": "#571bc1", "tertiary-fixed-dim": "#45dfa4", "on-secondary": "#3c0091", "surface": "#121221", "tertiary-fixed": "#68fcbf", "on-error-container": "#ffdad6", "on-tertiary": "#003825", "surface-tint": "#ffb59e", "primary-fixed-dim": "#ffb59e" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "0.75rem", "gutter": "1rem", "gutter-dense": "0.5rem", "space-xl": "1.5rem", "margin": "1.5rem", "space-lg": "1rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-compact": "0.75rem" }, "fontFamily": { "title-sm": ["Inter"], "label-sm": ["Inter"], "code-sm": ["JetBrains Mono"], "label-md": ["Inter"], "headline-md": ["Inter"], "body-md": ["JetBrains Mono"], "display-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["JetBrains Mono"] }, "fontSize": { "title-sm": ["14px", { "lineHeight": "20px", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "code-sm": ["11px", { "lineHeight": "16px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["13px", { "lineHeight": "20px", "fontWeight": "400" }], "display-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }], "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased select-none"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-xl z-50 flex items-center justify-between px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.4)]"><div class="flex items-center gap-space-md"><img alt="SentryLinux Brand Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrDN6oJYCV6Mfo-NMNVdT7p0szVrwu_TYkLbSIKcsWbkqZDrITS2UpoLXRC4ar2WOxTJmDJqpoOjynm1Jt5cod4RPlYLV2TuguqkhFqIFeUu0PjT70ML2Et9I8N2z3Kt63OxWT2zpc6C4j-ejIJ2DZlx0pd2191xQ9KHIqtaKZViccF6EMwEovHcqU2JujZByNrBxF0nTOvcHGhAqgpAKUs3W8_4v7KUEWuGnD3Vl-2q"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">SentryLinux</span><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">v2.4.1-lts (Tauri v2)</span></div></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-md py-1.5 rounded-full"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md text-on-surface">Co-Existence: Proton + NextDNS</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></div><div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[16px] text-tertiary">verified_user</span><span class="font-label-md text-label-md text-on-surface">Protected (WireGuard + resolvectl)</span></div><button class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-error-container text-on-error-container hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-[18px]">shield_with_heart</span><span class="font-label-md text-label-md font-semibold">Emergency Lockdown</span></button></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs px-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Minimize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">minimize</span></button><button aria-label="Maximize Window" class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-surface-bright transition-colors"><span class="material-symbols-outlined text-on-surface-variant text-[14px]">crop_square</span></button><button aria-label="Close Window" class="w-6 h-6 rounded-full bg-error-container flex items-center justify-center hover:bg-error hover:text-on-error transition-colors"><span class="material-symbols-outlined text-on-error-container text-[14px]">close</span></button></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-72 bg-surface-container-low z-40 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md overflow-y-auto"><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Security Telemetry</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="overview" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">shield</span><span class="font-title-sm text-title-sm">Overview</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dns-sentry" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">public</span><span class="font-title-sm text-title-sm">DNS Sentry</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-highest text-tertiary">428/s</span></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="outbound-intercepts" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">track_changes</span><span class="font-title-sm text-title-sm">Outbound Intercepts</span></div><span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-error-container text-on-error-container">1</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Hardening &amp; Compliance</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="usg-and-lynis-cis-audit" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">checklist</span><span class="font-title-sm text-title-sm">USG &amp; Lynis CIS Audit</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="malware-and-sweep" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">radar</span><span class="font-title-sm text-title-sm">Malware &amp; Sweep</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container shadow-sm" data-path="daemon-restarts-and-needrestart" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">restart_alt</span><span class="font-title-sm text-title-sm">Daemon Restarts &amp; needrestart</span></div><span class="stale-badge-pill font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-lowest text-primary font-semibold">2</span></a></nav></div><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-sm">Configuration</span><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container rounded-lg"><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="network-profiles-and-wireguard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">hub</span><span class="font-title-sm text-title-sm">Network Profiles &amp; WireGuard</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="rules-and-quarantine" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">folder_supervised</span><span class="font-title-sm text-title-sm">Rules &amp; Quarantine</span></div></a><a class="flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-polkit-auth" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[18px]">tune</span><span class="font-title-sm text-title-sm">Settings &amp; Polkit Auth</span></div></a></nav></div></div><div class="mt-auto p-space-sm rounded-lg bg-surface-container flex flex-col gap-space-xs"><div class="flex items-center justify-between"><span class="font-code-sm text-code-sm text-on-surface-variant">Kernel 6.8.0-40-generic</span><span class="w-2 h-2 rounded-full bg-tertiary"></span></div><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface">Polkit: Active Token</span><span class="font-code-sm text-code-sm text-tertiary-fixed-dim">Valid 14m</span></div><div class="flex items-center gap-space-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">smart_toy</span><span class="font-label-sm text-label-sm">Local AI Fallback Ready</span></div></div></aside><div class="pl-72"><main class="w-full min-h-screen pt-16 px-space-xl pb-space-xl bg-surface/90 backdrop-blur-xl"><div class="flex flex-col w-full">
+<!-- Shell Sidebar Link Activator Script -->
+<script>
+    (function activateSidebarTab() {
+      const target = document.querySelector('aside [data-path="daemon-restarts-and-needrestart"]');
+      if (target) {
+        document.querySelectorAll('aside nav a').forEach(el => {
+          el.className = "flex items-center justify-between px-space-md py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors";
+        });
+        target.className = "flex items-center justify-between px-space-md py-2 rounded-lg bg-primary-container text-on-primary-container shadow-sm";
+        
+        let counterBadge = target.querySelector('.stale-badge-pill');
+        if (!counterBadge) {
+          counterBadge = document.createElement('span');
+          counterBadge.className = "stale-badge-pill font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-surface-container-lowest text-primary font-semibold";
+          counterBadge.innerText = '2';
+          target.appendChild(counterBadge);
+        }
+      }
+    })();
+  </script>
+<!-- Top Breadcrumb & Engine Status Bar -->
+<div class="w-full flex flex-col xl:flex-row xl:items-center justify-between gap-space-md pb-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm uppercase tracking-widest">
+<span>Hardening &amp; Compliance</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Daemon Restarts &amp; needrestart</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm pt-0.5">
+<div class="flex items-center gap-1.5 px-space-sm py-1 rounded bg-surface-container-low text-on-surface font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>needrestart 3.6 (eBPF scanner)</span>
+</div>
+<div class="flex items-center gap-1 px-space-sm py-1 rounded bg-surface-container-low text-on-surface font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[15px] text-tertiary">check_circle</span>
+<span>Kernel: 6.8.0-40-generic (Running)</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-low text-on-surface-variant font-code-sm text-code-sm">
+<span>ABI: vmlinuz-6.8.0-40-generic</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-low text-on-surface-variant font-code-sm text-code-sm">
+<span>systemd: v255.4-1ubuntu8.4</span>
+</div>
+</div>
+</div>
+<!-- Quick Action Toolbelt -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright transition-colors text-label-md font-label-md" id="btnScanMemory">
+<span class="material-symbols-outlined text-[17px] text-primary">sync</span>
+<span>Scan Memory Now</span>
+</button>
+<div class="relative inline-block text-left">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright transition-colors text-label-md font-label-md">
+<span class="material-symbols-outlined text-[17px] text-on-surface-variant">tune</span>
+<span>Config</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant">expand_more</span>
+</button>
+</div>
+<button class="flex items-center gap-space-xs px-space-lg py-2 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-label-md text-label-md font-semibold shadow-md transition-all">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Batch Restart Flagged Daemons</span>
+</button>
+</div>
+</div>
+<!-- Summary Telemetry Header Card -->
+<div class="w-full bg-surface-container/80 backdrop-blur-xl rounded-xl p-space-lg shadow-sm mb-space-lg relative overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center relative z-10">
+<!-- Summary Intro -->
+<div class="lg:col-span-4 flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">memory</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Stale Process Memory &amp; ABI Inspector</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Identifies background daemons holding superseded dynamic objects (<code class="font-code-sm text-code-sm text-on-surface bg-surface-container-lowest px-1 rounded">.so</code>), deleted file descriptors, or binary mismatches following security package updates.
+        </p>
+</div>
+<!-- KPI Cluster -->
+<div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-4 gap-space-sm">
+<div class="flex flex-col p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Stale .so Objects</span>
+<span class="font-headline-lg text-headline-lg text-error font-bold mt-1">2</span>
+<span class="font-code-sm text-code-sm text-error/90 truncate mt-0.5" title="libssl.so.3, libc.so.6">libssl, libc</span>
+</div>
+<div class="flex flex-col p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Daemons</span>
+<span class="font-headline-lg text-headline-lg text-primary font-bold mt-1">3</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant truncate mt-0.5">resolved, cron, ssh</span>
+</div>
+<div class="flex flex-col p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kernel Reboot</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-tertiary text-[20px]">check</span>
+<span class="font-headline-lg text-headline-lg text-tertiary font-bold">No</span>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary truncate mt-0.5">ABI Synchronized</span>
+</div>
+<div class="flex flex-col p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Urgency Index</span>
+<span class="font-headline-lg text-headline-lg text-error font-bold mt-1">High</span>
+<span class="font-code-sm text-code-sm text-error mt-0.5 truncate">CVE-2024-5535</span>
+</div>
+</div>
+<!-- Memory Cleanliness Circular Gauge -->
+<div class="lg:col-span-3 flex items-center justify-center lg:justify-end gap-space-md pl-space-sm">
+<div class="relative w-24 h-24 flex items-center justify-center shrink-0">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="87, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface font-bold leading-none">87%</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-[10px]">IN-RAM</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Memory Cleanliness</span>
+<span class="font-title-sm text-title-sm text-primary font-semibold mt-0.5">Remediation Rec.</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant mt-1">2 Stale mappings</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main 2-Column Split Workspace -->
+<div class="w-full grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Left Column: Filter & Process Inventory (~62%) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<!-- Toolbar: Search, Filters & Safety Policy -->
+<div class="w-full flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs flex-1 bg-surface-container-lowest px-space-md py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">search</span>
+<input class="bg-transparent text-on-surface placeholder:text-on-surface-variant text-body-md font-body-md outline-none w-full" placeholder="Filter processes, superseded .so, PID, or unit..." type="text">
+<span class="font-code-sm text-code-sm text-on-surface-variant bg-surface-container px-1.5 py-0.5 rounded">Ctrl+K</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<!-- Segmented Filter Pills -->
+<div class="flex items-center bg-surface-container-lowest p-1 rounded-lg">
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold shadow-xs">All (3)</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">System (2)</button>
+<button class="px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">Session (1)</button>
+</div>
+<!-- GNOME Switch for Auto-Restart Policy -->
+<label class="flex items-center gap-space-xs cursor-pointer select-none bg-surface-container-lowest px-space-sm py-1 rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:inline">Safe Auto-Restart</span>
+<div class="relative w-8 h-4 rounded-full bg-surface-container-highest transition-colors">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-3 h-3 rounded-full bg-on-surface absolute top-0.5 left-0.5 peer-checked:left-4.5 peer-checked:bg-primary transition-all"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Process Cards List -->
+<div class="flex flex-col gap-space-md">
+<!-- ITEM 1: CRITICAL ALERT (systemd-resolved) -->
+<div class="p-space-lg rounded-xl bg-surface-container/90 backdrop-blur-md shadow-sm transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between gap-space-md pb-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">dns</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">systemd-resolved.service</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">PID 742</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-error-container text-on-error-container font-semibold">Critical · Superseded SSL</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">System Core / Recursive DNS Resolver</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-sm text-on-surface font-medium">RSS: 18.4 MB</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant text-[11px]">Uptime: 14d 06h</div>
+</div>
+</div>
+<!-- Superseded Mapping Details -->
+<div class="my-space-sm p-space-md rounded-lg bg-surface-container-lowest flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant uppercase tracking-wider">Resident Superseded Shared Object</span>
+<span class="text-error font-code-sm text-code-sm font-semibold">DELETED FROM DISK / REPLACED</span>
+</div>
+<div class="flex items-center justify-between gap-space-sm flex-wrap">
+<code class="font-code-sm text-code-sm text-error font-medium truncate">/usr/lib/x86_64-linux-gnu/libssl.so.3</code>
+<div class="flex items-center gap-1.5 px-space-xs py-0.5 rounded bg-error-container/60 text-on-error-container font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+<span>CVE-2024-5535 (CVSS 7.5)</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px] mt-1">
+              Impact Assessment: DNS query cache preserved via <code class="font-code-sm text-code-sm text-on-surface">systemd-resolved.socket</code> fallback. Expected transient latency &lt;80ms during daemon re-exec.
+            </p>
+</div>
+<!-- Action Footers -->
+<div class="flex items-center justify-between flex-wrap gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Graceful SIGHUP/Restart</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">terminal</span>
+<span>Inspect /proc/742/maps</span>
+</button>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm px-space-sm py-1 rounded">Postpone 24h</button>
+</div>
+</div>
+<!-- ITEM 2: HIGH ALERT (cron) -->
+<div class="p-space-lg rounded-xl bg-surface-container/90 backdrop-blur-md shadow-sm transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between gap-space-md pb-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">schedule</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">cron.service</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">PID 1042</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-semibold">High · glibc ABI Update</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">Background Task &amp; Recurring Job Scheduler</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-sm text-on-surface font-medium">RSS: 4.2 MB</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant text-[11px]">Uptime: 21d 03h</div>
+</div>
+</div>
+<!-- Superseded Mapping Details -->
+<div class="my-space-sm p-space-md rounded-lg bg-surface-container-lowest flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-on-surface-variant uppercase tracking-wider">Superseded C Runtime</span>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Updated to glibc 2.39-0ubuntu8.2</span>
+</div>
+<code class="font-code-sm text-code-sm text-primary font-medium truncate">/usr/lib/x86_64-linux-gnu/libc.so.6</code>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px] mt-1">
+              Impact Assessment: Zero disruptive impact. No active crontab execution locks or children running in `/run/crond.pid`.
+            </p>
+</div>
+<!-- Action Footers -->
+<div class="flex items-center justify-between flex-wrap gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md font-semibold transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">restart_alt</span>
+<span>Restart Unit</span>
+</button>
+<button class="flex items-center gap-1 px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">
+<span>Inspect /proc/1042/maps</span>
+</button>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">task_alt</span> Idle safe
+            </span>
+</div>
+</div>
+<!-- ITEM 3: MEDIUM ALERT / SESSION SENSITIVE (ssh.service) -->
+<div class="p-space-lg rounded-xl bg-surface-container/90 backdrop-blur-md shadow-sm transition-all hover:bg-surface-container">
+<div class="flex items-start justify-between gap-space-md pb-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">terminal</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-title-sm text-title-sm text-on-surface font-semibold">ssh.service</span>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded bg-surface-container-lowest text-on-surface-variant">PID 914</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-semibold">Session Guarded</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant mt-0.5">OpenSSH Daemon (2 connected terminal sessions)</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-code-sm text-code-sm text-on-surface font-medium">RSS: 11.2 MB</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant text-[11px]">Uptime: 14d 06h</div>
+</div>
+</div>
+<!-- Session Warning Callout -->
+<div class="my-space-sm p-space-md rounded-lg bg-surface-container-lowest flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span class="font-semibold">Active SSH session detected from 192.168.1.144 (pts/0)</span>
+</div>
+<code class="font-code-sm text-code-sm text-on-surface-variant truncate">Superseded: /usr/lib/x86_64-linux-gnu/libcrypto.so.3</code>
+<p class="font-body-md text-body-md text-on-surface-variant text-[12px] mt-0.5">
+              Invoking <code class="font-code-sm text-code-sm text-on-surface">systemctl restart ssh</code> rebinds the listener socket without dropping already established fork children.
+            </p>
+</div>
+<!-- Action Footers -->
+<div class="flex items-center justify-between flex-wrap gap-space-sm pt-space-xs">
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md font-semibold transition-colors">
+<span class="material-symbols-outlined text-[16px] text-tertiary">restart_alt</span>
+<span>Restart Listener Only</span>
+</button>
+<button class="px-space-sm py-1.5 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">
+                Whitelist PID
+              </button>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Port 22 [LISTEN]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Gemini Forensics & Polkit Transaction (~38%) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<!-- Gemini Memory Remap Intelligence Card -->
+<div class="p-space-lg rounded-xl bg-surface-container/90 backdrop-blur-xl shadow-sm relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="flex items-center justify-between pb-space-sm relative z-10">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-semibold">Gemini Process Forensics</h3>
+</div>
+<span class="font-code-sm text-code-sm px-space-xs py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-medium">Confidence 98.6%</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-code-sm text-code-sm pb-space-xs">
+<span>Target:</span>
+<span class="text-on-surface font-semibold">systemd-resolved.service (PID 742)</span>
+</div>
+<!-- AI Diagnostic Narrative -->
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Process <code class="font-code-sm text-code-sm text-on-surface">systemd-resolved</code> was initiated 14 days ago mapping <code class="font-code-sm text-code-sm text-error">libssl.so.3</code>. Ubuntu Security recently patched <code class="font-code-sm text-code-sm text-primary">CVE-2024-5535</code> on disk. The resident RAM segment at virtual address <code class="font-code-sm text-code-sm text-on-surface">0x7f8a14000000 - 0x7f8a142b4000</code> remains un-remapped and exposed to malicious handshake overreads.
+        </p>
+<!-- Visual Memory Map Diff Widget -->
+<div class="mt-space-md p-space-md rounded-lg bg-surface-container-lowest flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Process Virtual Memory Diff</span>
+<!-- Old Mapping in RAM -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-error font-medium">libssl.so.3.0.13 (In-RAM)</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-[10px]">FD Deleted · vulnerable buffer</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-error bg-error-container/40 px-1.5 py-0.5 rounded">Active</span>
+</div>
+<!-- Arrow Divider -->
+<div class="flex justify-center -my-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+<!-- New Mapping On Disk -->
+<div class="flex items-center justify-between p-space-sm rounded bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-tertiary font-medium">libssl.so.3.0.15 (On Disk)</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-[10px]">Patched Canonical build</span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-tertiary bg-tertiary-container/30 px-1.5 py-0.5 rounded">Ready</span>
+</div>
+</div>
+<!-- Safety Matrix Grid -->
+<div class="mt-space-md grid grid-cols-3 gap-space-xs pt-space-xs">
+<div class="p-space-sm rounded bg-surface-container-low text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">SIGHUP Support</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">Verified</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Socket State</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">0ms Loss</span>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Disruption Risk</span>
+<span class="font-code-sm text-code-sm text-tertiary font-semibold">&lt;100ms</span>
+</div>
+</div>
+</div>
+<!-- Batch Remediation & Polkit Transaction Box -->
+<div class="p-space-lg rounded-xl bg-surface-container/90 backdrop-blur-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">admin_panel_settings</span>
+<h3 class="font-title-sm text-title-sm text-on-surface font-semibold">Polkit Privilege Execution</h3>
+</div>
+<div class="flex items-center gap-1 font-code-sm text-code-sm text-tertiary">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span>Auth Valid: 14m</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex flex-col gap-1">
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+<span>Atomic Rollback Guard Active</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant text-[11px] pl-6">
+            Pre-restart systemd cgroup checkpoint &amp; journal marker will snapshot state prior to SIGTERM broadcast.
+          </span>
+</div>
+<!-- Dry Run Option -->
+<label class="flex items-center gap-space-sm cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded bg-surface-container-highest accent-primary text-primary" type="checkbox">
+<span class="font-label-md text-label-md text-on-surface">Simulate systemctl restart order (Dry-Run Check)</span>
+</label>
+<!-- Prominent Batch Restart Button in Ubuntu Orange -->
+<button class="w-full flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary font-headline-md text-headline-md font-semibold transition-all shadow-md">
+<span class="material-symbols-outlined text-[20px]">restart_alt</span>
+<span>Apply Batch Daemon Restarts (2 Services)</span>
+</button>
+<span class="font-code-sm text-code-sm text-on-surface-variant text-center text-[11px]">
+          Target units: systemd-resolved.service, cron.service
+        </span>
+</div>
+</div>
+</div>
+<!-- Bottom Drawer: Monospace needrestart Live Output Terminal -->
+<div class="w-full mt-space-lg rounded-xl bg-surface-container/90 backdrop-blur-xl shadow-sm overflow-hidden">
+<!-- Header of console -->
+<div class="relative flex items-center justify-between px-space-lg py-space-sm bg-surface-container-high border-b border-surface-container-highest/40 select-none"><div class="absolute left-1/2 -translate-x-1/2 top-1.5 w-10 h-1 rounded-full bg-surface-container-highest cursor-pointer hover:bg-outline-variant transition-colors" title="Drag Drawer"></div><div class="flex items-center gap-space-sm pt-1"><span class="material-symbols-outlined text-[18px] text-primary">terminal</span><span class="font-code-sm text-code-sm text-on-surface font-semibold tracking-wider">needrestart --batch-mode -v telemetry stream</span><span class="font-code-sm text-[11px] px-space-xs py-0.5 rounded bg-surface-container-lowest text-tertiary font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>Live</span></div><div class="flex items-center gap-space-md pt-1"><span class="font-code-sm text-code-sm text-on-surface-variant hidden sm:inline">Scanned 148 PIDs in 184ms</span><div class="flex items-center gap-1"><button title="Copy Log Buffer" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[16px]">content_copy</span></button><button title="Toggle Expand Height" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[16px]">open_in_full</span></button><button title="Collapse / Expand Drawer" class="w-7 h-7 rounded flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div>
+<!-- Monospace Terminal Scroll -->
+<div class="p-space-lg bg-surface-container-lowest font-code-sm text-code-sm text-on-surface leading-relaxed flex flex-col gap-1 max-h-48 overflow-y-auto">
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:01]</span>
+<span class="text-tertiary">[INFO]</span>
+<span>Scanning /proc/[0-9]*/maps for deleted file mappings via eBPF kprobe...</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:01]</span>
+<span class="text-tertiary">[INFO]</span>
+<span>Scanning systemd units and D-Bus interfaces...</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:01]</span>
+<span class="text-error font-semibold">[WARN]</span>
+<span class="text-error">PID 742 (systemd-resolved): superseded /usr/lib/x86_64-linux-gnu/libssl.so.3 is deleted (inode #182042)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:01]</span>
+<span class="text-primary font-semibold">[WARN]</span>
+<span class="text-primary">PID 1042 (cron): superseded /usr/lib/x86_64-linux-gnu/libc.so.6 is deleted (inode #181993)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:01]</span>
+<span class="text-secondary font-semibold">[INFO]</span>
+<span>PID 914 (sshd): session listeners open on 0.0.0.0:22. Superseded crypto mapping flagged.</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface-variant">[14:32:02]</span>
+<span class="text-tertiary font-semibold">[OK]</span>
+<span>Kernel 6.8.0-40-generic is up-to-date. Reboot flag: NOT_REQUIRED.</span>
+</div>
+<div class="flex items-center gap-space-sm pt-0.5">
+<span class="text-on-surface-variant">[14:32:02]</span>
+<span class="text-primary font-bold">[NEEDRESTART]</span>
+<span class="text-on-surface font-semibold">2 non-disruptive services require restart to purge stale CVE-2024-5535 references from resident memory.</span>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>
