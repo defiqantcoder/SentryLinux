@@ -1,56 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Shield, Activity, Globe, Lock, Cpu, Settings, Network, 
-  Search, Power, AlertTriangle, XCircle, 
+  Search, Power, AlertTriangle, CheckCircle, XCircle, 
   RefreshCw, Play, ShieldAlert, ShieldCheck, Server, Key
 } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
 
 // --- Simulated Data Generators ---
 const generateIP = () => `${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
 const domains = ['api.tracker.com', 'telemetry.ubuntu.com', 'cdn.jsdelivr.net', 'github.com', 'malicious-c2.net', 'metrics.app.io', 'update.server.org'];
 const processes = ['/usr/bin/curl', '/usr/lib/firefox/firefox', '/usr/bin/apt-get', '/sbin/auditd', '/usr/bin/python3', 'unknown_binary'];
 
-// --- Types ---
-type ButtonVariant = 'default' | 'primary' | 'destructive' | 'flat';
-
-interface GtkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  variant?: ButtonVariant;
-  className?: string;
-}
-
-interface GtkSwitchProps {
-  checked: boolean;
-  onChange: (checked: boolean) => void;
-  label?: string;
-}
-
-interface GtkCardProps {
-  children: React.ReactNode;
-  className?: string;
-  title?: string;
-}
-
-interface DnsQuery {
-  id: number;
-  domain: string;
-  ip: string;
-  status: 'Blocked' | 'Allowed';
-  time: string;
-}
-
-interface InterceptEvent {
-  process: string;
-  pid: number;
-  ip: string;
-  port: number;
-}
-
 // --- GTK4 UI Components ---
-const GtkButton = ({ children, onClick, variant = 'default', className = '', ...props }: GtkButtonProps) => {
-  const baseStyle = "px-4 py-2 rounded-lg font-medium transition-colors text-sm flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed";
-  const variants: Record<ButtonVariant, string> = {
+const GtkButton = ({ children, onClick, variant = 'default', className = '', ...props }) => {
+  const baseStyle = "px-4 py-2 rounded-lg font-medium transition-colors text-sm flex items-center justify-center gap-2";
+  const variants = {
     default: "bg-[#383838] hover:bg-[#4a4a4a] text-white border border-white/10",
     primary: "bg-[#3584e4] hover:bg-[#4a90d9] text-white",
     destructive: "bg-[#e01b24] hover:bg-[#f66151] text-white",
@@ -63,7 +26,7 @@ const GtkButton = ({ children, onClick, variant = 'default', className = '', ...
   );
 };
 
-const GtkSwitch = ({ checked, onChange, label }: GtkSwitchProps) => (
+const GtkSwitch = ({ checked, onChange, label }) => (
   <label className="flex items-center cursor-pointer gap-3">
     {label && <span className="text-sm font-medium text-gray-200">{label}</span>}
     <div className="relative">
@@ -74,7 +37,7 @@ const GtkSwitch = ({ checked, onChange, label }: GtkSwitchProps) => (
   </label>
 );
 
-const GtkCard = ({ children, className = '', title }: GtkCardProps) => (
+const GtkCard = ({ children, className = '', title }) => (
   <div className={`bg-[#2d2d2d] rounded-xl border border-white/5 shadow-md overflow-hidden ${className}`}>
     {title && <div className="px-4 py-3 border-b border-white/5 bg-[#242424]/50 font-semibold text-gray-100">{title}</div>}
     <div className="p-4">{children}</div>
@@ -83,10 +46,10 @@ const GtkCard = ({ children, className = '', title }: GtkCardProps) => (
 
 // --- Core Modules ---
 
-const OverviewTelemetry = ({ isLockdown }: { isLockdown: boolean }) => {
-  const [flashLogs, setFlashLogs] = useState<string[]>([]);
-  const [proLogs, setProLogs] = useState<string[]>([]);
-  const [exposureScore, setExposureScore] = useState<number>(4.2);
+const OverviewTelemetry = ({ isLockdown }) => {
+  const [flashLogs, setFlashLogs] = useState([]);
+  const [proLogs, setProLogs] = useState([]);
+  const [exposureScore, setExposureScore] = useState(4.2);
 
   useEffect(() => {
     if (isLockdown) return;
@@ -131,20 +94,19 @@ const OverviewTelemetry = ({ isLockdown }: { isLockdown: boolean }) => {
 };
 
 const DNSSentry = () => {
-  const [queries, setQueries] = useState<DnsQuery[]>([]);
+  const [queries, setQueries] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       const domain = domains[Math.floor(Math.random() * domains.length)];
       const isBlocked = domain.includes('malicious') || domain.includes('tracker');
-      const newQuery: DnsQuery = {
+      setQueries(prev => [{
         id: Date.now(),
         domain,
         ip: generateIP(),
         status: isBlocked ? 'Blocked' : 'Allowed',
         time: new Date().toLocaleTimeString()
-      };
-      setQueries(prev => [newQuery, ...prev].slice(0, 10));
+      }, ...prev].slice(0, 10));
     }, 2000);
     return () => clearInterval(interval);
   }, []);
@@ -199,7 +161,7 @@ const DNSSentry = () => {
 };
 
 const NetworkIntercept = () => {
-  const [intercept, setIntercept] = useState<InterceptEvent | null>(null);
+  const [intercept, setIntercept] = useState(null);
 
   useEffect(() => {
     const triggerIntercept = () => {
@@ -313,7 +275,7 @@ const MalwareSweep = () => {
                 <span>{Math.min(progress, 100)}%</span>
               </div>
               <div className="w-full bg-[#1e1e1e] rounded-full h-2">
-                <div className="bg-[#3584e4] h-2 rounded-full transition-all duration-300" style={{ width: `${Math.min(progress, 100)}%` }}></div>
+                <div className="bg-[#3584e4] h-2 rounded-full transition-all duration-300" style={{ width: `${progress}%` }}></div>
               </div>
             </div>
           )}
@@ -426,7 +388,7 @@ const SettingsAuth = () => {
 const NetworkProfiles = () => {
   const [profile, setProfile] = useState('coexist');
 
-  const Option = ({ id, title, desc, icon: Icon }: { id: string; title: string; desc: string; icon: LucideIcon }) => (
+  const Option = ({ id, title, desc, icon: Icon }) => (
     <label className={`flex items-start gap-4 p-4 rounded-xl cursor-pointer border-2 transition-all ${profile === id ? 'border-[#3584e4] bg-[#3584e4]/10' : 'border-white/5 bg-[#2d2d2d] hover:bg-[#323232]'}`}>
       <input type="radio" name="net_profile" value={id} checked={profile === id} onChange={(e) => setProfile(e.target.value)} className="sr-only" />
       <div className={`p-2 rounded-full ${profile === id ? 'bg-[#3584e4] text-white' : 'bg-[#1e1e1e] text-gray-400'}`}>
