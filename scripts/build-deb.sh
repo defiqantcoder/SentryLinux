@@ -33,6 +33,12 @@ chmod 0755 "${STAGE_DIR}/usr/bin/sentrylinux" "${STAGE_DIR}/usr/bin/sentrylinux-
 # Copy compiled frontend assets
 cp -r "${ROOT_DIR}/dist/"* "${STAGE_DIR}/usr/share/sentrylinux/ui/"
 
+# Copy 1-Click Sub-Application installer script & binary symlink
+mkdir -p "${STAGE_DIR}/usr/share/sentrylinux/scripts"
+cp "${ROOT_DIR}/scripts/install-subapps.sh" "${STAGE_DIR}/usr/share/sentrylinux/scripts/install-subapps.sh"
+chmod 0755 "${STAGE_DIR}/usr/share/sentrylinux/scripts/install-subapps.sh"
+ln -sf /usr/share/sentrylinux/scripts/install-subapps.sh "${STAGE_DIR}/usr/bin/sentrylinux-install-subapps"
+
 # Create desktop launcher entry
 cat > "${STAGE_DIR}/usr/share/applications/sentrylinux.desktop" << 'EOF'
 [Desktop Entry]

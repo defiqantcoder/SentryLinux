@@ -1,6 +1,6 @@
 use sentrylinux_daemon::{
-    collect_live_telemetry, save_spec_bundle_atomic, start_local_ipc_server,
-    validate_and_resolve_export_dir, KeyringGuard,
+    collect_live_telemetry, detect_subapps_json, detect_subapps_status, install_subapp_package,
+    save_spec_bundle_atomic, start_local_ipc_server, validate_and_resolve_export_dir, KeyringGuard,
 };
 use std::collections::HashMap;
 use std::env;
@@ -190,6 +190,8 @@ pub fn invoke_ipc_command(cmd: &str, arg: &str) -> Result<String, String> {
             kr.set_key(arg);
             Ok(kr.get_key())
         }
+        "get_subapps_status" => Ok(detect_subapps_json()),
+        "install_subapp" => install_subapp_package(arg),
         _ => Err(format!("Unknown IPC command: {cmd}")),
     }
 }
@@ -236,7 +238,8 @@ fn run_terminal_console() {
     println!("  [1] Live Telemetry JSON          [5] Emergency Lockdown Mode");
     println!("  [2] Lynis & CIS Benchmark Audit  [6] AI: Explain This & Recommend Action");
     println!("  [3] Two-Stage Rootkit Sweep      [7] Generate /boot/sentry-rescue.sh");
-    println!("  [4] needrestart Memory Check     [q] Exit");
+    println!("  [4] needrestart Memory Check     [8] 1-Click Install Security Sub-Apps");
+    println!("                                   [q] Exit");
     println!("  ───────────────────────────────────────────────────────────────────");
 
     print!("\x1b[1mSelect action (or press Enter to view live telemetry):\x1b[0m ");
@@ -271,6 +274,22 @@ fn run_terminal_console() {
             }
             "7" => {
                 println!("\n\x1b[1;32m[Rescue Script]\x1b[0m Generated /boot/sentry-rescue.sh with executable permissions.");
+            }
+            "8" => {
+                println!("\n\x1b[1;36m[1-Click Sub-Application Provisioner]\x1b[0m");
+                let subapps = detect_subapps_status();
+                let installed = subapps.iter().filter(|s| s.installed).count();
+                println!("  Status: {}/{} security tools detected as installed.", installed, subapps.len());
+                for app in &subapps {
+                    let badge = if app.installed {
+                        "\x1b[32m[INSTALLED]\x1b[0m"
+                    } else {
+                        "\x1b[33m[NOT INSTALLED]\x1b[0m"
+                    };
+                    println!("  • {:<20} {:<15} (pkg: {})", app.name, badge, app.package_name);
+                }
+                println!("\n  Run 1-click install command:");
+                println!("  \x1b[1m$ sudo bash /usr/share/sentrylinux/scripts/install-subapps.sh [all|pkg]\x1b[0m");
             }
             "q" | "exit" => {
                 println!("Exiting SentryLinux.");
@@ -315,6 +334,18 @@ fn main() {
             }
             "--cli" | "--console" => {
                 run_terminal_console();
+                return;
+            }
+            "--subapps" => {
+                println!("{}", detect_subapps_json());
+                return;
+            }
+            "--install-subapps" => {
+                let target = args.get(2).map(|s| s.as_str()).unwrap_or("all");
+                match install_subapp_package(target) {
+                    Ok(msg) => println!("{msg}"),
+                    Err(e) => eprintln!("Error installing {target}: {e}"),
+                }
                 return;
             }
             "--serve" => {

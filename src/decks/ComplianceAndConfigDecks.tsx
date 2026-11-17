@@ -2053,12 +2053,14 @@ interface SettingsAndPolkitDeckProps {
   onTogglePolkitRule: (id: string) => void;
   projectState: ProjectState;
   onOpenExportModal: () => void;
+  onOpenSubAppInstaller?: () => void;
 }
 
 export const SettingsAndPolkitDeck: React.FC<SettingsAndPolkitDeckProps> = ({
   polkitRules,
   onTogglePolkitRule,
   onOpenExportModal,
+  onOpenSubAppInstaller,
 }) => {
   const [categoryFilter, setCategoryFilter] = useState<
     'ALL' | 'Quarantine' | 'Network' | 'CIS Audit' | 'System'
@@ -2120,6 +2122,16 @@ export const SettingsAndPolkitDeck: React.FC<SettingsAndPolkitDeckProps> = ({
         </div>
 
         <div className="flex items-center gap-space-sm flex-wrap">
+          {onOpenSubAppInstaller && (
+            <button
+              type="button"
+              onClick={onOpenSubAppInstaller}
+              className="flex items-center gap-space-xs px-space-md py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface transition-colors border border-primary/30"
+            >
+              <MaterialIcon name="apps" className="text-[16px] text-tertiary" />
+              <span className="font-title-sm text-title-sm">1-Click Tool Installer</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setRescuePreviewOpen(!rescuePreviewOpen)}
@@ -2146,6 +2158,41 @@ export const SettingsAndPolkitDeck: React.FC<SettingsAndPolkitDeckProps> = ({
         customActionLabel="Generate /boot/sentry-rescue.sh Rescue Script"
         defaultExpanded={false}
       />
+
+      {/* 1-Click Sub-Application Provisioning Banner Card */}
+      <div className="p-space-md rounded-xl bg-gradient-to-r from-surface-container via-surface-container-high to-surface-container border border-primary/40 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/20 text-primary border border-primary/30 shrink-0">
+            <MaterialIcon name="build_circle" className="text-[26px]" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="font-title-md text-title-md text-on-surface font-bold">
+                Security Sub-Applications & Subsystem Provisioning
+              </h3>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-code-sm bg-tertiary/20 text-tertiary font-semibold">
+                1-Click Setup
+              </span>
+            </div>
+            <p className="font-body-md text-[13px] text-on-surface-variant mt-0.5">
+              Automate installation for Fail2ban, Suricata, ClamAV, Lynis, UFW, RKhunter, needrestart, USBGuard & all security backends.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          {onOpenSubAppInstaller && (
+            <button
+              type="button"
+              onClick={onOpenSubAppInstaller}
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-primary-container text-white font-title-sm text-[13px] font-semibold flex items-center gap-2 shadow-md hover:brightness-110 active:scale-98 transition-all"
+            >
+              <MaterialIcon name="auto_fix_high" className="text-[16px]" />
+              <span>Open 1-Click Tool Installer</span>
+            </button>
+          )}
+        </div>
+      </div>
 
       {rescuePreviewOpen && (
         <div className="p-space-md rounded-xl bg-surface-container border border-tertiary/40 space-y-2">

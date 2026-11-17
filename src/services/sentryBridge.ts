@@ -1167,3 +1167,195 @@ export const INITIAL_SYSTEMD_UNITS: SystemdExposureUnit[] = [
     dropInDraft: `[Service]\nPrivateTmp=yes\nProtectKernelModules=yes\nProtectKernelLogs=yes\nRestrictSUIDSGID=no`,
   },
 ];
+
+// ============================================================================
+// SECURITY SUB-APPLICATIONS & 1-CLICK PROVISIONING
+// ============================================================================
+export const INITIAL_SUBAPPS: Array<import('../types/project').SecuritySubApp> = [
+  {
+    id: 'fail2ban',
+    name: 'Fail2ban Brute-Force Shield',
+    packageName: 'fail2ban',
+    category: 'Brute-Force & Jail',
+    description: 'Monitors SSH/PAM auth logs and dynamically drops hostile brute-force IP addresses in nftables/UFW.',
+    binaryName: 'fail2ban-client',
+    binaryPath: '/usr/bin/fail2ban-client',
+    installed: true,
+  },
+  {
+    id: 'suricata',
+    name: 'Suricata Network IDS/IPS',
+    packageName: 'suricata',
+    category: 'Network IDS/IPS',
+    description: 'Deep packet inspection engine providing real-time network anomaly detection and eve.json telemetry.',
+    binaryName: 'suricata',
+    binaryPath: '/usr/bin/suricata',
+    installed: true,
+  },
+  {
+    id: 'ufw',
+    name: 'UFW (Uncomplicated Firewall)',
+    packageName: 'ufw',
+    category: 'Firewall',
+    description: 'Kernel netfilter firewall interface enforcing default-deny inbound routing and timed access passes.',
+    binaryName: 'ufw',
+    binaryPath: '/usr/sbin/ufw',
+    installed: true,
+  },
+  {
+    id: 'apparmor',
+    name: 'AppArmor Security Studio',
+    packageName: 'apparmor-utils',
+    category: 'Mandatory Access Control',
+    description: 'Linux Security Module (LSM) enforcing path-based confinement and complain/enforce switching.',
+    binaryName: 'aa-status',
+    binaryPath: '/usr/sbin/aa-status',
+    installed: true,
+  },
+  {
+    id: 'clamav',
+    name: 'ClamAV Anti-Malware & Daemon',
+    packageName: 'clamav clamav-daemon',
+    category: 'Antivirus & Quarantine',
+    description: 'Signature-based antivirus engine with automated freshclam database updates and quarantine staging.',
+    binaryName: 'clamscan',
+    binaryPath: '/usr/bin/clamscan',
+    installed: true,
+  },
+  {
+    id: 'rkhunter',
+    name: 'Rootkit Hunter (rkhunter)',
+    packageName: 'rkhunter',
+    category: 'Rootkit Defense',
+    description: 'Rootkit scanner auditing system binaries against known backdoor signatures and LKM kernel hooks.',
+    binaryName: 'rkhunter',
+    binaryPath: '/usr/bin/rkhunter',
+    installed: true,
+  },
+  {
+    id: 'chkrootkit',
+    name: 'chkrootkit System Auditor',
+    packageName: 'chkrootkit',
+    category: 'Rootkit Defense',
+    description: 'Locally checks system binaries, wtmp/utmp logs, and /proc structures for stealth rootkit indicators.',
+    binaryName: 'chkrootkit',
+    binaryPath: '/usr/sbin/chkrootkit',
+    installed: true,
+  },
+  {
+    id: 'lynis',
+    name: 'Lynis CIS Hardening Auditor',
+    packageName: 'lynis',
+    category: 'Compliance & Hardening',
+    description: 'Automated cybersecurity benchmark auditor calculating hardening posture indexes (0-100).',
+    binaryName: 'lynis',
+    binaryPath: '/usr/sbin/lynis',
+    installed: true,
+  },
+  {
+    id: 'aide',
+    name: 'AIDE File Integrity Checker',
+    packageName: 'aide',
+    category: 'Integrity Monitoring',
+    description: 'Advanced Intrusion Detection Environment building cryptographic hash baselines of /etc and /bin.',
+    binaryName: 'aide',
+    binaryPath: '/usr/bin/aide',
+    installed: true,
+  },
+  {
+    id: 'debsums',
+    name: 'Debsums Package Manifest Healer',
+    packageName: 'debsums',
+    category: 'Supply Chain Verification',
+    description: 'Audits installed Debian packages against official Canonical GPG-signed MD5 digests to detect file tampering.',
+    binaryName: 'debsums',
+    binaryPath: '/usr/bin/debsums',
+    installed: true,
+  },
+  {
+    id: 'needrestart',
+    name: 'needrestart Stale Memory Guard',
+    packageName: 'needrestart',
+    category: 'Memory & Daemons',
+    description: 'Scans /proc/[pid]/maps for obsolete, deleted shared libraries (.so) held in RAM post-upgrade.',
+    binaryName: 'needrestart',
+    binaryPath: '/usr/sbin/needrestart',
+    installed: true,
+  },
+  {
+    id: 'usbguard',
+    name: 'USBGuard Hardware Sentry',
+    packageName: 'usbguard',
+    category: 'Hardware Defense',
+    description: 'Defends against rogue BadUSB keystroke injectors using kernel device authorization rules.',
+    binaryName: 'usbguard',
+    binaryPath: '/usr/bin/usbguard',
+    installed: false,
+  },
+  {
+    id: 'wireguard',
+    name: 'WireGuard VPN Management',
+    packageName: 'wireguard-tools',
+    category: 'VPN & Encrypted Tunnels',
+    description: 'Fast, cryptographic network tunnel client managing wg0 interfaces, fwmark 51820, and handshake telemetry.',
+    binaryName: 'wg',
+    binaryPath: '/usr/bin/wg',
+    installed: false,
+  },
+  {
+    id: 'opensnitch',
+    name: 'OpenSnitch Interactive App Firewall',
+    packageName: 'opensnitch',
+    category: 'Outbound Socket Intercepts',
+    description: 'eBPF application firewall monitoring outbound sockets and prompting for desktop authorization.',
+    binaryName: 'opensnitchd',
+    binaryPath: '/usr/bin/opensnitchd',
+    installed: false,
+  },
+  {
+    id: 'nextdns',
+    name: 'NextDNS Encrypted CLI Client',
+    packageName: 'nextdns',
+    category: 'Encrypted DNS',
+    description: 'Local DNS-over-HTTPS/DoT proxy daemon connecting your system directly to your private NextDNS profile.',
+    binaryName: 'nextdns',
+    binaryPath: '/usr/bin/nextdns',
+    installed: false,
+  },
+  {
+    id: 'auditd',
+    name: 'Linux Auditd Syscall Daemon',
+    packageName: 'auditd audispd-plugins',
+    category: 'Kernel Syscall Logging',
+    description: 'Kernel audit system capturing low-level execve syscalls, unauthorized credential reads, and socket binds.',
+    binaryName: 'auditd',
+    binaryPath: '/sbin/auditd',
+    installed: false,
+  },
+];
+
+export async function fetchSubAppsStatus(): Promise<Array<import('../types/project').SecuritySubApp>> {
+  if (isTauriRuntime()) {
+    try {
+      const raw = await window.__TAURI_INTERNALS__!.invoke<string>('get_subapps_status');
+      if (raw) {
+        return JSON.parse(raw);
+      }
+    } catch {
+      // fallback
+    }
+  }
+  return INITIAL_SUBAPPS;
+}
+
+export async function triggerSubAppInstall(pkgName: string): Promise<string> {
+  if (isTauriRuntime()) {
+    try {
+      return await window.__TAURI_INTERNALS__!.invoke<string>('install_subapp', { pkg: pkgName });
+    } catch (e) {
+      return `Installation failed: ${e}`;
+    }
+  }
+  return `sudo apt-get install -y ${pkgName}`;
+}
+

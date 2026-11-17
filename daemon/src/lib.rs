@@ -278,6 +278,242 @@ pub fn scan_deleted_shared_objects() -> Vec<String> {
     findings
 }
 
+/// Information about a security sub-application or subsystem tool managed by SentryLinux.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct SubAppInfo {
+    pub id: &'static str,
+    pub name: &'static str,
+    pub package_name: &'static str,
+    pub category: &'static str,
+    pub description: &'static str,
+    pub binary_name: &'static str,
+    pub binary_path: &'static str,
+    pub installed: bool,
+}
+
+pub fn is_binary_installed(bin_name: &str) -> bool {
+    let prefixes = [
+        "/usr/bin",
+        "/usr/sbin",
+        "/bin",
+        "/sbin",
+        "/usr/local/bin",
+        "/usr/local/sbin",
+    ];
+    for p in &prefixes {
+        if Path::new(p).join(bin_name).is_file() {
+            return true;
+        }
+    }
+    if let Ok(out) = Command::new("which").arg(bin_name).output() {
+        if out.status.success() && !out.stdout.is_empty() {
+            return true;
+        }
+    }
+    false
+}
+
+pub fn detect_subapps_status() -> Vec<SubAppInfo> {
+    let definitions = [
+        (
+            "fail2ban",
+            "Fail2ban Brute-Force Shield",
+            "fail2ban",
+            "Brute-Force & Jail",
+            "Monitors auth logs and dynamically bans hostile IPs in nftables/UFW.",
+            "fail2ban-client",
+            "/usr/bin/fail2ban-client",
+        ),
+        (
+            "suricata",
+            "Suricata Network IDS/IPS",
+            "suricata",
+            "Network IDS/IPS",
+            "Deep packet inspection and automated network intrusion detection engine.",
+            "suricata",
+            "/usr/bin/suricata",
+        ),
+        (
+            "ufw",
+            "UFW (Uncomplicated Firewall)",
+            "ufw",
+            "Firewall",
+            "Host-based stateful packet filtering and port forwarding sentry.",
+            "ufw",
+            "/usr/sbin/ufw",
+        ),
+        (
+            "apparmor",
+            "AppArmor Security Studio",
+            "apparmor-utils",
+            "Mandatory Access Control",
+            "Linux Security Module (LSM) enforcing path-based application confinement.",
+            "aa-status",
+            "/usr/sbin/aa-status",
+        ),
+        (
+            "clamav",
+            "ClamAV Anti-Malware & Daemon",
+            "clamav clamav-daemon",
+            "Antivirus & Quarantine",
+            "Open-source antivirus engine with freshclam updates and quarantine staging.",
+            "clamscan",
+            "/usr/bin/clamscan",
+        ),
+        (
+            "rkhunter",
+            "Rootkit Hunter (rkhunter)",
+            "rkhunter",
+            "Rootkit Defense",
+            "Scans system files for known rootkits, backdoors, and local exploits.",
+            "rkhunter",
+            "/usr/bin/rkhunter",
+        ),
+        (
+            "chkrootkit",
+            "chkrootkit System Auditor",
+            "chkrootkit",
+            "Rootkit Defense",
+            "Locally checks system binaries and /proc for signatures of stealth rootkits.",
+            "chkrootkit",
+            "/usr/sbin/chkrootkit",
+        ),
+        (
+            "lynis",
+            "Lynis CIS Hardening Auditor",
+            "lynis",
+            "Compliance & Hardening",
+            "Automated system auditing and CIS Level 2 hardening index calculator.",
+            "lynis",
+            "/usr/sbin/lynis",
+        ),
+        (
+            "aide",
+            "AIDE File Integrity Checker",
+            "aide",
+            "Integrity Monitoring",
+            "Advanced Intrusion Detection Environment building cryptographic baselines of /etc.",
+            "aide",
+            "/usr/bin/aide",
+        ),
+        (
+            "debsums",
+            "Debsums Package Manifest Healer",
+            "debsums",
+            "Supply Chain Verification",
+            "Verifies installed package file digests against official Canonical GPG manifests.",
+            "debsums",
+            "/usr/bin/debsums",
+        ),
+        (
+            "needrestart",
+            "needrestart Stale Memory Guard",
+            "needrestart",
+            "Memory & Daemons",
+            "Detects processes holding deleted shared libraries in RAM post-upgrade.",
+            "needrestart",
+            "/usr/sbin/needrestart",
+        ),
+        (
+            "usbguard",
+            "USBGuard Hardware Sentry",
+            "usbguard",
+            "Hardware Defense",
+            "Defends against rogue BadUSB keystroke injectors using kernel device authorization.",
+            "usbguard",
+            "/usr/bin/usbguard",
+        ),
+        (
+            "wireguard",
+            "WireGuard VPN Management",
+            "wireguard-tools",
+            "VPN & Encrypted Tunnels",
+            "Fast cryptographic network tunnel client managing fwmark and routing.",
+            "wg",
+            "/usr/bin/wg",
+        ),
+        (
+            "opensnitch",
+            "OpenSnitch Interactive App Firewall",
+            "opensnitch",
+            "Outbound Socket Intercepts",
+            "Kernel eBPF application firewall prompting for outbound connections.",
+            "opensnitchd",
+            "/usr/bin/opensnitchd",
+        ),
+        (
+            "nextdns",
+            "NextDNS Encrypted CLI Client",
+            "nextdns",
+            "Encrypted DNS",
+            "Local DNS-over-HTTPS/DoT proxy daemon connecting to your NextDNS profile.",
+            "nextdns",
+            "/usr/bin/nextdns",
+        ),
+        (
+            "auditd",
+            "Linux Auditd Syscall Daemon",
+            "auditd audispd-plugins",
+            "Kernel Syscall Logging",
+            "Monitors low-level execve syscalls, credential reads, and socket binds.",
+            "auditd",
+            "/sbin/auditd",
+        ),
+    ];
+
+    definitions
+        .into_iter()
+        .map(|(id, name, pkg, cat, desc, bin, def_path)| {
+            let is_installed = is_binary_installed(bin);
+            SubAppInfo {
+                id,
+                name,
+                package_name: pkg,
+                category: cat,
+                description: desc,
+                binary_name: bin,
+                binary_path: def_path,
+                installed: is_installed,
+            }
+        })
+        .collect()
+}
+
+pub fn detect_subapps_json() -> String {
+    let items = detect_subapps_status();
+    let mut json = String::from("[");
+    for (i, item) in items.iter().enumerate() {
+        if i > 0 {
+            json.push(',');
+        }
+        json.push_str(&format!(
+            r#"{{"id":"{}","name":"{}","packageName":"{}","category":"{}","description":"{}","binaryName":"{}","binaryPath":"{}","installed":{}}}"#,
+            item.id,
+            item.name,
+            item.package_name,
+            item.category,
+            item.description,
+            item.binary_name,
+            item.binary_path,
+            item.installed
+        ));
+    }
+    json.push(']');
+    json
+}
+
+pub fn install_subapp_package(pkg: &str) -> Result<String, String> {
+    if let Ok(status) = Command::new("apt-get")
+        .args(["install", "-y", "--no-install-recommends", pkg])
+        .status()
+    {
+        if status.success() {
+            return Ok(format!("Successfully installed {pkg}."));
+        }
+    }
+    Ok(format!("Generated install command: sudo apt-get install -y {pkg}"))
+}
+
 /// Stores or retrieves API keys via GNOME Keyring (`secret-tool`) with in-memory session guard.
 pub struct KeyringGuard {
     in_memory_key: Mutex<String>,

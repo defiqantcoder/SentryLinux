@@ -31,7 +31,14 @@ Instead of demanding heavy local ML models or requiring fragile localhost HTTP p
 
 ## Key Features
 
-### 1. "AI: Explain This & Recommend Action" (Plain English)
+### 1. 1-Click Security Sub-Application Installer
+Automated one-click installation and verification for all underlying Linux security tools:
+- **Supported Sub-Applications**: `fail2ban`, `suricata`, `ufw`, `apparmor-utils`, `clamav`, `clamav-daemon`, `rkhunter`, `chkrootkit`, `lynis`, `aide`, `debsums`, `needrestart`, `usbguard`, `wireguard-tools`, `opensnitch`, and `nextdns`.
+- **In Desktop GUI**: Click the **"1-Click Tool Installer"** pill in the top header or in Settings to see a readiness gauge, install individual missing tools, or click **"1-Click Install All Missing Tools"**.
+- **In Terminal / CLI**: Run `sudo sentrylinux-install-subapps [all|tool]` or choose option `[8]` in `sentrylinux --console`.
+- **Live Output Console**: Watch real-time APT package provisioning and systemd service activation directly in the app.
+
+### 2. "AI: Explain This & Recommend Action" (Plain English)
 Every section and alert includes a prominent **"AI: Explain This & Recommend Action"** assistant written in clear, simple everyday English with **zero cryptic Linux jargon**:
 - **What This Is**: Simple explanation of what this part of your computer does.
 - **Where the Threat Comes From**: Real-world origin of the risk (phishing links, malicious downloads, unpatched code in RAM, rogue background scripts).
@@ -204,6 +211,9 @@ Select action (or press Enter to view live telemetry):
 | :--- | :--- |
 | `sentrylinux` | Launches full Libadwaita desktop GUI (or console if headless). |
 | `sentrylinux --console` | Launches the interactive Terminal Security Console. |
+| `sentrylinux --subapps` | Detects and lists all 16 security sub-applications as JSON. |
+| `sentrylinux --install-subapps [all\|pkg]` | 1-Click installs missing sub-applications via APT. |
+| `sentrylinux-install-subapps` | Global command to provision all security tools via automated bash script. |
 | `sentrylinux --telemetry` | Prints real-time Linux kernel security posture as JSON. |
 | `sentrylinux --validate-path <PATH>` | Verifies path against canonical directory traversal guards. |
 | `sentrylinux --headless-check` | Performs instantaneous self-test verifying IPC and memory integrity. |

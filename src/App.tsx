@@ -43,11 +43,15 @@ import {
   INITIAL_SWEEP_FINDINGS,
   INITIAL_SYSTEMD_UNITS,
   INITIAL_WIREGUARD_TUNNELS,
+  INITIAL_SUBAPPS,
   compileSpecBundle,
   fetchLiveSystemTelemetry,
+  fetchSubAppsStatus,
   saveSpecBundleToDisk,
   validateCanonicalPath,
 } from './services/sentryBridge';
+import { SubAppInstallerModal } from './components/SubAppInstallerModal';
+import type { SecuritySubApp } from './types/project';
 import { queryAskSentry } from './services/geminiService';
 
 const STORAGE_KEY_STATE = 'sentrylinux_app_state_v2';
@@ -98,6 +102,10 @@ export default function App() {
   const [compiledFiles, setCompiledFiles] = useState<Record<string, string>>({});
   const [exportStatus, setExportStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
+  // 1-Click Security Sub-Application Installer Modal
+  const [subApps, setSubApps] = useState<SecuritySubApp[]>(INITIAL_SUBAPPS);
+  const [subAppInstallerOpen, setSubAppInstallerOpen] = useState(false);
+
   // Hydrate persisted state & live telemetry
   useEffect(() => {
     try {
@@ -117,6 +125,7 @@ export default function App() {
     }
 
     fetchLiveSystemTelemetry().then(setSystemTelemetry).catch(() => {});
+    fetchSubAppsStatus().then(setSubApps).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -284,6 +293,19 @@ export default function App() {
               <MaterialIcon name="sync_alt" className="text-[15px] text-on-surface-variant" />
             </button>
           </Tooltip>
+
+          <button
+            type="button"
+            onClick={() => setSubAppInstallerOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md border border-[#443e54] transition-all shadow-sm"
+            title="1-Click Security Sub-Application Installer"
+          >
+            <MaterialIcon name="apps" className="text-[16px] text-tertiary" />
+            <span className="hidden md:inline font-medium">1-Click Tool Installer</span>
+            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-primary/20 text-primary font-code-sm font-semibold">
+              {subApps.filter((a) => a.installed).length}/{subApps.length}
+            </span>
+          </button>
 
           <button
             type="button"
@@ -765,6 +787,7 @@ export default function App() {
               }
               projectState={projectState}
               onOpenExportModal={handleOpenExportModal}
+              onOpenSubAppInstaller={() => setSubAppInstallerOpen(true)}
             />
           )}
         </main>
@@ -858,6 +881,19 @@ export default function App() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* 1-Click Security Sub-Application Installer Modal */}
+      {subAppInstallerOpen && (
+        <SubAppInstallerModal
+          subApps={subApps}
+          onClose={() => setSubAppInstallerOpen(false)}
+          onSubAppInstalled={(id) =>
+            setSubApps((prev) =>
+              prev.map((a) => (a.id === id ? { ...a, installed: true } : a)),
+            )
+          }
+        />
       )}
     </div>
   );

@@ -261,3 +261,30 @@ export interface LiveSystemTelemetry {
   luksKeyslotsActive: number;
   secureBootEnabled: boolean;
 }
+
+export interface SecuritySubApp {
+  id: string;
+  name: string;
+  packageName: string;
+  category:
+    | 'Brute-Force & Jail'
+    | 'Network IDS/IPS'
+    | 'Firewall'
+    | 'Mandatory Access Control'
+    | 'Antivirus & Quarantine'
+    | 'Rootkit Defense'
+    | 'Compliance & Hardening'
+    | 'Integrity Monitoring'
+    | 'Supply Chain Verification'
+    | 'Memory & Daemons'
+    | 'Hardware Defense'
+    | 'VPN & Encrypted Tunnels'
+    | 'Outbound Socket Intercepts'
+    | 'Encrypted DNS'
+    | 'Kernel Syscall Logging';
+  description: string;
+  binaryName: string;
+  binaryPath: string;
+  installed: boolean;
+}
+

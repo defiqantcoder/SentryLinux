@@ -75,3 +75,24 @@ test('Plain-language AI threat explainers are present and complete for all 9 sec
   assert.ok(serviceCode.includes('actionButtonLabel:'));
 });
 
+test('1-Click Security Sub-Application detection and provisioning suite', () => {
+  const out = execFileSync(desktopBin, ['--subapps'], { encoding: 'utf8' });
+  const subapps = JSON.parse(out);
+  assert.ok(Array.isArray(subapps));
+  assert.ok(subapps.length >= 14);
+
+  const fail2ban = subapps.find((s) => s.id === 'fail2ban');
+  assert.ok(fail2ban, 'Missing fail2ban in subapps');
+  assert.equal(fail2ban.packageName, 'fail2ban');
+
+  const suricata = subapps.find((s) => s.id === 'suricata');
+  assert.ok(suricata, 'Missing suricata in subapps');
+  assert.equal(suricata.packageName, 'suricata');
+
+  const installScript = path.resolve('scripts/install-subapps.sh');
+  assert.ok(fs.existsSync(installScript), 'Missing scripts/install-subapps.sh');
+  const stat = fs.statSync(installScript);
+  assert.ok((stat.mode & 0o111) !== 0, 'install-subapps.sh must be executable');
+});
+
+
