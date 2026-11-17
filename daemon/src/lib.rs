@@ -629,6 +629,31 @@ fn handle_http_connection(
         return write_http_response(&mut stream, "200 OK", "application/json", body.as_bytes());
     }
 
+    if method == "GET" && path == "/api/subapps/status" {
+        let body = detect_subapps_json();
+        return write_http_response(&mut stream, "200 OK", "application/json", body.as_bytes());
+    }
+
+    if method == "POST" && path == "/api/subapps/install" {
+        let mut pkg = "all".to_string();
+        if let Some(body_idx) = req_str.find("\r\n\r\n") {
+            let body = &req_str[body_idx + 4..];
+            if let Some(p) = extract_json_string_field(body, "package") {
+                pkg = p;
+            }
+        }
+        match install_subapp_package(&pkg) {
+            Ok(msg) => {
+                let resp = format!("{{\"ok\":true,\"message\":\"{}\"}}", escape_json(&msg));
+                return write_http_response(&mut stream, "200 OK", "application/json", resp.as_bytes());
+            }
+            Err(e) => {
+                let resp = format!("{{\"ok\":false,\"message\":\"{}\"}}", escape_json(&e));
+                return write_http_response(&mut stream, "500 Internal Error", "application/json", resp.as_bytes());
+            }
+        }
+    }
+
     if method == "GET" && path == "/api/keyring/has" {
         let body = format!("{{\"hasKey\":{}}}", keyring.has_key());
         return write_http_response(&mut stream, "200 OK", "application/json", body.as_bytes());
@@ -720,6 +745,14 @@ window.__TAURI_INTERNALS__ = {
       const d = await r.json();
       if (!r.ok || d.ok === false) throw new Error(d.message || 'Export failed');
       return true;
+    }
+    if (cmd === 'get_subapps_status') {
+      const r = await fetch('/api/subapps/status');
+      return await r.json();
+    }
+    if (cmd === 'install_subapp') {
+      const r = await fetch('/api/subapps/install', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(args || {}) });
+      return await r.json();
     }
     return null;
   }

@@ -20,6 +20,11 @@ type FnGtkMain = unsafe extern "C" fn();
 type FnGtkMainQuit = unsafe extern "C" fn();
 type FnWebKitWebViewNew = unsafe extern "C" fn() -> *mut c_void;
 type FnWebKitWebViewLoadUri = unsafe extern "C" fn(*mut c_void, *const c_char);
+type FnWebKitWebViewGetSettings = unsafe extern "C" fn(*mut c_void) -> *mut c_void;
+type FnWebKitSettingsSetAllowFileAccess = unsafe extern "C" fn(*mut c_void, c_int);
+type FnWebKitSettingsSetAllowUniversalAccess = unsafe extern "C" fn(*mut c_void, c_int);
+type FnWebKitSettingsSetConsole = unsafe extern "C" fn(*mut c_void, c_int);
+type FnWebKitSettingsSetDevExtras = unsafe extern "C" fn(*mut c_void, c_int);
 type FnGSignalConnectData = unsafe extern "C" fn(
     *mut c_void,
     *const c_char,
@@ -41,6 +46,11 @@ struct DynamicGui {
     gtk_main: FnGtkMain,
     webkit_web_view_new: FnWebKitWebViewNew,
     webkit_web_view_load_uri: FnWebKitWebViewLoadUri,
+    webkit_web_view_get_settings: Option<FnWebKitWebViewGetSettings>,
+    webkit_settings_set_allow_file_access: Option<FnWebKitSettingsSetAllowFileAccess>,
+    webkit_settings_set_allow_universal_access: Option<FnWebKitSettingsSetAllowUniversalAccess>,
+    webkit_settings_set_console: Option<FnWebKitSettingsSetConsole>,
+    webkit_settings_set_dev_extras: Option<FnWebKitSettingsSetDevExtras>,
     g_signal_connect_data: FnGSignalConnectData,
 }
 
@@ -126,6 +136,16 @@ fn try_load_gui() -> Option<DynamicGui> {
             load_symbol(webkit_handle, "webkit_web_view_new")?;
         let webkit_web_view_load_uri: FnWebKitWebViewLoadUri =
             load_symbol(webkit_handle, "webkit_web_view_load_uri")?;
+        let webkit_web_view_get_settings: Option<FnWebKitWebViewGetSettings> =
+            load_symbol(webkit_handle, "webkit_web_view_get_settings");
+        let webkit_settings_set_allow_file_access: Option<FnWebKitSettingsSetAllowFileAccess> =
+            load_symbol(webkit_handle, "webkit_settings_set_allow_file_access_from_file_urls");
+        let webkit_settings_set_allow_universal_access: Option<FnWebKitSettingsSetAllowUniversalAccess> =
+            load_symbol(webkit_handle, "webkit_settings_set_allow_universal_access_from_file_urls");
+        let webkit_settings_set_console: Option<FnWebKitSettingsSetConsole> =
+            load_symbol(webkit_handle, "webkit_settings_set_enable_write_console_messages_to_stdout");
+        let webkit_settings_set_dev_extras: Option<FnWebKitSettingsSetDevExtras> =
+            load_symbol(webkit_handle, "webkit_settings_set_enable_developer_extras");
         let g_signal_connect_data: FnGSignalConnectData =
             load_symbol(gtk_handle, "g_signal_connect_data")?;
 
@@ -143,6 +163,11 @@ fn try_load_gui() -> Option<DynamicGui> {
             gtk_main,
             webkit_web_view_new,
             webkit_web_view_load_uri,
+            webkit_web_view_get_settings,
+            webkit_settings_set_allow_file_access,
+            webkit_settings_set_allow_universal_access,
+            webkit_settings_set_console,
+            webkit_settings_set_dev_extras,
             g_signal_connect_data,
         })
     }
@@ -368,13 +393,18 @@ fn main() {
     // Try starting the full native Libadwaita WebKit2GTK GUI if environment supports it
     if let Some(gui) = try_load_gui() {
         let ui_dir = locate_ui_directory();
-        let index_file = ui_dir.join("index.html");
         
-        // Use direct file:// URL: NO LOCALHOST, NO HTTP SERVER, NO OPEN NETWORK PORTS!
-        let file_uri_string = format!(
-            "file://{}",
-            index_file.canonicalize().unwrap_or(index_file).display()
-        );
+        // Zero-config internal ephemeral loopback bridge (127.0.0.1:0) for instant module rendering & live daemon IPC
+        let target_url = match start_local_ipc_server(0, ui_dir.clone()) {
+            Ok(port) => format!("http://127.0.0.1:{port}/"),
+            Err(_) => {
+                let index_file = ui_dir.join("index.html");
+                format!(
+                    "file://{}",
+                    index_file.canonicalize().unwrap_or(index_file).display()
+                )
+            }
+        };
 
         unsafe {
             let mut argc: c_int = 0;
@@ -389,7 +419,27 @@ fn main() {
                 (gui.gtk_window_set_default_size)(window, 1440, 900);
 
                 let webview = (gui.webkit_web_view_new)();
-                let c_url = CString::new(file_uri_string).unwrap();
+
+                // Enable file access, console logging, and developer extras to prevent white screens
+                if let Some(get_settings) = gui.webkit_web_view_get_settings {
+                    let settings = get_settings(webview);
+                    if !settings.is_null() {
+                        if let Some(set_file) = gui.webkit_settings_set_allow_file_access {
+                            set_file(settings, 1);
+                        }
+                        if let Some(set_univ) = gui.webkit_settings_set_allow_universal_access {
+                            set_univ(settings, 1);
+                        }
+                        if let Some(set_console) = gui.webkit_settings_set_console {
+                            set_console(settings, 1);
+                        }
+                        if let Some(set_dev) = gui.webkit_settings_set_dev_extras {
+                            set_dev(settings, 1);
+                        }
+                    }
+                }
+
+                let c_url = CString::new(target_url).unwrap();
                 (gui.webkit_web_view_load_uri)(webview, c_url.as_ptr());
 
                 (gui.gtk_container_add)(window, webview);

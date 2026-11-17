@@ -34,6 +34,12 @@
             if (cmd === 'save_spec_bundle') {
               return '/tmp/sentrylinux-spec-bundle';
             }
+            if (cmd === 'get_subapps_status') {
+              return [];
+            }
+            if (cmd === 'install_subapp') {
+              return 'Ready';
+            }
             return null;
           }
         };
